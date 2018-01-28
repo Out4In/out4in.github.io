@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        
+        <meta charset="utf-8"/>
+
+        <title>הפעלת פאזל AR</title>
+
+        <style type="text/css">
+
+            body
+            {
+                direction: rtl;
+            }
+
+        </style>
+        
+    </head>
+    
+    <body>
+    
+        <a href="" id="puzzle-anchor"></a>
+    
+        <script type="text/javascript">
+        
+            var os = getMobileOperatingSystem();
+            
+            alert(os);
+            
+            function getMobileOperatingSystem() 
+            {
+                var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+                if (/android/i.test(userAgent)) 
+                {
+                    return "Android";
+                }
+
+                // iOS detection from: http://stackoverflow.com/a/9039885/177710
+                if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) 
+                {
+                    return "iOS";
+                }
+
+                return "unknown";
+            }
+        
+        </script>
+        
+    </body>
+    
+</html>
