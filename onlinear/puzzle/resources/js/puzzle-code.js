@@ -1,6 +1,7 @@
 var mrkrs = document.querySelectorAll("a-marker");
 
 var elm_doneBtn = document.querySelector("#doneBtn");
+var elm_correctAnswerImg = document.querySelector("#correct-answer-img");
 
 var objs = [];
 for (var i = 0, len = mrkrs.length; i < len; i++)
@@ -236,10 +237,18 @@ function done()
     
     if (prompt(qTxt) == "83")
     {
-        alert(correctTxt);
+        elm_correctAnswerImg.style.display = "block";
+        var audio = new Audio('resources/audio/right-answer.mp3');
+        audio.play();
     }
     else
     {
         alert(errTxt);
     }
+}
+
+function autoFinishPuzzles()
+{
+    finishedPuzzles = [true,true,true,true];
+    checkIfFinished();
 }
