@@ -20,13 +20,24 @@
     
     <body>
     
-        <a href="" id="puzzle-anchor"></a>
+        <a href="" id="puzzle-anchor">לחץ כאן!</a>
     
         <script type="text/javascript">
         
             var os = getMobileOperatingSystem();
             
-            alert(os);
+            var elm_anchor = document.querySelector("#puzzle-anchor");
+            
+            var path = "out4in.github.io/onlinear/puzzle";
+            
+            if (os == "Android")
+            {
+                elm_anchor.href = "intent://" + path + "#Intent;scheme=https;package=com.android.chrome;end"
+            }
+            else
+            {
+                elm_anchor.href = "https://" + path;
+            }
             
             function getMobileOperatingSystem() 
             {
