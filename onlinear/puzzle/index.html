@@ -1,0 +1,87 @@
+<html>
+    
+    <head>
+    
+        <meta charset="utf-8"/>
+        
+        <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/examples/vendor/aframe/build/aframe.min.js"></script>
+        <script src="../shared-resources/packages/aframe-ar.js"></script>
+        <!--<script src="https://unpkg.com/aframe-cubemap-component@0.1.2/dist/aframe-cubemap-component.min.js"></script> -->
+        
+    </head>
+    
+    <body style='margin : 0px; overflow: hidden; width: 100%;'>
+        
+        <a-scene embedded arjs="debugUIEnabled: false;">
+            
+            <!--<a-assets>
+                <a-cubemap id="cubee">
+                  <img src="images/puzzle_test/hiro.png">
+                  <img src="images/puzzle_test/hiro.png">
+                  <img src="images/puzzle_test/hiro.png">
+                  <img src="images/puzzle_test/hiro.png">
+                  <img src="images/puzzle_test/hiro.png">
+                  <img src="images/puzzle_test/hiro.png">
+                </a-cubemap>
+            </a-assets>-->
+            
+            <!-- old! new is same height for all: 2.59583333 or 3.24479166 with factor 1.25
+                image 1 - height scale 3.69726248
+                image 2 - height scale 4.60717949
+                image 3 - height scale 3.50588235
+                image 4 - height scale 3.49427313
+            -->
+            
+            <a-marker preset="custom" type='pattern' url="../shared-resources/markers/marker-1.patt" id="marker-1">
+                <a-plane position="0      1.62239584 0.625"  rotation="0 0   0"   material="src: resources/images/puzzle-parts/puzzle-image-1-part-1.png; side: front" scale="1.25 3.24479166"></a-plane> <!--FRONT--> <!--3.69726248-->
+                <a-plane position="0.625  1.62239584 0"      rotation="0 90  0"   material="src: resources/images/puzzle-parts/puzzle-image-2-part-2.png; side: front" scale="1.25 3.24479166"></a-plane> <!--RIGHT--> <!--4.60717949-->
+                <a-plane position="0      1.62239584 -0.625" rotation="0 180 0"   material="src: resources/images/puzzle-parts/puzzle-image-3-part-3.png; side: front" scale="1.25 3.24479166"></a-plane> <!--BACK--> <!--3.50588235-->
+                <a-plane position="-0.625 1.62239584 0"      rotation="0 -90 0"   material="src: resources/images/puzzle-parts/puzzle-image-4-part-4.png; side: front" scale="1.25 3.24479166"></a-plane> <!--LEFT--> <!--3.49427313-->
+                
+                <a-plane position="0 3.24479166 0" rotation="-90 0 0" material="src: resources/images/Out4InLogoWhiteBG.png; side: front" scale="1.25 1.25"></a-plane> <!--TOP-->
+            </a-marker>
+
+            <a-marker preset="custom" type='pattern' url="../shared-resources/markers/marker-2.patt" id="marker-2">
+                <a-plane position="0      1.62239584 0.625"  rotation="0 0   0"   material="src: resources/images/puzzle-parts/puzzle-image-1-part-2.png; side: front" scale="1.25 3.24479166"></a-plane> <!--FRONT-->
+                <a-plane position="0.625  1.62239584 0"      rotation="0 90  0"   material="src: resources/images/puzzle-parts/puzzle-image-2-part-3.png; side: front" scale="1.25 3.24479166"></a-plane> <!--RIGHT-->
+                <a-plane position="0      1.62239584 -0.625" rotation="0 180 0"   material="src: resources/images/puzzle-parts/puzzle-image-3-part-4.png; side: front" scale="1.25 3.24479166"></a-plane> <!--BACK-->
+                <a-plane position="-0.625 1.62239584 0"      rotation="0 -90 0"   material="src: resources/images/puzzle-parts/puzzle-image-4-part-1.png; side: front" scale="1.25 3.24479166"></a-plane> <!--LEFT-->
+                
+                <a-plane position="0 3.24479166 0" rotation="-90 0 0" material="src: resources/images/Out4InLogoWhiteBG.png; side: front" scale="1.25 1.25"></a-plane> <!--TOP-->
+            </a-marker>
+            
+            <a-marker preset="custom" type='pattern' url="../shared-resources/markers/marker-3.patt" id="marker-3">
+                <a-plane position="0      1.62239584 0.625"  rotation="0 0   0"   material="src: resources/images/puzzle-parts/puzzle-image-1-part-3.png; side: front" scale="1.25 3.24479166"></a-plane> <!--FRONT-->
+                <a-plane position="0.625  1.62239584 0"      rotation="0 90  0"   material="src: resources/images/puzzle-parts/puzzle-image-2-part-4.png; side: front" scale="1.25 3.24479166"></a-plane> <!--RIGHT-->
+                <a-plane position="0      1.62239584 -0.625" rotation="0 180 0"   material="src: resources/images/puzzle-parts/puzzle-image-3-part-1.png; side: front" scale="1.25 3.24479166"></a-plane> <!--BACK-->
+                <a-plane position="-0.625 1.62239584 0"      rotation="0 -90 0"   material="src: resources/images/puzzle-parts/puzzle-image-4-part-2.png; side: front" scale="1.25 3.24479166"></a-plane> <!--LEFT-->
+                
+                <a-plane position="0 3.24479166 0" rotation="-90 0 0" material="src: resources/images/Out4InLogoWhiteBG.png; side: front" scale="1.25 1.25"></a-plane> <!--TOP-->
+            </a-marker>
+            
+            <a-marker preset="custom" type='pattern' url="../shared-resources/markers/marker-4.patt" id="marker-4">
+                <a-plane position="0      1.62239584 0.625"  rotation="0 0   0"   material="src: resources/images/puzzle-parts/puzzle-image-1-part-4.png; side: front" scale="1.25 3.24479166"></a-plane> <!--FRONT-->
+                <a-plane position="0.625  1.62239584 0"      rotation="0 90  0"   material="src: resources/images/puzzle-parts/puzzle-image-2-part-1.png; side: front" scale="1.25 3.24479166"></a-plane> <!--RIGHT-->
+                <a-plane position="0      1.62239584 -0.625" rotation="0 180 0"   material="src: resources/images/puzzle-parts/puzzle-image-3-part-2.png; side: front" scale="1.25 3.24479166"></a-plane> <!--BACK-->
+                <a-plane position="-0.625 1.62239584 0"      rotation="0 -90 0"   material="src: resources/images/puzzle-parts/puzzle-image-4-part-3.png; side: front" scale="1.25 3.24479166"></a-plane> <!--LEFT-->
+                
+                <a-plane position="0 3.24479166 0" rotation="-90 0 0" material="src: resources/images/Out4InLogoWhiteBG.png; side: front" scale="1.25 1.25"></a-plane> <!--TOP-->
+            </a-marker>
+
+            <a-entity camera></a-entity>
+
+        </a-scene>
+
+        <button type="button" id="doneBtn" style="position: absolute; left: 0; bottom: 11vh; display: none; font-size: 10vh; background-color: lightgreen; border-radius: 10px;" onclick="done()">סיום</button>
+        
+        <script type="text/javascript" src="resources/js/puzzle-code.js"></script>
+
+        <script type="text/javascript">
+        
+            alert("עליכם להרכיב 4 פאזלים וירטואליים. כוונו את המצלמה אל הקודים, סובבו אותם על מנת לראות תמונות שונות, והרכיבו כל תמונה בעזרת הסידור הנכון של החלקים. בסיום, חשבו את סכום כל 16 הספרות המוחבאות על חלקי הפאזל (ספרה אחת על כל חלק). בהצלחה!");
+        
+        </script>
+        
+    </body>
+    
+</html>
