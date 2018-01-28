@@ -16,16 +16,21 @@
                 margin: 0;
             }
             
-            div
+            div#outer
             {
+                display: table;
                 background-color: lightgreen;
                 width: 100%;
-                height: 100%;
-                font-size: 20vh;
+                height: 100vh;
+            }
+            
+            div#inner
+            {
+                display: table-cell;
+                vertical-align: middle;
+                font-size: 20vw;
                 text-align: center;
                 font-family: sans-serif;
-                padding-top: 30vh;
-                padding-bottom: 30vh;
             }
             
             a
@@ -40,7 +45,7 @@
     
     <body>
     
-        <a href="" id="puzzle-anchor"><div>לחץ<br/>כאן!</div></a>
+        <a href="" id="puzzle-anchor"><div id="outer"><div id="inner">לחץ כאן!</div></div></a>
     
         <script type="text/javascript">
         
