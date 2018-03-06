@@ -5,13 +5,14 @@ var GameState = "";
 var currect_level = 1;
 var loaded_images;
 var timer = "";
-
+var sound_element = ""
 function Init(level, need_to_print)
 {
-    if(need_to_print)
-        {
-            alert("כל הכבוד עברת לשלב הבא!");
-        }
+    if(sound_element == "")
+    {
+        sound_element = document.getElementById("sound");
+    }
+    
     //Setting up the images.
     ClearTable("MemoryPicture");
     ClearTable("front_card");
@@ -22,6 +23,13 @@ function Init(level, need_to_print)
     if(level > 3)
     {
         alert("כל הכבוד!!! ניצחת את המפלצת");
+        window.close();
+        return;
+    }
+    
+    if(need_to_print)
+    {
+        alert("כל הכבוד עברת לשלב הבא!");
     }
     var number_of_images = (level * 1 == 1 ? 2 : level * 1 == 2 ? 4 : 6); // number of images per level go from 2 - 6 with jumps of 2.
     currect_level = level;
@@ -144,11 +152,12 @@ function OnClickOnImages(flip_container)
     {
         if(PairSelectedImages[0].querySelector("img[name='MemoryImg']").src == PairSelectedImages[1].querySelector("img[name='MemoryImg']").src)
         {
+            sound_element.src = "Audio/right_answer.mp3";
+            sound_element.play();
             CorrectImages.push(PairSelectedImages[0]);
             CorrectImages.push(PairSelectedImages[1]);
             if(CorrectImages.length == document.getElementsByClassName("flip-container").length) // all correct
             {
-                
                 
                 setTimeout(function(){Init(currect_level + 1,true);}, 1000);
                 return;
@@ -157,6 +166,8 @@ function OnClickOnImages(flip_container)
         }
         else
         {
+            sound_element.src = "Audio/wrong_answer.mp3";
+            sound_element.play();
             var holder_1 = PairSelectedImages[0];
             var holder_2 = PairSelectedImages[1];
             window.setTimeout(function() { FlipImage(holder_1);},1000);
