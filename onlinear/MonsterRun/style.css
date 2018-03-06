@@ -59,10 +59,12 @@
 {
     z-index: 2;
     transform: rotateY(0deg);
+    -webkit-transform: -webkit-rotateY (0deg);
 }
 
 .back_card
 {
     background-color: blue;
+    -webkit-transform: -webkit-rotateY (180deg);
     transform: rotateY(180deg);
 }

@@ -3,6 +3,7 @@ var PairSelectedImages = [];
 var CorrectImages = []
 var GameState = "";
 var currect_level = 1;
+var loaded_images;
 var timer = "";
 
 function Init(level)
@@ -10,7 +11,11 @@ function Init(level)
     
     //Setting up the images.
     ClearTable("MemoryPicture");
+    ClearTable("front_card");
+    ClearTable("back_card");
+    ClearTable("flipper");
     ClearTable("flip-container");
+    loaded_images = 0;
     if(level > 3)
     {
         alert("כל הכבוד!!! ניצחת את המפלצת");
@@ -36,34 +41,23 @@ function Init(level)
     CorrectImages = [];
     GameState = "ShowFirst";
     
-    var AllImages = document.getElementsByTagName("img");
-
-    timer = setInterval(function(){CheckAll(AllImages)}, 100);
+    timer = setInterval(LoadStart, 200);
 }
 
-function CheckAll(images)
+function LoadStart()
 {
-    var ret = IsAllLoaded(images);
-    if(ret)
+    if (loaded_images == currect_level * 4)
     {
+        
         clearInterval(timer);
+        timer = NaN;
         ToggleAll();
-        setTimeout(StartGame, 1000);
+        
+        setTimeout(StartGame,1500);
     }
-    return ret;
 }
 
-function IsAllLoaded(images)
-{    
-    for(var i = 0; i < images.length; i++)
-    {
-        if(!images[i].complete)
-        {
-            return false;
-        }
-    }
-    return true;
-}
+
 //Toggle all containers
 function ToggleAll()
 {
@@ -78,6 +72,7 @@ function StartGame()
 {
     GameState = "Playing"
     ToggleAll();
+    
 }
 
 //ClearTable from all elements.
@@ -199,6 +194,10 @@ function CreateFlipDiv(front_img)
     var image_2 = document.createElement("img");
     image_2.className = "MemoryPicture";
     image_2.src = front_img;
+    image_2.addEventListener("load", function()
+                            {
+        loaded_images++;
+    })
     image_2.setAttribute("name","MemoryImg")
     back_div.appendChild(image_2);
     
