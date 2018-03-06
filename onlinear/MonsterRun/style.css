@@ -36,9 +36,11 @@
     height: 100%;
 }
 
-.flip-container:active .flipper, .flip-container.active .flipper {
-		transform: rotateY(180deg);
-	}
+.flip-container:active .flipper, .flip-container.active .flipper 
+{
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
 
 .flipper
 {   
