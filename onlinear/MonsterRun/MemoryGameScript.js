@@ -1,4 +1,4 @@
-var IMAGES = ["Images/MemoryGame_1.jpg", "Images/MemoryGame_2.jpg","Images/MemoryGame_3.jpg","Images/MemoryGame_4.jpg","Images/MemoryGame_5.jpg","Images/MemoryGame_6.jpg"]; // TODO add more images
+var IMAGES = ["Images/MemoryGame_1.png", "Images/MemoryGame_2.png","Images/MemoryGame_3.png","Images/MemoryGame_4.png","Images/MemoryGame_5.png","Images/MemoryGame_6.png"]; // TODO add more images
 var PairSelectedImages = [];
 var CorrectImages = []
 var GameState = "";
