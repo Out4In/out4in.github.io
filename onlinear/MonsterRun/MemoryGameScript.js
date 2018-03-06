@@ -6,9 +6,12 @@ var currect_level = 1;
 var loaded_images;
 var timer = "";
 
-function Init(level)
+function Init(level, need_to_print)
 {
-    
+    if(need_to_print)
+        {
+            alert("כל הכבוד עברת לשלב הבא!");
+        }
     //Setting up the images.
     ClearTable("MemoryPicture");
     ClearTable("front_card");
@@ -145,8 +148,9 @@ function OnClickOnImages(flip_container)
             CorrectImages.push(PairSelectedImages[1]);
             if(CorrectImages.length == document.getElementsByClassName("flip-container").length) // all correct
             {
-                alert("כל הכבוד! עברת לשלב הבא");
-                setTimeout(function(){Init(currect_level + 1);}, 1000);
+                
+                
+                setTimeout(function(){Init(currect_level + 1,true);}, 1000);
                 return;
             }
             
