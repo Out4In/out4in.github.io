@@ -3,6 +3,8 @@ var PairSelectedImages = [];
 var CorrectImages = []
 var GameState = "";
 var currect_level = 1;
+var timer = "";
+
 function Init(level)
 {
     
@@ -32,12 +34,36 @@ function Init(level)
     //Init the arrays.
     PairSelectedImages = [];
     CorrectImages = [];
-    
     GameState = "ShowFirst";
-    ToggleAll();
-    setTimeout(StartGame, 1000);
+    
+    var AllImages = document.getElementsByTagName("img");
+
+    timer = setInterval(function(){CheckAll(AllImages)}, 100);
 }
 
+function CheckAll(images)
+{
+    var ret = IsAllLoaded(images);
+    if(ret)
+    {
+        clearInterval(timer);
+        ToggleAll();
+        setTimeout(StartGame, 1000);
+    }
+    return ret;
+}
+
+function IsAllLoaded(images)
+{    
+    for(var i = 0; i < images.length; i++)
+    {
+        if(!images[i].complete)
+        {
+            return false;
+        }
+    }
+    return true;
+}
 //Toggle all containers
 function ToggleAll()
 {
