@@ -1,0 +1,60 @@
+body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+#container
+{
+    width: 100%;
+    height: 100%;
+}
+
+#container .mainButton
+{
+    position: absolute;
+    width: 9%;
+    height: 16%
+}
+#button_1
+{
+    top: 40%; /*360 px down*/
+    left: 25%; /* 225 px down */
+}
+
+#button_2
+{
+    top: 40%; /*360 px down*/
+    left: 40%;
+}
+
+#button_3
+{
+    top: 40%; /*360 px down*/
+    left: 55%;
+}
+#button_4
+{
+    top: 40%; /*360 px down*/
+    left: 70%;
+}
+#button_5
+{
+    top: 70%;/*630 px down*/
+    left: 25%;
+}
+#button_6
+{
+    top: 70%;/*630 px down*/
+    left: 40%;
+}
+#button_7
+{
+    top: 70%;/*630 px down*/
+    left: 55%;
+}
+#button_8
+{
+    top: 70%;/*630 px down*/
+    left: 70%;
+}

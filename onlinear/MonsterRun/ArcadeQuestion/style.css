@@ -5,13 +5,14 @@ p
     margin-right: 15%;
     border: 3px solid blue;
     padding: 3%;
-    direction: rtl
+    direction: rtl;
+    font-size: 18px;
 }
 
 .mymonster
 {
     
-    width: 35%;
+    width: 40%;
     height: 20%;
     text-align: center;
 }
