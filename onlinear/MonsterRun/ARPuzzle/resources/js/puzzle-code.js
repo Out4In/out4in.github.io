@@ -14,6 +14,7 @@ var CORRECT_ORDER = [
     [3,1,2]
 ];
 
+
 var finishedPuzzles = [];
 for (var i = 0, len = CORRECT_ORDER.length; i < len; i++)
 {
@@ -31,14 +32,18 @@ function loopFunc()
         firstTimeInvisible = true;
         
         dir = getDirectionIfSame(objs);
+        console.log(dir);
         if (dir !== false)
         {
             var order = getIndexOrderByXPos(objs);
-            if (compareArrays(order, CORRECT_ORDER[dir]))
+            console.log(order);
+            i = compareArrays(order, CORRECT_ORDER);
+            if (i != -1)
             {
-                if (!finishedPuzzles[dir])
+                
+                if (!finishedPuzzles[i])
                 {
-                    finishedPuzzles[dir] = true;
+                    finishedPuzzles[i] = true;
                     setTimeout(function() {
                         //alert("כל הכבוד! השלמתם את פאזל " + (dir + 1) + " בהצלחה!");
                         alert("כל הכבוד! השלמתם את הפאזל בהצלחה!");
@@ -70,20 +75,28 @@ function allVisible(arr)
 
 function compareArrays(arr1, arr2)
 {
-    if (arr1.length != arr2.length)
-    {
-        return false;
-    }
-    
-    for (var i = 0, len = arr1.length; i < len; i++)
-    {
-        if (arr1[i] != arr2[i])
+    for(var i = 0; i < arr2.length; i++)
         {
-            return false;
+            var semi_arr = arr2[i];
+        
+            if(arr1.length == semi_arr.length)
+                {
+                    var counter = 0;
+                    for (var k = 0, len = arr1.length; k < len; k++)
+                    {
+                        if (arr1[k] == semi_arr[k])
+                        {
+                            counter += 1;
+                        }
+                    }  
+                    if(counter == arr1.length)
+                        {
+                            return i;
+                            
+                        }
+                }
         }
-    }
-    
-    return true;
+    return -1;
 }
 
 function getDirectionIfSame(arr)
@@ -93,7 +106,7 @@ function getDirectionIfSame(arr)
     for (var i = 1, len = arr.length; i < len; i++)
     {
         var g = getGeneralDirection(arr[i].rotation)
-        if (g != dir && g != dir + 2)
+        if (g != dir && g != (dir + 2) % 4)
         {
             dir = -1;
             break;
@@ -213,7 +226,7 @@ function checkIfFinished()
 {
     if (isAllPuzzlesFinished())
     {
-        alert("השלמתם את כל הפאזלים! עתה, חשבו את סכום 16 הספרות המוסתרות על חלקי הפאזל, ואז לחצו על כפתור ה\"סיום\" בפינת המסך.");
+        alert("השלמתם את כל הפאזלים! המפלצת נותנת לכם את הקוד הבא אשר הוא המספר 5, לחצו על כפתור ה\"סיום\" בפינת המסך.");
         elm_doneBtn.style.display = "block";
     }
 }
@@ -231,26 +244,9 @@ function isAllPuzzlesFinished()
     return true;
 }
 
-function done()
-{
-    var qTxt = "מהו סכום כל 16 הספרות הנסתרות?";
-    var errTxt = "טעות. בדקו את עצמכם ולחצו שוב על הכפתור";
-    var correctTxt = "התשובה נכונה! כל הכבוד!";
-    
-    if (prompt(qTxt) == "83")
-    {
-        elm_correctAnswerImg.style.display = "block";
-        var audio = new Audio('resources/audio/right-answer.mp3');
-        audio.play();
-    }
-    else
-    {
-        alert(errTxt);
-    }
-}
 
 function autoFinishPuzzles()
 {
-    finishedPuzzles = [true,true,true,true];
+    finishedPuzzles = [true,true,true];
     checkIfFinished();
 }

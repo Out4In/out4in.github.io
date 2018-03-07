@@ -3,7 +3,12 @@
     <head>
     
         <meta charset="utf-8"/>
-        
+        <script type="application/javascript">
+            function done()
+            {
+                history.back();
+            }
+        </script>
         <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/examples/vendor/aframe/build/aframe.min.js"></script>
         <script src="../../shared-resources/packages/aframe-ar.js"></script>
         <!--<script src="https://unpkg.com/aframe-cubemap-component@0.1.2/dist/aframe-cubemap-component.min.js"></script> -->
@@ -65,7 +70,7 @@
                 <a-plane position="0      1.43028847 -0.625" rotation="0 180 0"   material="src: resources/images/monster_2_03.png; side: front" scale="1.25 2.86057693"></a-plane> <!--BACK-->
                 <a-plane position="-0.625 1.43028847 0"      rotation="0 -90 0"   material="src: resources/images/monster_1_01.png; side: front" scale="1.25 2.86057693"></a-plane> <!--LEFT-->
                 
-                <a-plane position="0 2.86057693 0" rotation="-90 0 0" material="src: resources/images/Out4InLogoWhiteBG.png; side: front" scale="1.25 1.25"></a-plane> <!--TOP-->
+                <!---<a-plane position="0 2.86057693 0" rotation="-90 0 0" material="src: resources/images/Out4InLogoWhiteBG.png; side: front" scale="1.25 1.25"></a-plane> <!--TOP-->
             </a-marker>
             
             <a-marker preset="custom" type='pattern' url="../../shared-resources/markers/marker-3.patt" id="marker-3">
@@ -74,7 +79,7 @@
                 <a-plane position="0      1.43028847 -0.625" rotation="0 180 0"   material="src: resources/images/monster_2_01.png; side: front" scale="1.25 2.86057693"></a-plane> <!--BACK-->
                 <a-plane position="-0.625 1.43028847 0"      rotation="0 -90 0"   material="src:  resources/images/monster_1_02.png; side: front" scale="1.25 2.86057693"></a-plane> <!--LEFT-->
                 
-                <a-plane position="0 2.86057693 0" rotation="-90 0 0" material="src: resources/images/Out4InLogoWhiteBG.png; side: front" scale="1.25 1.25"></a-plane> <!--TOP-->
+                <!---<a-plane position="0 2.86057693 0" rotation="-90 0 0" material="src: resources/images/Out4InLogoWhiteBG.png; side: front" scale="1.25 1.25"></a-plane> <!--TOP-->
             </a-marker>
             
             <a-entity camera></a-entity>
