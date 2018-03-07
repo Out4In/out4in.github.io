@@ -24,8 +24,11 @@ BUTTON_6.src = "images/button_6.png";
 var BUTTON_7 = document.createElement("img");
 BUTTON_7.src = "images/button_7.png";
 
+//var BUTTON_8 = document.createElement("img");
+//BUTTON_8.src = "images/button_8.png";
+
 var BUTTON_8 = document.createElement("img");
-BUTTON_8.src = "images/button_8.png";
+BUTTON_8.src = "images/gun_pic.png";
 
 var main_page = undefined;
 
@@ -255,12 +258,19 @@ function MainButton(x, y ,id,canvas)
             case 1:
                 window.open("ARPuzzle/index.html","_self");
                 break;
+                
             case 2:
                 window.open("MemoryGameFolder/index.html","_self");
                 break;
+                
             case 3:
                 window.open("ArcadeQuestion/index.html","_self");
                 break;    
+                
+            case 8:
+                window.open("GunShowUp/index.html","_self");
+                break;
+                
             default:
                 alert("Working on that game");
                 break;
