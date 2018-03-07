@@ -22,8 +22,8 @@ function Init(level, need_to_print)
     loaded_images = 0;
     if(level > 3)
     {
-        alert("כל הכבוד!!! ניצחת את המפלצת");
-        window.close();
+        alert("כל הכבוד!!! ניצחת את המפלצת היא נותנת לך את הקוד: 7");
+        window.history.back();
         return;
     }
     
