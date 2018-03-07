@@ -1,0 +1,42 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>משימת הארקדיה</title>
+    
+    <script type="application/javascript">
+        function check()
+        {
+            value = document.getElementById("check_answer_text").value;
+            if(value == 55)
+            {
+                alert("חיסלתם את המפלצת!!!");
+                alert("המפלצת מייללת בשקט, תכניסו למגן את הקוד 7");
+            }
+        }
+    </script>
+</head>
+    
+<body>
+    <p id="main_content">
+        <img src = "images/Monster.png" class="mymonster" >
+        <br>
+        בחנות המחשבים ארקדיה תגלו מה יקרה אם לא תצליחו להשתלט על המפלצות בזמן . הן מוכנות להתרבות בקצב מהיר.</br>
+הגיעו לחנות ל 2 משימות </br>
+1.</br>ספרו כמה מפלצות תינוקות נמצאות על חלון הראווה
+חברו את המספר עם ...</br>
+2.<br> כמה תת ספריות יש למשחקי המחשב בחנות.</br>
+חברו את שני המספרים כדי להרכיב את הקוד המספרי של התחנה (3 ספרות) </br>
+</br>
+הכניסו אותו לתיבת הטקסט אשר למטה כדי לחסל את המפלצת
+    <b><br>תמונות של החנות:</b>
+<br>
+    <img src="images/arcade_img_1.jpg" class="mymonster" ><img src="images/arcade_img_2.JPG" class="mymonster" style="margin-right: 5%">
+    
+    <input type="text" id = "check_answer_text" style="margin-top: 10%">
+
+    <input type="button" id = "check_answer" onclick="check()" value="בדוק">
+</p>
+
+
+</body>
+</html>
