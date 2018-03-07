@@ -89,9 +89,11 @@ function compareArrays(arr1, arr2)
 function getDirectionIfSame(arr)
 {
     var dir = getGeneralDirection(arr[0].rotation);
+    
     for (var i = 1, len = arr.length; i < len; i++)
     {
-        if (getGeneralDirection(arr[i].rotation) != dir)
+        var g = getGeneralDirection(arr[i].rotation)
+        if (g != dir && g != dir + 2)
         {
             dir = -1;
             break;
@@ -159,14 +161,16 @@ function getGeneralDirection(rot)
     var y = radiansToDegrees(rot._y);
     var range = (45 / 360);
     
-    var degs = [0, 90, 180, -90];
+    var degs = [0, 90, 180,-90];
     
     var dir = -1;
     for (var i = 0, len = degs.length; i < len; i++)
     {
+        
         if (inDegRange(degs[i], range, y))
         {
             dir = i;
+            
             break;
         }
     }
