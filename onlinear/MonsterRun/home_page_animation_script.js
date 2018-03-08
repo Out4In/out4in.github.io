@@ -98,12 +98,12 @@ function MainPage()
     this._canvas = canvas;
     this._ctx = canvas.getContext("2d");
     this._buttons_array = [];
-    this._scale_y = this._canvas.height / window.innerHeight;
-    this._scale_x = this._canvas.width / window.innerWidth;
+    this._scale_y = this._canvas.height / document.body.getBoundingClientRect().height;
+    this._scale_x = this._canvas.width / document.body.getBoundingClientRect().width;
     this.Start = function()
     {
-        this._ctx.height = window.innerHeight;
-        this._ctx.width = window.innerWidth;
+        this._ctx.height = document.body.getBoundingClientRect().height;
+        this._ctx.width = document.body.getBoundingClientRect().width;
         this._ctx.drawImage(BACKGROUND,0,0,BACKGROUND.width,BACKGROUND.height,0,0,this._canvas.width,this._canvas.height);
         
         var top_buttons_height = this._canvas.height * 40 / 100;
@@ -158,7 +158,7 @@ function MainPage()
 
 function InRangeOfImage(button, x, y)
 {
-    return ((x >= button._x - 25 && x <= button._x + BUTTON_1.width* 0.55 + 50) && (y >= button._y - 25&& y <= button._y + BUTTON_1.height * 0.55 + 50))
+    return ((x >= button._x && x <= button._x + BUTTON_1.width* 0.55 ) && (y >= button._y && y <= button._y + BUTTON_1.height * 0.55 ))
         
 }
 
@@ -173,8 +173,8 @@ function MainButton(x, y ,id,canvas)
     this._id = id;
     this._x = x;
     this._y = y;
-    this._top_y = this._y - window.innerHeight * 1 / 100;
-    this._bottom_y = this._y + window.innerHeight * 1 / 100;
+    this._top_y = this._y - document.body.getBoundingClientRect().height * 1 / 100;
+    this._bottom_y = this._y + document.body.getBoundingClientRect().height * 1 / 100;
     this._state = "GoTop";
     this._canvas = canvas;
     this._ctx = canvas.getContext("2d");
