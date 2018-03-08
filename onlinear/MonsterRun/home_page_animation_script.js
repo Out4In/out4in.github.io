@@ -158,7 +158,7 @@ function MainPage()
 
 function InRangeOfImage(button, x, y)
 {
-    return ((x >= button._x && x <= button._x + BUTTON_1.width* 0.55) && (y >= button._y && y <= button._y + BUTTON_1.height * 0.55))
+    return ((x >= button._x - 25 && x <= button._x + BUTTON_1.width* 0.55 + 50) && (y >= button._y - 25&& y <= button._y + BUTTON_1.height * 0.55 + 50))
         
 }
 
