@@ -1,0 +1,63 @@
+body
+{
+    width: 100%;
+    height: 100%;
+    direction: rtl;
+    background-color: gray;
+}
+
+.txt_code
+{
+    text-align: center;
+    color: white;
+    font-size: 100px;
+    width: 100%;
+    height: auto;
+}
+
+.div_input
+{   
+    border: 5px solid black;    
+    display: flex;
+    align-items: center;
+    height: 8%;
+    margin-right: 10%;  
+    margin-left: 10%;
+    background-color: white;
+}
+#splitter
+{
+    margin-right: 3%;
+    width: 5%;
+    height: 80%;
+    font-size: 80px;
+}
+.user_name_letter
+{   
+    
+    border: 5px solid blue;
+    background-color: skyblue;
+    margin-right: 3%;
+    color: white;
+    text-align: center;
+    font-size: 70px;
+    width: 10%;
+    height: 80%;
+}
+
+#txt_password
+{
+    width: 100%;
+    height: 100%;
+    font-size: 70px;
+    align-items: center;
+    text-align: center;
+}
+
+.full_page_image
+{
+    align-items: center;
+    height: 8%;
+    margin-right: 10%;  
+    margin-left: 10%;
+}

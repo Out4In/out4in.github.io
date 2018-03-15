@@ -1,4 +1,56 @@
 var IMAGES = ["Images/MemoryGame_1.png", "Images/MemoryGame_2.png","Images/MemoryGame_3.png","Images/MemoryGame_4.png","Images/MemoryGame_5.png","Images/MemoryGame_6.png"]; // TODO add more images
+
+
+var counter = 0;
+
+var IMG_1 = document.createElement("img");
+IMG_1.src = "Images/MemoryGame_1.png";
+IMG_1.addEventListener("load",function()
+{
+    counter += 1;
+});
+
+var IMG_2 = document.createElement("img");
+IMG_2.src = "Images/MemoryGame_2.png";
+IMG_2.addEventListener("load",function()
+{
+    counter += 1;
+});
+
+
+var IMG_3 = document.createElement("img");
+IMG_3.src = "Images/MemoryGame_3.png";
+IMG_3.addEventListener("load",function()
+{
+    counter += 1;
+});
+
+
+var IMG_4 = document.createElement("img");
+IMG_4.src = "Images/MemoryGame_4.png";
+IMG_4.addEventListener("load",function()
+{
+    counter += 1;
+});
+
+
+var IMG_5 = document.createElement("img");
+IMG_5.src = "Images/MemoryGame_5.png";
+IMG_5.addEventListener("load",function()
+{
+    counter += 1;
+});
+
+
+var IMG_6 = document.createElement("img");
+IMG_6.src = "Images/MemoryGame_6.png";
+IMG_6.addEventListener("load
+                       ",function()
+{
+    counter += 1;
+});
+
+
 var PairSelectedImages = [];
 var CorrectImages = []
 var GameState = "";
@@ -57,7 +109,7 @@ function Init(level, need_to_print)
 
 function LoadStart()
 {
-    if (loaded_images == currect_level * 4)
+    if (counter == IMAGES.length)
     {
         
         clearInterval(timer);
