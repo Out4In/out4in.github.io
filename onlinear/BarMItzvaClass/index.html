@@ -1,11 +1,13 @@
 <html>
     <head>
         <meta charset="utf-8" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
         <title>קלסתרון</title>
         <link rel="stylesheet" type="text/css" href="style.css"/>
         <script type="text/javascript" src="libs/instascan.min.js"></script>
+        <script type="text/javascript" src="mechanics.js" ></script>
     </head>
-        <body>
+        <body onload="document.requestFullscreen()">
         <video id="camera">
         </video>
         
@@ -13,26 +15,27 @@
             let scaneer = new Instascan.Scanner({video: document.getElementById("camera"),mirror: false});
             scaneer.addListener("scan",function(content)
             {
-               console.log(content); 
+               alert(content);
             });
             Instascan.Camera.getCameras().then(function(cameras)
-                                              {
+                                               {
             if(cameras.length > 0)
+            {
+                if(cameras[1])
                 {
-                    
-                    if(cameras[1])
-                        {
-                            scaneer.start(cameras[1]);
-                        }
-                    else
-                        {
-                            scaneer.start(cameras[0]);
-                        }
+                    scaneer.start(cameras[1]);
                 }
-                else{
-                    alert("[E] no cameras found");
+                else
+                {
+                    scaneer.start(cameras[0]);
                 }
+            }
+            else
+            {
+                alert("[E] no cameras found");
+            }
             });
+            
         </script>
     </body>
 </html>
