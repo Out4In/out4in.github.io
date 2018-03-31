@@ -2,10 +2,12 @@
     <head>
         <meta charset="utf-8" />
         <title>קלסתרון</title>
+        <link rel="stylesheet" type="text/css" href="style.css"/>
         <script type="text/javascript" src="libs/instascan.min.js"></script>
     </head>
-    <body>
-        <video id="camera"></video>
+        <body>
+        <video id="camera">
+        </video>
         
         <script type="text/javascript">
             let scaneer = new Instascan.Scanner({video: document.getElementById("camera")});
