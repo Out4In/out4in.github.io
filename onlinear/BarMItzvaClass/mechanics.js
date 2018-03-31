@@ -12,25 +12,27 @@ for(var i = 1; i <= PARTS; i++)
 
 function AddImageAsDetected(image_name)
 {
-    for(var i = 0; i < PARTS;i++) // check if image in all images
+    debugger;
+    var index = 0;
+    for(; index < PARTS;index++) // check if image in all images
     {
-            if((image_name + ".png") == ALL_IMAGES[i])
+            if((image_name + ".png") == ALL_IMAGES[index].src.split("/")[ALL_IMAGES[index].src.split("/").length - 1])
             {
                 break;
             }
-            if(i == PARTS - 1) // last iteration
+            if(index == PARTS - 1) // last iteration
             {
                 return;
             }
     }
     
-    for(var i = 0; i < PARTS; i ++) //check if image already detected
+    for(var i = 0; i < DETECTED_IMAGES.length; i ++) //check if image already detected
     {
-        if(image_name == DETECTED_IMAGES[i])
+        if(image_name + ".png" == DETECTED_IMAGES[i].src.split("/")[DETECTED_IMAGES[i].src.split("/").length - 1])
         {
             return;
         }
     }
-    DETECTED_IMAGES.push(image_name);
-    alert(DETECTED_IMAGES); // for debug 
+    
+    DETECTED_IMAGES.push(ALL_IMAGES[index]);
 }

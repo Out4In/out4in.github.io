@@ -15,6 +15,7 @@
             let scaneer = new Instascan.Scanner({video: document.getElementById("camera"),mirror: false});
             scaneer.addListener("scan",function(content)
             {
+                AddImageAsDetected(content);
                alert(content);
             });
             Instascan.Camera.getCameras().then(function(cameras)
