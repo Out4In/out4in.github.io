@@ -19,7 +19,15 @@
                                               {
             if(cameras.length > 0)
                 {
-                    scaneer.start(cameras[0]);
+                    
+                    if(cameras[1])
+                        {
+                            scaneer.start(cameras[1]);
+                        }
+                    else
+                        {
+                            scaneer.start(cameras[0]);
+                        }
                 }
                 else{
                     alert("[E] no cameras found");
