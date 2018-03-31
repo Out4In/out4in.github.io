@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>קלסתרון</title>
+        <script type="text/javascript" src="libs/instascan.min.js"></script>
+    </head>
+    <body>
+        <video id="camera"></video>
+        
+        <script type="text/javascript">
+            let scaneer = new Instascan.Scanner({video: document.getElementById("camera")});
+            scaneer.addListener("scan",function(content)
+            {
+               console.log(content); 
+            });
+            Instascan.Camera.getCameras().then(function(cameras)
+                                              {
+            if(cameras.length > 0)
+                {
+                    scaneer.start(cameras[0]);
+                }
+                else{
+                    alert("[E] no cameras found");
+                }
+            });
+        </script>
+    </body>
+</html>
