@@ -10,7 +10,7 @@
         </video>
         
         <script type="text/javascript">
-            let scaneer = new Instascan.Scanner({video: document.getElementById("camera")});
+            let scaneer = new Instascan.Scanner({video: document.getElementById("camera"),mirror: false});
             scaneer.addListener("scan",function(content)
             {
                console.log(content); 
