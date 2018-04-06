@@ -2,15 +2,23 @@ var ALL_IMAGES = []
 var DETECTED_IMAGES = []
 var TD_ELEMENTS = []
 var PARTS = 8
+var FirstClick = undefined;
+
+
 for(var i = 1; i <= PARTS; i++)
 {
     var tmp_img = document.createElement("img");
     tmp_img.src = "images/img_" + i  +".png";
+    tmp_img.addEventListener("click",function()
+                            {
+        ClickedImg(this);
+    })
     ALL_IMAGES.push(tmp_img)
     
     
     var tmp_td = document.getElementById("img" + i);
     TD_ELEMENTS.push(tmp_td);
+    tmp_td.appendChild(tmp_img);
 }
 
 
@@ -38,6 +46,7 @@ function AddImageAsDetected(image_name)
         }
     }
     
+    
     DETECTED_IMAGES.push(ALL_IMAGES[index]);
     var attach_img = false;
     while(!attach_img)
@@ -50,6 +59,28 @@ function AddImageAsDetected(image_name)
         }
     }   
     
+}
+
+function ClickedImg(img)
+{
+    if(FirstClick == undefined)
+    {
+        
+        FirstClick = img;
+        img.classList.add("selected");
+    }
+    else // need to swap imgs
+    {
+        
+        FirstClick.classList.remove("selected");
+        var hold_1 = FirstClick.parentNode;
+        var hold_2 = img.parentNode;
+        hold_1.removeChild(FirstClick);
+        hold_2.removeChild(img);
+        hold_1.appendChild(img);
+        hold_2.appendChild(FirstClick);
+        FirstClick = undefined;
+    }
 }
 
 function MoveToPuzzle()
