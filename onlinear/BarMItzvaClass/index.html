@@ -5,17 +5,56 @@
         <title>קלסתרון</title>
         <link rel="stylesheet" type="text/css" href="style.css"/>
         <script type="text/javascript" src="libs/instascan.min.js"></script>
-        <script type="text/javascript" src="mechanics.js" ></script>
     </head>
         <body>
-        <video id="camera">
-        </video>
+        <div id="camera_holder">
+            <input type="button" value="להרכבת הקלסתרון" class="PuzzleButton" id="MoveToPuzzle" onclick="MoveToPuzzle();"/>
+            <video id="camera">
+            </video>
+        </div>
         
+        <div id="puzzle_holder">
+            <input type="button" value="לחיפוש החלקים" class="PuzzleButton" id="MoveToCamera" onclick="MoveToCamera();" />
+            <table class="PuzzleTable">
+                <tr>
+                    <td id="img1">
+                        
+                    </td>
+                    <td id="img2">
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td id="img3">
+                        
+                    </td>
+                    <td id="img4">
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td id="img5">
+                        
+                    </td>
+                    <td id="img6">
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td id="img7">
+                        
+                    </td>
+                    <td id="img8">
+                        
+                    </td>
+                </tr>
+            </table>
+        </div>
         <script type="text/javascript">
             let scaneer = new Instascan.Scanner({video: document.getElementById("camera"),mirror: false});
             scaneer.addListener("scan",function(content)
             {
-                AddImageAsDetected(content);
+               AddImageAsDetected(content);
                alert(content);
             });
             Instascan.Camera.getCameras().then(function(cameras)
@@ -39,4 +78,5 @@
             
         </script>
     </body>
+    <script type="text/javascript" src="mechanics.js" ></script>
 </html>

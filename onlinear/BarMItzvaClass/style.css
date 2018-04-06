@@ -1,10 +1,39 @@
 body
 {
+    padding: 0;
+    margin: 0;
+    background-color: black;
     width: 100%;
     height: 100%;
 }
 #camera
 {
+    background-color: black;
     width: 100%;
-    height: 100%;
+    height: 90%;
+}
+.PuzzleButton
+{
+    
+    margin-top: 2%;
+    height: 8%;
+    width: 100%;
+    background-color: white;
+    border: 0px;
+    font-size: 50px;
+}
+
+#puzzle_holder
+{
+    visibility: hidden;
+    display: none;
+}
+
+td
+{
+}
+.PuzzleTable
+{
+    width: 100%;
+    height: 90%;
 }
