@@ -1,0 +1,86 @@
+<html>
+
+    <head>
+        <title>משחק הזיכרון</title>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/examples/vendor/aframe/build/aframe.min.js"></script>
+        <script src="../shared-resources/packages/aframe-ar.js"></script>
+        <script src="MemoryGameScript.js" type="application/javascript">
+        </script> 
+        <script type="application/javascript">
+            if(window.orientation != 90 && window.orientation != -90)
+                {
+                    alert("סובב את הפלאפון למצב עומד בשביל חווית המשחק הטובה ביותר!");
+                }
+        </script>
+    </head>
+    <!--- Grid 5x5, 5 rows with tr and in each row 5 td's. in each td there will be randomized if picture will be there or not.-->
+    <body id="MemoryBody" onload="Init(1,false);">
+        <audio id='sound'></audio>
+        <table id="MemoryTable">
+            <tr class="MemoryTableRow">
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+            </tr>
+            <tr class="MemoryTableRow">
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+            </tr>
+            <tr class="MemoryTableRow">
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+            </tr>
+            <tr class="MemoryTableRow">
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+            </tr>
+            <tr class="MemoryTableRow">
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+            </tr>
+
+        </table>
+    </body>
+    
+</html>
