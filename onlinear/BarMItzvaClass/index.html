@@ -17,36 +17,20 @@
             <input type="button" value="לחיפוש החלקים" class="PuzzleButton" id="MoveToCamera" onclick="MoveToCamera();" />
             <table class="PuzzleTable">
                 <tr>
-                    <td id="img1">
-                        
-                    </td>
-                    <td id="img2">
-                        
-                    </td>
+                    <td id="img1"></td>
+                    <td id="img2"></td>
                 </tr>
                 <tr>
-                    <td id="img3">
-                        
-                    </td>
-                    <td id="img4">
-                        
-                    </td>
+                    <td id="img3"></td>
+                    <td id="img4"></td>
                 </tr>
                 <tr>
-                    <td id="img5">
-                        
-                    </td>
-                    <td id="img6">
-                        
-                    </td>
+                    <td id="img5"></td>
+                    <td id="img6"></td>
                 </tr>
                 <tr>
-                    <td id="img7">
-                        
-                    </td>
-                    <td id="img8">
-                        
-                    </td>
+                    <td id="img7"></td>
+                    <td id="img8"></td>
                 </tr>
             </table>
         </div>
@@ -55,7 +39,7 @@
             scaneer.addListener("scan",function(content)
             {
                AddImageAsDetected(content);
-               alert(content);
+               alert("מצאת תמונה: " + content);
             });
             Instascan.Camera.getCameras().then(function(cameras)
                                                {

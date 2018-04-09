@@ -15,13 +15,15 @@ for(var i = 1; i <= PARTS; i++)
     })
     ALL_IMAGES.push(tmp_img)
     
-    
+    var td = document.getElementById("img" + i);
+    TD_ELEMENTS.push(td);
 }
 
 
 
 function AddImageAsDetected(image_name)
 {
+    debugger;
     var index = 0;
     for(; index < PARTS;index++) // check if image in all images
     {
@@ -68,14 +70,16 @@ function ClickedImg(img)
     }
     else // need to swap imgs
     {
-        
         FirstClick.classList.remove("selected");
-        var hold_1 = FirstClick.parentNode;
-        var hold_2 = img.parentNode;
-        hold_1.removeChild(FirstClick);
-        hold_2.removeChild(img);
-        hold_1.appendChild(img);
-        hold_2.appendChild(FirstClick);
+        if(img != FirstClick)
+        {
+            var hold_1 = FirstClick.parentNode;
+            var hold_2 = img.parentNode;
+            hold_1.removeChild(FirstClick);
+            hold_2.removeChild(img);
+            hold_1.appendChild(img);
+            hold_2.appendChild(FirstClick);
+        }
         FirstClick = undefined;
     }
 }
