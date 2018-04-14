@@ -9,6 +9,7 @@ for(var i = 1; i <= PARTS; i++)
 {
     var tmp_img = document.createElement("img");
     tmp_img.src = "images/img_" + i  +".png";
+    tmp_img.id = "img" + i;
     tmp_img.addEventListener("click",function()
                             {
         ClickedImg(this);
@@ -60,6 +61,24 @@ function AddImageAsDetected(image_name)
     
 }
 
+
+function CheckWin()
+{
+    if (DETECTED_IMAGES.length == ALL_IMAGES.length)
+    {
+            for(var i = 0; i < DETECTED_IMAGES.length;i++)
+            {
+                var img = DETECTED_IMAGES[i];
+                if(img.parentNode.id != ALL_IMAGES[i].id)
+                {
+                            return false;
+                }
+            }
+            return true;
+    }
+    return false;
+}
+
 function ClickedImg(img)
 {
     if(FirstClick == undefined)
@@ -79,9 +98,18 @@ function ClickedImg(img)
             hold_2.removeChild(img);
             hold_1.appendChild(img);
             hold_2.appendChild(FirstClick);
+            if(CheckWin())
+            {
+                alert("הרכבת את הקלסתרון. כל הכבוד, הנה מקטע הקוד: ****");
+                alert("ShutDown in 3... 2... 1...");
+                window.close();
+            }
         }
         FirstClick = undefined;
     }
+    
+    
+    
 }
 
 function MoveToPuzzle()
