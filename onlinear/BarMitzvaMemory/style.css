@@ -1,6 +1,6 @@
 body
 {
-    background-image: url("Images/background.jpg");
+    background-image: url("Images/background.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -79,4 +79,8 @@ body
     background-color: blue;
     -webkit-transform: rotateY(180deg);
     transform: rotateY(180deg);
+}
+td
+{
+    text-align: center;
 }

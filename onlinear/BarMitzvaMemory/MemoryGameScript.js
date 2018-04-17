@@ -1,17 +1,17 @@
-var IMAGES = ["Images/MemoryGame_1.png", "Images/MemoryGame_2.png","Images/MemoryGame_3.png","Images/MemoryGame_4.png","Images/MemoryGame_5.png","Images/MemoryGame_6.png","Images/MemoryGame_7.png","Images/MemoryGame_8.png","Images/MemoryGame_9.png","Images/MemoryGame_10.png"]; // TODO add more images
+var IMAGES = ["Images/card1.png", "Images/card2.png","Images/card3.png","Images/card4.png","Images/card5.png","Images/card6.png","Images/card7.png","Images/card8.png","Images/card9.png","Images/card10.png","Images/card11.png","Images/card1.png"]; // TODO add more images
 
 
 var counter = 0;
 
 var IMG_1 = document.createElement("img");
-IMG_1.src = "Images/MemoryGame_1.png";
+IMG_1.src = "Images/card1.png";
 IMG_1.addEventListener("load",function()
 {
     counter += 1;
 });
 
 var IMG_2 = document.createElement("img");
-IMG_2.src = "Images/MemoryGame_2.png";
+IMG_2.src = "Images/card2.png";
 IMG_2.addEventListener("load",function()
 {
     counter += 1;
@@ -19,7 +19,7 @@ IMG_2.addEventListener("load",function()
 
 
 var IMG_3 = document.createElement("img");
-IMG_3.src = "Images/MemoryGame_3.png";
+IMG_3.src = "Images/card3.png";
 IMG_3.addEventListener("load",function()
 {
     counter += 1;
@@ -27,7 +27,7 @@ IMG_3.addEventListener("load",function()
 
 
 var IMG_4 = document.createElement("img");
-IMG_4.src = "Images/MemoryGame_4.png";
+IMG_4.src = "Images/card4.png";
 IMG_4.addEventListener("load",function()
 {
     counter += 1;
@@ -35,7 +35,7 @@ IMG_4.addEventListener("load",function()
 
 
 var IMG_5 = document.createElement("img");
-IMG_5.src = "Images/MemoryGame_5.png";
+IMG_5.src = "Images/card5.png";
 IMG_5.addEventListener("load",function()
 {
     counter += 1;
@@ -43,7 +43,7 @@ IMG_5.addEventListener("load",function()
 
 
 var IMG_6 = document.createElement("img");
-IMG_6.src = "Images/MemoryGame_6.png";
+IMG_6.src = "Images/card6.png";
 IMG_6.addEventListener("load",function()
 {
     counter += 1;
@@ -51,7 +51,7 @@ IMG_6.addEventListener("load",function()
 
 
 var IMG_7 = document.createElement("img");
-IMG_7.src = "Images/MemoryGame_7.png";
+IMG_7.src = "Images/card7.png";
 IMG_7.addEventListener("load",function()
 {
     counter += 1;
@@ -59,7 +59,7 @@ IMG_7.addEventListener("load",function()
 
 
 var IMG_8 = document.createElement("img");
-IMG_8.src = "Images/MemoryGame_8.png";
+IMG_8.src = "Images/card8.png";
 IMG_8.addEventListener("load",function()
 {
     counter += 1;
@@ -67,7 +67,7 @@ IMG_8.addEventListener("load",function()
 
 
 var IMG_9 = document.createElement("img");
-IMG_9.src = "Images/MemoryGame_9.png";
+IMG_9.src = "Images/card9.png";
 IMG_9.addEventListener("load",function()
 {
     counter += 1;
@@ -75,8 +75,25 @@ IMG_9.addEventListener("load",function()
 
 
 var IMG_10 = document.createElement("img");
-IMG_10.src = "Images/MemoryGame_10.png";
+IMG_10.src = "Images/card10.png";
 IMG_10.addEventListener("load",function()
+{
+    counter += 1;
+});
+
+
+
+var IMG_11 = document.createElement("img");
+IMG_11.src = "Images/card11.png";
+IMG_11.addEventListener("load",function()
+{
+    counter += 1;
+});
+
+
+var IMG_12 = document.createElement("img");
+IMG_12.src = "Images/card12.png";
+IMG_12.addEventListener("load",function()
 {
     counter += 1;
 });
@@ -115,7 +132,7 @@ function Init(level, need_to_print)
         alert("כל הכבוד עברת לשלב הבא!");
     }
     
-    var number_of_images = (level * 1 == 1 ? 2 : level * 1 == 2 ? 4 : 6); // number of images per level go from 2 - 6 with jumps of 2.
+    var number_of_images = (level * 1 == 1 ? 4 : level * 1 == 2 ? 8 : 12); // number of images per level go from 2 - 6 with jumps of 2.
     currect_level = level;
     var SelectedImages =  GetRandomFromArray(number_of_images,IMAGES);
     var SelectedTD = GetRandomFromArray(number_of_images * 2, document.getElementsByClassName("MemoryTableTD"));//twice the number of images, there must be 2 cards
@@ -285,20 +302,27 @@ function CreateFlipDiv(front_img)
     var image_1 = document.createElement("img");
     image_1.src = "Images/BackCard.png";
     image_1.className = "MemoryPicture";
-    in_div.appendChild(image_1);
+    var s = image_1.width / image_1.height;
+    
     
     var back_div = document.createElement("div");
     back_div.className = "back_card";
+
+    
     
     var image_2 = document.createElement("img");
     image_2.className = "MemoryPicture";
     image_2.src = front_img;
+    image_2.height = image_2.height * s;
     image_2.addEventListener("load", function()
                             {
         loaded_images++;
     })
     image_2.setAttribute("name","MemoryImg")
+    image_1.height = image_2.height;
+    
     back_div.appendChild(image_2);
+    in_div.appendChild(image_1);
     
     flipper_div.appendChild(in_div);
     flipper_div.appendChild(back_div);
