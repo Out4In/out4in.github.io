@@ -289,6 +289,9 @@ function FlipImage(container)
 function CreateFlipDiv(front_img)
 {
     
+    var w = document.documentElement.clientWidth / 5;
+    var h =  document.documentElement.clientHeight / 5;
+    console.log(w + " : " + h);
     var first_div = document.createElement("div");
     first_div.onclick = function() {OnClickOnImages(first_div);};
     first_div.className = "flip-container";
@@ -302,8 +305,8 @@ function CreateFlipDiv(front_img)
     var image_1 = document.createElement("img");
     image_1.src = "Images/BackCard.png";
     image_1.className = "MemoryPicture";
-    var s = image_1.width / image_1.height;
-    
+    image_1.width = w;
+    image_1.height = h;
     
     var back_div = document.createElement("div");
     back_div.className = "back_card";
@@ -313,13 +316,15 @@ function CreateFlipDiv(front_img)
     var image_2 = document.createElement("img");
     image_2.className = "MemoryPicture";
     image_2.src = front_img;
-    image_2.height = image_2.height * s;
     image_2.addEventListener("load", function()
                             {
         loaded_images++;
     })
     image_2.setAttribute("name","MemoryImg")
-    image_1.height = image_2.height;
+    image_2.width = w;
+    image_2.height = h;
+    
+    
     
     back_div.appendChild(image_2);
     in_div.appendChild(image_1);
