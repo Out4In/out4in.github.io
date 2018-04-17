@@ -1,14 +1,14 @@
 var ALL_IMAGES = []
 var DETECTED_IMAGES = []
 var TD_ELEMENTS = []
-var PARTS = 8
+var PARTS = 16
 var FirstClick = undefined;
 
 
 for(var i = 1; i <= PARTS; i++)
 {
     var tmp_img = document.createElement("img");
-    tmp_img.src = "images/img_" + i  +".png";
+    tmp_img.src = "images/img" + i  +".png";
     tmp_img.id = "img" + i;
     tmp_img.addEventListener("click",function()
                             {
@@ -18,6 +18,7 @@ for(var i = 1; i <= PARTS; i++)
     
     var td = document.getElementById("img" + i);
     TD_ELEMENTS.push(td);
+    td.appendChild(tmp_img);
 }
 
 
