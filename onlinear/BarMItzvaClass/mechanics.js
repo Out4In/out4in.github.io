@@ -18,7 +18,6 @@ for(var i = 1; i <= PARTS; i++)
     
     var td = document.getElementById("img" + i);
     TD_ELEMENTS.push(td);
-    td.appendChild(tmp_img);
 }
 
 
