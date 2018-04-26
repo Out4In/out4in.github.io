@@ -1,4 +1,4 @@
-var IMAGES = ["Images/card1.png", "Images/card2.png","Images/card3.png","Images/card4.png","Images/card5.png","Images/card6.png","Images/card7.png","Images/card8.png","Images/card9.png","Images/card10.png","Images/card11.png","Images/card1.png"]; // TODO add more images
+var IMAGES = ["Images/card1.png", "Images/card2.png","Images/card3.png","Images/card4.png","Images/card5.png","Images/card6.png","Images/card7.png","Images/card8.png","Images/card9.png","Images/card10.png","Images/card11.png","Images/card12.png","Images/card13.png","Images/card14.png","Images/card15.png","Images/card16.png","Images/card17.png","Images/card18.png","Images/card19.png","Images/card20.png"]; // TODO add more images
 
 
 var counter = 0;
@@ -90,13 +90,70 @@ IMG_11.addEventListener("load",function()
     counter += 1;
 });
 
-
 var IMG_12 = document.createElement("img");
 IMG_12.src = "Images/card12.png";
 IMG_12.addEventListener("load",function()
 {
     counter += 1;
 });
+
+var IMG_13 = document.createElement("img");
+IMG_13.src = "Images/card13.png";
+IMG_13.addEventListener("load",function()
+{
+    counter += 1;
+});
+
+var IMG_14 = document.createElement("img");
+IMG_14.src = "Images/card14.png";
+IMG_14.addEventListener("load",function()
+{
+    counter += 1;
+});
+
+var IMG_15 = document.createElement("img");
+IMG_15.src = "Images/card15.png";
+IMG_15.addEventListener("load",function()
+{
+    counter += 1;
+});
+
+var IMG_16 = document.createElement("img");
+IMG_16.src = "Images/card16.png";
+IMG_16.addEventListener("load",function()
+{
+    counter += 1;
+});
+
+var IMG_17 = document.createElement("img");
+IMG_17.src = "Images/card17.png";
+IMG_17.addEventListener("load",function()
+{
+    counter += 1;
+});
+
+var IMG_18 = document.createElement("img");
+IMG_18.src = "Images/card18.png";
+IMG_18.addEventListener("load",function()
+{
+    counter += 1;
+});
+
+var IMG_19 = document.createElement("img");
+IMG_19.src = "Images/card19.png";
+IMG_19.addEventListener("load",function()
+{
+    counter += 1;
+});
+
+var IMG_20 = document.createElement("img");
+IMG_20.src = "Images/card20.png";
+IMG_20.addEventListener("load",function()
+{
+    counter += 1;
+});
+
+
 
 
 var PairSelectedImages = [];
@@ -132,11 +189,11 @@ function Init(level, need_to_print)
         alert("כל הכבוד עברת לשלב הבא!");
     }
     
-    var number_of_images = (level * 1 == 1 ? 4 : level * 1 == 2 ? 8 : 12); // number of images per level go from 2 - 6 with jumps of 2.
+    var number_of_images = (level * 1 == 1 ? 9 : level * 1 == 2 ? 15 : 20); // number of images per level go from 2 - 6 with jumps of 2.
     currect_level = level;
     var SelectedImages =  GetRandomFromArray(number_of_images,IMAGES);
     var SelectedTD = GetRandomFromArray(number_of_images * 2, document.getElementsByClassName("MemoryTableTD"));//twice the number of images, there must be 2 cards
-    for(var SelectImageIndex = 0,  SelectedTdIndex = 0; SelectImageIndex < number_of_images; SelectImageIndex++, SelectedTdIndex += 2)
+    for(var SelectImageIndex = 0,  SelectedTdIndex = 0;SelectImageIndex < number_of_images; SelectImageIndex++, SelectedTdIndex += 2)
     {
         var image = SelectedImages[SelectImageIndex];
         var td_1 = SelectedTD[SelectedTdIndex];
@@ -151,10 +208,11 @@ function Init(level, need_to_print)
     //Init the arrays.
     PairSelectedImages = [];
     CorrectImages = [];
-    GameState = "ShowFirst";
-    
-    timer = setInterval(LoadStart, 200);
+
+    GameState = "Playing";
 }
+
+
 
 function LoadStart()
 {
@@ -289,8 +347,8 @@ function FlipImage(container)
 function CreateFlipDiv(front_img)
 {
     
-    var w = document.documentElement.clientWidth / 5;
-    var h =  document.documentElement.clientHeight / 5;
+    var w = document.documentElement.clientWidth / 7;
+    var h =  document.documentElement.clientHeight / 7;
     console.log(w + " : " + h);
     var first_div = document.createElement("div");
     first_div.onclick = function() {OnClickOnImages(first_div);};
