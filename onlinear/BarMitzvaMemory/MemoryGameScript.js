@@ -189,7 +189,7 @@ function Init(level, need_to_print)
         alert("כל הכבוד עברת לשלב הבא!");
     }
     
-    var number_of_images = (level * 1 == 1 ? 9 : level * 1 == 2 ? 15 : 20); // number of images per level go from 2 - 6 with jumps of 2.
+    var number_of_images = (level * 1 == 1 ? 9 : level * 1 == 2 ? 15 : 2); // number of images per level go from 2 - 6 with jumps of 2.
     currect_level = level;
     var SelectedImages =  GetRandomFromArray(number_of_images,IMAGES);
     var SelectedTD = GetRandomFromArray(number_of_images * 2, document.getElementsByClassName("MemoryTableTD"));//twice the number of images, there must be 2 cards
