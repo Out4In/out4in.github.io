@@ -179,17 +179,26 @@ function Init(level, need_to_print)
     loaded_images = 0;
     if(level > 3)
     {
-        alert("כל הכבוד!!! ניצחת את המפלצת היא נותנת לך את הקוד: 7");
+        alert("כל הכבוד עמדת במשימה הקוד שלך הוא SOLID481");
         window.history.back();
         return;
     }
     
     if(need_to_print)
     {
-        alert("כל הכבוד עברת לשלב הבא!");
+        var str = "";
+        if(level == 3)
+        {
+            str = "כל הכבוד נשאר לך רק עוד שלב אחד";
+        }
+        else
+        {
+            str = "כל הכבוד עברת שלב " + level + " מתוך 3";
+        }
+        alert(str);
     }
     
-    var number_of_images = (level * 1 == 1 ? 9 : level * 1 == 2 ? 15 : 2); // number of images per level go from 2 - 6 with jumps of 2.
+    var number_of_images = (level * 1 == 1 ? 6 : level * 1 == 2 ? 12 : 20); // number of images per level go from 2 - 6 with jumps of 2.
     currect_level = level;
     var SelectedImages =  GetRandomFromArray(number_of_images,IMAGES);
     var SelectedTD = GetRandomFromArray(number_of_images * 2, document.getElementsByClassName("MemoryTableTD"));//twice the number of images, there must be 2 cards
@@ -316,8 +325,7 @@ function OnClickOnImages(flip_container)
             CorrectImages.push(PairSelectedImages[0]);
             CorrectImages.push(PairSelectedImages[1]);
             if(CorrectImages.length == document.getElementsByClassName("flip-container").length) // all correct
-            {
-                
+            {       
                 setTimeout(function(){Init(currect_level + 1,true);}, 1000);
                 return;
             }
