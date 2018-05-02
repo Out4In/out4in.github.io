@@ -179,7 +179,7 @@ function Init(level, need_to_print)
     loaded_images = 0;
     if(level > 3)
     {
-        alert("כל הכבוד עמדת במשימה הקוד שלך הוא SOLID481");
+        alert("כל הכבוד עמדת במשימה הקוד שלך הוא stope 543");
         window.history.back();
         return;
     }
@@ -193,7 +193,7 @@ function Init(level, need_to_print)
         }
         else
         {
-            str = "כל הכבוד עברת שלב " + level + " מתוך 3";
+            str = "כל הכבוד עברת שלב " + (level-1) + " מתוך 3";
         }
         alert(str);
     }
