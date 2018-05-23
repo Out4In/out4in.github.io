@@ -18,6 +18,7 @@
             {
                 var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream; 
                 var iw = (iOS) ? screen.width : window.innerWidth, ih = (iOS) ? screen.height : window.innerHeight;
+                alert("Widht: " + iw + " Height: " + ih);
                 InitScreen(iw, ih);
             }
         </script>
