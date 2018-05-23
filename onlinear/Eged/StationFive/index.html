@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css"/>
+        <script type="application/javascript">
+            function Check()
+            {
+                value = document.getElementById("check_input").value;
+                res = value.localeCompare("חולדה");
+                if ( res == 0 )
+                {
+                    document.getElementById('correct_answer').innerHTML = "נכון!";
+                }
+                else
+                {
+                    document.getElementById('correct_answer').innerHTML = "לא נכון, נסו שוב";
+                }
+                
+            }
+        </script>
+    </head>
+    <body>
+        <img src="../resource/logo.png" class="wide_img"> 
+        <div class="Center_div" id="Header_div">
+            תחנה 5 - חניון יער
+        </div>
+        <p id="HomeIcon">
+            <a href="../Welcome/index.html">
+                <span class="glyphicon glyphicon-home"></span>
+            </a>
+            
+        </p>
+        <p class="Content">
+            הגיעו אל היער חפשו את הבית שם תפגשו את צוות המירוץ
+ המחכה לכם עם האתגר הבא
+הוא גם ייתן לכם את הרמזים לתחנה הבאה. 
+        </p>
+        
+        <p class = "Content" id="Check">
+            כדי לוודא שאתם נוסעים למקום הנכון הכניסו את שם המקום:
+            <br><br>
+            יער <input type="text" class="txt_input" id="check_input" placeholder=".............">
+            <br>
+            <input type="button" value="בדוק" onclick="Check()"  class="button_type"/>
+            
+            <span id="correct_answer"></span>
+            <br><br><br>
+            <span id="end_span">
+                כאשר תקבלו את הקוד, הכניסו אותו דרך האייקון האדום של קודי התחנות אשר נמצא בדף הבית
+            </span>
+        </p>
+        <br>
+        
+    </body>
+</html>
