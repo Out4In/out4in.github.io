@@ -16,9 +16,9 @@
         <script>
             function SendToInit()
             {
-                screen_width = document.documentElement.clientWidth;
-                screen_height = document.documentElement.clientHeight;
-                InitScreen(screen_width, screen_height);
+                var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream; 
+                var iw = (iOS) ? screen.width : window.innerWidth, ih = (iOS) ? screen.height : window.innerHeight;
+                InitScreen(iw, ih);
             }
         </script>
     </head>
