@@ -13,9 +13,17 @@
             }
         </style>
         <script type="application/javascript" src="initScreen.js"></script>
+        <script>
+            function SendToInit()
+            {
+                screen_width = document.documentElement.clientWidth;
+                screen_height = document.documentElement.clientHeight;
+                InitScreen(screen_width, screen_height);
+            }
+        </script>
     </head>
     
-    <body onload="InitScreen(window.innerWidth,window.innerHeight);">
+    <body onload="SendToInit()">
         <img src = "background.png" class="background" usemap="background_map" />
         <map name="background_map">
             <area shape="rect" coords="166,691,237,766" id="number_5" href="../StationFive/index.html">
