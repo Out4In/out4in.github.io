@@ -1,9 +1,41 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=no">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script>
+            var codes = ["341568","144","130","178","169","543","121","749"];
+            function CheckCode()
+            {
+                var inp = document.getElementById("code");
+                var v = inp.value;
+                for(var i = 0; i < codes.length; i++)
+                {
+                    if(v.localeCompare(codes[i]) == 0)
+                    {
+                        document.getElementById("answer").innerHTML = "הקוד נכון!";
+                        return;
+                    }
+                }
+                document.getElementById("answer").innerHTML = "הקוד לא נכון";
+            }
+            function Clear()
+            {
+                document.getElementById("answer").innerHTML = "";
+                document.getElementById("code").value="";
+            }
+            function CheckFinalCode()
+            {
+                
+            }
+        </script>
+        
         <style type="text/css">
             body
             {
+                direction: rtl;
+                text-align: right;
                 width: 100%;
                 height: 100%;
             }
@@ -26,10 +58,72 @@
     <body onload="SendToInit()">
         <img src = "background.png" class="background" usemap="#background_map" />
         <map name="#background_map">
+            <area shape="rect" coords="165,600,236,675" id="number_1" href="../StationOne/index.html">
+            <area shape="rect" coords="268,600,341,675" id="number_2" href="../StationTwo/index.html">           
+            <area shape="rect" coords="393,600,464,675" id="number_3" href="../StationThree/index.html">
+            <area shape="rect" coords="503,600,576,675" id="number_4" href="../StationFour/index.html">
             <area shape="rect" coords="166,691,237,766" id="number_5" href="../StationFive/index.html">
             <area shape="rect" coords="269,691,340,766" id="number_6" href="../StationSix/index.html">
+            <area shape="rect" coords="394,691,465,766" id="number_7" href="../StationSeven/index.html">
+            <area shape="rect" coords="503,691,576,766" id="number_8" href="../StationEight/index.html">
+            <area shape="rect" coords="199,863,272,939" id="help" href="../Help/index.html">
+            <area shape="rect" coords="73,863,142,934" id="welcome" href="../WelcomePage/index.html">
+            <area shape="rect" coords="644,40,711,109" id="codes" data-toggle="modal" data-target="#Codes">
+            <area shape="rect" coords="426,40,491,107" id="finalCode" data-toggle="modal" data-target="#FinalCode">
         </map>
         
         
+        <div class="modal fade" id="Codes" tabindex="-1" role="dialog" aria-labelledby="CodesLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" >קודי תחנות</h5>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <label for="code" class="col-form-label">קוד:</label>
+                    <input type="text" class="form-control" id="code">
+                  </div>
+                </form>
+                  <br>
+                  <div id="answer">
+                      
+                  </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="Clear();">סגור</button>
+                <button type="button" class="btn btn-primary" onclick="CheckCode();">בדוק</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+        <div class="modal fade" id="FinalCode" tabindex="-1" role="dialog" aria-labelledby="FinalCodeLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" >הקוד הסופי</h5>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <label for="code" class="col-form-label">קוד:</label>
+                    <input type="text" class="form-control" id="code">
+                  </div>
+                </form>
+                  <br>
+                  <div id="answer">
+                      
+                  </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="Clear();">סגור</button>
+                <button type="button" class="btn btn-primary" onclick="CheckCode();">בדוק</button>
+              </div>
+            </div>
+          </div>
+        </div>
     </body>
 </html>
