@@ -5,6 +5,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script>
+
+
             var codes = ["341568","144","130","178","169","543","121","749"];
             function CheckCode()
             {
@@ -51,7 +53,13 @@
             {
                 var iw = window.innerWidth, ih = window.innerHeight;
                 InitScreen(iw, ih);
+                if(window.innerHeight < window.innerWidth){
+                    alert("העבר את הפלאפון למצב עומד בשביל חווית משחק מירבית!");
+                    window.location.reload(false); 
+                }
             }
+                
+            
         </script>
     </head>
     
