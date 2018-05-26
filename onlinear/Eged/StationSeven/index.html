@@ -1,0 +1,109 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="../resource/style.css"/>
+        <style>
+        
+        </style>
+        <script type="application/javascript">
+            function Init()
+            {
+                var form = document.getElementById("1");
+                var inputs = form.getElementsByTagName("input");
+                 for(var k = 0; k < inputs.length - 1; k++)
+                {
+                    (function(){
+                    var inp = inputs[k];
+                    var next_inp = inputs[k + 1];
+                    if(next_inp.disabled)
+                    {
+                        if( k + 2 >= inputs.length)
+                        {
+
+                        }
+                        else
+                            {
+
+                            next_inp = inputs[k + 2];
+                            }
+                    }
+                    inp.addEventListener("input", function(event)
+                    {
+                        
+                        if(inp.value != "")
+                            {
+                        next_inp.focus();     
+                            }
+                    });
+                    }());
+                }
+            }
+            function Check()
+            {
+                var form = document.getElementById("1");
+                var inputs = form.getElementsByTagName("input");
+                var answer = "";
+                var s = "";
+                for(var i = 0; i < inputs.length; i++)
+                {
+                    s += inputs[i].value;
+                }
+                
+                if(s.localeCompare(answer) == 0)
+                {
+                    document.getElementById("answer").innerHTML = "נכון!";
+                }
+                else
+                {
+                    document.getElementById("answer").innerHTML = "נסו שוב";
+                }
+            }
+        </script>
+    </head>
+    
+    <body onload="Init();">
+           <img src="../resource/logo.png" class="wide_img"> 
+        
+        <div class="Center_div" id="Header_div">
+            תחנה 7 - חניון דרך ביער
+        </div>
+        <p id="HomeIcon" style="top: 26%;">
+            <a href="../Welcome/">
+                <span class="glyphicon glyphicon-home"></span>
+            </a>
+            
+        </p>
+        <p class="Content">
+        התחנה הבאה היא חלק מדרך חשובה שתיפקדה בשמירה על עורק חיים חשוב לירושלים במלחמת העצמאות.<br>
+היא קרויה על שם דרך/ציר אספקה במלחמת סין-יפאן השנייה / לאוס
+החניון נמצא על כביש 38. הכניסה אליו מצד המזרחי של הכביש (לאור השינויים בהסדרי התנועה בדקו היטב את מיקום הכניסה) 
+במקום מצויה גם אנדרטה
+<br>
+צוות המירוץ יחכה לכם במקום 
+
+        </p>
+        
+        <p class="Content">
+            כדי לודא שאתם נוסעים למקום הנכון. הכניסו את שם המושב הקרוב ביותר לחניון (נמצא ממול לחניון) :  
+            <br>
+        </p>
+        <form id="1">
+            <input type="text" id = "1_1" class="mini_txt" maxlength="1">
+            <input type="text" id = "1_2" class="mini_txt" maxlength="1">
+            <input type="text" id = "1_3" class="mini_txt" maxlength="1">
+            <input type="text" id = "1_4" class="mini_txt" maxlength="1">
+            <input type="text" id = "1_5" class="mini_txt" maxlength="1">
+            <input type="text" id = "1_6" class="mini_txt" disabled value="-" maxlength="1">
+            <input type="text" id = "1_7" class="mini_txt" maxlength="1">
+            <input type="text" id = "1_8" class="mini_txt" maxlength="1">
+            <input type="text" id = "1_9" class="mini_txt" maxlength="1">
+            <input type="text" id = "1_10" class="mini_txt" maxlength="1">
+        </form>
+        <input type="button" class="button_type" onclick="Check()" value="בדוק">
+        <span id="answer" class="Content">
+        </span>
+    </body>
+</html>
