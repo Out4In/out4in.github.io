@@ -5,158 +5,70 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="../resource/style.css"/>
-         <script type="application/javascript">
-            var correct = []
+        <style>
+        
+        </style>
+        <script type="application/javascript">
             function Init()
-             {
-                 
-                var forms = document.getElementsByTagName("form");
-                 
-                 for(var i = 0; i < forms.length; i++)
-                 {
-                     
-                    var f = forms[i];
-                    var inputs = f.getElementsByTagName("input")
-                    if(f.id != "f_2" && f.id != "f_4"&& f.id !="f_5" && f.id != "f_6" & f.id != "f_7") // then rtl
-                    {
-                        for(var k = 0; k < inputs.length - 1; k++)
-                        {
-                            (function(){
-                            var inp = inputs[k];
-                            var next_inp = inputs[k + 1];
-                            if(next_inp.disabled)
-                            {
-                                if( k + 2 >= inputs.length)
-                                {
-                                    
-                                }
-                                else
-                                    {
-                                
-                                    next_inp = inputs[k + 2];
-                                    }
-                            }
-                            inp.addEventListener("input", function(event)
-                            {
-                                
-                        if(inp.value != "")
-                            {
-                                next_inp.focus();                             
-                            }
-                            });
-                            }());
-                        }
-                    }
-                     else
-                     {
-                         
-                        for(var k = inputs.length - 1; k >= 1; k--)
-                        {
-                            (function()
-                             {
-                                
-                            var inp = inputs[k];
-                            var next_inp = inputs[k - 1] ;
-                            if(next_inp.disabled)
-                            {
-                                if( k - 2 < 0)
-                                {
-                                    
-                                }
-                                else
-                                    {
-                                    next_inp = inputs[k - 2];
-                                    }
-                            }
-                            inp.addEventListener("input", function()
-                                                {
-                                
-                        if(inp.value != "")
-                            {
-                                next_inp.focus();
-                            }
-                            });
-                            }());
-                        }
-                     }
-                 }
-             }
-            function Check(elm)
             {
-
-                var inputs = elm.getElementsByTagName("input");
-                id = elm.id.split('_')[1]
-                answer = (id == "1" ? "חייםנחמןביאליק" : (id == "2"? "01-1933" : (id == "3"? "הכוח" : undefined))); // fu adobe, like realy fu. fu motherfuckers
-                if(answer == undefined)
+                var form = document.getElementById("1");
+                var inputs = form.getElementsByTagName("input");
+                 for(var k = 0; k < inputs.length - 1; k++)
                 {
-                    if(id == "4")
+                    (function(){
+                    var inp = inputs[k];
+                    var next_inp = inputs[k + 1];
+                    if(next_inp.disabled)
                     {
-                        answer = "22";
-                    }
-                    else if (id == "5")
-                    {
-                        answer="945";
-                    }
-                    else if(id == "6")
-                    {
-                        answer = "37";
-                    }
-                    else
-                    {
-                        answer="97.50"
-                    }
-                    
-                }
-                var str =""
-                if (id != "2" && id != "4" && id !="5" && id != "6" && id != "7")
-                {
-                    for(var i = 0; i < inputs.length; i++)
-                    {
-                        str += inputs[i].value;
-                    }
-                }
-                else
-                {
-                    for (var i = inputs.length - 1; i >= 0; i--)
-                    {
-                        str += inputs[i].value;
-                    }
-                }
-                if(str.localeCompare(answer) == 0)
-                {
-                    document.getElementById(id + "_sol").innerHTML = "נכון!";
-                    for(var i = 0; i < correct.length; i++)
-                    {
-                        if(correct[i] == id)
+                        if( k + 2 >= inputs.length)
                         {
-                            return;
+
                         }
+                        else
+                            {
+
+                            next_inp = inputs[k + 2];
+                            }
                     }
-                    correct.push(id);
+                    inp.addEventListener("input", function(event)
+                    {
+                        
+                        if(inp.value != "")
+                            {
+                        next_inp.focus();                             
+                            }
+                    });
+                    }());
                 }
-                else
+            }
+            function Check()
+            {
+                var form = document.getElementById("1");
+                var inputs = form.getElementsByTagName("input");
+                var answer = "נצר-סירני";
+                var s = "";
+                for(var i = 0; i < inputs.length; i++)
                 {
-                    document.getElementById(id + "_sol").innerHTML = "נסו שוב";
-                }
-                if(correct.length == 7) 
-                {
-                    document.getElementById("final").innerHTML = "קוד התשובה של התחנה הוא: 144";
-                    alert("כל הכבוד פתרתם הכל! קוד התחנה מופיע בתחתית הדף");
+                    s += inputs[i].value;
                 }
                 
+                if(s.localeCompare(answer) == 0)
+                {
+                    document.getElementById("answer").innerHTML = "נכון!";
+                }
+                else
+                {
+                    document.getElementById("answer").innerHTML = "נסו שוב";
+                }
             }
         </script>
-        
-        <style>
-       
-        </style>
     </head>
     
     <body onload="Init();">
            <img src="../resource/logo.png" class="wide_img"> 
         
         <div class="Center_div" id="Header_div">
-            תחנה 2 - משימת דרך - חידון אגד
+            הנחיות לתחנה 3 + 2  
         </div>
         <p id="HomeIcon" style="top: 26%;">
             <a href="../Welcome/">
@@ -164,133 +76,56 @@
             </a>
             
         </p>
-        
         <p class="Content">
-            1. מי הגה את השם אגד?<br>
-        </p>
-              
-        <form id="f_1" style="margin-right: 5%; margin-left: 5%;">
-            <input type="text" class="mini_txt" id="1_1" maxlength="1">
-            <input type="text" class="mini_txt" id="1_2"  maxlength="1">
-            <input type="text" class="mini_txt" id="1_3"  maxlength="1">
-            <input type="text" class="mini_txt" id="1_4"  maxlength="1">
-            <input type="text" class="mini_txt" id="1_5"  maxlength="1">
-            <input type="text" class="mini_txt" id="1_6"  maxlength="1">
-            <input type="text" class="mini_txt" id="1_7"  maxlength="1">
-            <input type="text" class="mini_txt" id="1_8"  maxlength="1">
-            <input type="text" class="mini_txt" id="1_9"  maxlength="1">
-            <input type="text" class="mini_txt" id="1_10"  maxlength="1">
-            <input type="text" class="mini_txt" id="1_11"  maxlength="1">
-            <input type="text" class="mini_txt" id="1_12"  maxlength="1">
-            <input type="text" class="mini_txt" id="1_13"  maxlength="1">
-            <input type="text" class="mini_txt" id="1_14" disabled value="ק">
-        </form>
-        <input type="button" value="בדוק" class="button_type" onclick="Check(document.getElementById('f_1'));"/>
-        <span id="1_sol">
-        </span>
-        <br>
-        
-        
-        <p class="Content">
-            2. החודש והשנה בהם הוקמה אגד?<br>
-        </p>
-              
-        <form id="f_2" style="margin-right: 5%; margin-left: 5%;">
-            <input type="text" class="mini_txt" id="2_1" maxlength="1">
-            <input type="text" class="mini_txt" id="2_2"  maxlength="1">
-            <input type="text" class="mini_txt" id="2_3"  maxlength="1">
-            <input type="text" class="mini_txt" id="2_4"  maxlength="1">
-            <input type="text" class="mini_txt" id="2_5"  maxlength="1" value='-' disabled>
-            <input type="text" class="mini_txt" id="2_6"  maxlength="1">
-            <input type="text" class="mini_txt" id="2_7"  maxlength="1">
-        </form>
-        <input type="button" value="בדוק" class="button_type" onclick="Check(document.getElementById('f_2'));"/>
-        <span id="2_sol">
-        </span>
-        <br>
-        <p class="Content">
-            3.איזה מבין הארגונים הבאים לא מוזג לאגד:  <br>
-            המהיר , הגה, קדימה, שחר, התאחדות הנהגים, הכוח, אקספרס הגליל, שרות עמק הירדן, החולה, המקשר <br>
-הערה: מספר התיבות אינו מייצג בהכרח את מספר האותיות בתשובה
-        </p>
-              
-        <form id="f_3" style="margin-right: 5%; margin-left: 5%;">
-            <input type="text" class="mini_txt" id="3_1" maxlength="1">
-            <input type="text" class="mini_txt" id="3_2"  maxlength="1">
-            <input type="text" class="mini_txt" id="3_3"  maxlength="1">
-            <input type="text" class="mini_txt" id="3_4"  maxlength="1">
-            <input type="text" class="mini_txt" id="3_5"  maxlength="1">
-            <input type="text" class="mini_txt" id="3_6"  maxlength="1">
-            <input type="text" class="mini_txt" id="3_7"  maxlength="1">
-            <input type="text" class="mini_txt" id="3_8"  maxlength="1">
-            <input type="text" class="mini_txt" id="3_9"  maxlength="1">
-            <input type="text" class="mini_txt" id="3_10"  maxlength="1">
-            <input type="text" class="mini_txt" id="3_11"  maxlength="1">
-            <input type="text" class="mini_txt" id="3_12"  maxlength="1">
-            <input type="text" class="mini_txt" id="3_13"  maxlength="1">
-        </form>
-        <input type="button" value="בדוק" class="button_type" onclick="Check(document.getElementById('f_3'));"/>
-        <span id="3_sol">
-        </span>
-        <br>
-        
-        <p class="Content">
-            4.במהלך שנת 2017 יצאו מאגד אחרוני האוטובוסים ממוגני הירי ובכך ירד המסך על תקופה בת XX   שנים שבהם הפעילה אגד את האוטובוסים ממוגני הירי בקווי יו"ש וחבל עזה.
-        </p>
-              
-        <form id="f_4" style="margin-right: 5%; margin-left: 5%;">
-            <input type="text" class="mini_txt" id="4_1" maxlength="1">
-            <input type="text" class="mini_txt" id="4_2"  maxlength="1">
-        </form>
-        <input type="button" value="בדוק" class="button_type" onclick="Check(document.getElementById('f_4'));"/>
-        <span id="4_sol">
-        </span>
+כל הכבוד הצלחתם לפתור בהצלחה את משימת מוזיאון אגד - תחנה מס' 1  
+כעת  אתם יוצאים למצוא את תחנה 2 ובדרך תפתרו את משימת הדרך היא תחנה 3.
+<br>
+אך ראשית , הנחיות למציאת תחנה 2:
+הנקודה הבאה היא עוד נקודה על פי ההיסטוריה של מדינת ישראל בשלבי הקמתה.
+מקימיו קראו לו "קיבוץ בוכנוולאד" משם הם הגיעו. עם הזמן שונה השם ל.....
+הכנסו לקיבוץ ומצאו את האנדרטה משואה לתקומה. 
+<br>
+
+            <p class="Content">
+כדי לודא שאתם נוסעים למקום הנכון הכניסו את שם הקיבוץ:
                 <br>
-        <p class="Content">
-            5. נכון ל 2016 אגד מפעילה XXX קווי שרות (מידע ממקורות ציבוריים בלבד)  
+            <br>
         </p>
-              
-        <form id="f_5" style="margin-right: 5%; margin-left: 5%;">
-            <input type="text" class="mini_txt" id="5_1" maxlength="1">
-            <input type="text" class="mini_txt" id="5_2"  maxlength="1">
-            <input type="text" class="mini_txt" id="5_3"  maxlength="1">
+        <form id="1">
+            <input type="text" id = "1_1" class="mini_txt" maxlength="1">
+            <input type="text" id = "1_2" class="mini_txt" maxlength="1">
+            <input type="text" id = "1_3" class="mini_txt" maxlength="1">
+            <input type="text" id = "1_4" class="mini_txt" maxlength="1"  disabled value="-">
+            <input type="text" id = "1_5" class="mini_txt" maxlength="1">
+            <input type="text" id = "1_6" class="mini_txt" maxlength="1">
+            <input type="text" id = "1_7" class="mini_txt" maxlength="1">
+            <input type="text" id = "1_8" class="mini_txt" maxlength="1">
+            <input type="text" id = "1_9" class="mini_txt" maxlength="1">
         </form>
-        <input type="button" value="בדוק" class="button_type" onclick="Check(document.getElementById('f_5'));"/>
-        <span id="5_sol">
+        <input type="button" class="button_type" onclick="Check()" value="בדוק">
+        <span id="answer" class="Content">
         </span>
-                <br>
-        <p class="Content">
-            6. נכון ל 2016 חלקה של אגד מכלל מערך התחבורה הציבורית בישראל עומד על ......אחוזים (מידע ממקורות ציבוריים בלבד)  
-        </p>
-              
-        <form id="f_6" style="margin-right: 5%; margin-left: 5%;">
-            <span class="Content">%</span>
-            <input type="text" class="mini_txt" id="6_1" maxlength="1">
-            <input type="text" class="mini_txt" id="6_2"  maxlength="1">
-        </form>
-        <input type="button" value="בדוק" class="button_type" onclick="Check(document.getElementById('f_6'));"/>
-        <span id="6_sol">
-        </span>
-                <br>    
-        <p class="Content">
-            7. מה מחיר הנסיעה לשני נוסעים האחד רגיל והשני ותיק מאליפז לחציבה וחזרה , היום 30/05 
-        </p>
-              
-        <form id="f_7" style="margin-right: 5%; margin-left: 5%;">
-            <input type="text" class="mini_txt" id="7_1" maxlength="1">
-            <input type="text" class="mini_txt" id="7_2"  maxlength="1">
-            <input type="text" class="mini_txt" id="7_3" maxlength="1">
-            <input type="text" class="mini_txt" id="7_4"  maxlength="1">
-            <input type="text" class="mini_txt" id="7_5"  maxlength="1">
-        </form>
-        <input type="button" value="בדוק" class="button_type" onclick="Check(document.getElementById('f_7'));"/>
-        <span id="7_sol">
-        </span>
+    <p class="Content">
         <br>
-        
-        <p class="Content" id="final">
-            
+                <br>
+<b>
+הרמז הבא שלכם לתחנה 2 :<br>
+   </b>     
+נמצא ברדיוס של 50 מטר מהאנדרטה על העץ שליד העץ עם "קן הקוקיה הכחול"
+מצאו את המספר (התלת ספרתי) והכניסו אותו לריבוע הקודים ותקבלו הנחיות לתחנה 2.
+<br>
+        <br>
+        <b>
+ משימת הדרך – תחנה  3 :<br>
+        </b>
+לחצו על הכפתור הכתום של התחנה בדף הבית וענו נכון על חידון אגד.
+כאשר תענו נכון על כל השאלות – תקבלו קוד עם שלוש ספרות
+הכניסו אותו לתיבת הטקסט בתחתית העמוד
+<br>
+					בהצלחה
+
         </p>
+        
         
     </body>
 </html>
