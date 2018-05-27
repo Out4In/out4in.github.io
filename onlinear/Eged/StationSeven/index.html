@@ -45,7 +45,7 @@
             {
                 var form = document.getElementById("1");
                 var inputs = form.getElementsByTagName("input");
-                var answer = "מסילת-ציון";
+                var answer = "מסילתציון";
                 var s = "";
                 for(var i = 0; i < inputs.length; i++)
                 {
@@ -96,14 +96,23 @@
             <input type="text" id = "1_3" class="mini_txt" maxlength="1">
             <input type="text" id = "1_4" class="mini_txt" maxlength="1">
             <input type="text" id = "1_5" class="mini_txt" maxlength="1">
-            <input type="text" id = "1_6" class="mini_txt" disabled value="-" maxlength="1">
+            <br>
+            <input type="text" id = "1_6" class="mini_txt" maxlength="1">
             <input type="text" id = "1_7" class="mini_txt" maxlength="1">
             <input type="text" id = "1_8" class="mini_txt" maxlength="1">
             <input type="text" id = "1_9" class="mini_txt" maxlength="1">
-            <input type="text" id = "1_10" class="mini_txt" maxlength="1">
         </form>
         <input type="button" class="button_type" onclick="Check()" value="בדוק">
         <span id="answer" class="Content">
         </span>
+        <p class="Content">
+            הכניסו את הקוד לתיבת הטקסט בתחתית העמוד.
+        </p>
+        <br>
+        <p class="Content" style="text-align: center">
+            רמז:
+            <br>
+            <img src="help.png">
+        </p>
     </body>
 </html>

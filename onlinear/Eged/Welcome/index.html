@@ -22,15 +22,7 @@
                 }
                 document.getElementById("answer").innerHTML = "הקוד לא נכון";
             }
-            function Clear()
-            {
-                document.getElementById("answer").innerHTML = "";
-                document.getElementById("code").value="";
-            }
-            function CheckFinalCode()
-            {
-                
-            }
+            
         </script>
         
         <style type="text/css">
@@ -46,6 +38,23 @@
                 width: 100%;
                 height: 100%;
             }
+            .button_type
+            {
+                 color:white;
+                background-color: #039BE5;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                
+                margin-top: 2%;
+                height: 5%;
+                width: 100%;
+                font-size: 18px;
+            }
+            .button_type:disabled
+            {
+                background-color: #9E9E9E;
+            }
         </style>
         <script type="application/javascript" src="initScreen.js"></script>
         <script>
@@ -57,6 +66,27 @@
                     alert("העבר את הפלאפון למצב עומד בשביל חווית משחק מירבית!");
                     window.location.reload(false); 
                 }
+                
+                if(typeof(Storage) != undefined)
+                {
+                    var for_one = localStorage.for_1;
+                    for(var i = 1; i <= 8; i++)
+                    {
+                        var k = "for_" + i;
+                        var value = localStorage.getItem(k);
+                        if(value != undefined)
+                        {
+                            if(value.localeCompare("OK"))
+                            {
+                                var img_id = "img_for_" + i;
+                                document.getElementById(img_id).src = "green_dot.png";
+                            }
+                        }
+                        
+                        
+                    }   
+                }
+                
             }
                 
             
@@ -80,33 +110,6 @@
         </map>
         
         
-        <div class="modal fade" id="Codes" tabindex="-1" role="dialog" aria-labelledby="CodesLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" >קודי תחנות</h5>
-              </div>
-              <div class="modal-body">
-                <form>
-                  <div class="form-group">
-                    <label for="code" class="col-form-label">קוד:</label>
-                    <input type="text" class="form-control" id="code">
-                  </div>
-                </form>
-                  <br>
-                  <div id="answer">
-                      
-                  </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="Clear();">סגור</button>
-                <button type="button" class="btn btn-primary" onclick="CheckCode();">בדוק</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        
         <div class="modal fade" id="FinalCode" tabindex="-1" role="dialog" aria-labelledby="FinalCodeLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -114,20 +117,56 @@
                 <h5 class="modal-title" >הקוד הסופי</h5>
               </div>
               <div class="modal-body">
-                <form>
-                  <div class="form-group">
-                    <label for="code" class="col-form-label">קוד:</label>
-                    <input type="text" class="form-control" id="code">
-                  </div>
-                </form>
+                <table style="width: 100%; text-align: center;">
+                    <tr >
+                        <td>1
+                            <br>
+                            <img src="red_dot.png" id="img_for_1">
+                        </td>
+                        <td>2
+                            <br>
+                            <img src="red_dot.png" id="img_for_2">
+                        </td>
+                        <td>3
+                            <br>
+                            <img src="red_dot.png" id="img_for_3">
+                        </td>
+                        <td>4
+                            <br>
+                            <img src="red_dot.png" id="img_for_4">
+                        </td>
+                    </tr>
+                    <tr style="margin-top: 10px">
+                        <td>5
+                            <br>
+                            <img src="red_dot.png" id="img_for_5">
+                        </td>
+                        <td>6
+                            <br>
+                            <img src="red_dot.png" id="img_for_6">
+                        </td>
+                        <td>7
+                            <br>
+                            <img src="red_dot.png" id="img_for_7">
+                        </td>
+                        <td>8
+                            <br>
+                            <img src="red_dot.png" id="img_for_8">
+                        </td>
+                    </tr>
+                </table>
                   <br>
-                  <div id="answer">
-                      
-                  </div>
+                  <br>
+                  <br>
+                  
+                <p class="Content">
+                  <input type="button" value="חשוף את הקוד הסודי"  disabled class="button_type">
+                  <span class="final"></span>
+                </p>
               </div>
+                
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="Clear();">סגור</button>
-                <button type="button" class="btn btn-primary" onclick="CheckCode();">בדוק</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">סגור</button>                
               </div>
             </div>
           </div>
