@@ -17,7 +17,7 @@
                      
                     var f = forms[i];
                     var inputs = f.getElementsByTagName("input")
-                    if(f.id != "f_2" && f.id != "f_4"&& f.id !="f_5" && f.id != "f_6" & f.id != "f_7") // then rtl
+                    if(f.id != "f_2" && f.id != "f_4"&& f.id !="f_5" && f.id != "f_6" && f.id != "f_7" &&f.id != "final") // then rtl
                     {
                         for(var k = 0; k < inputs.length - 1; k++)
                         {
@@ -145,6 +145,27 @@
                 }
                 
             }
+             
+             function CheckEnd()
+             {
+                 var f = document.getElementById("final");
+                 var inputs = f.getElementsByTagName("input");
+                 var s = "";
+                 for (var i = inputs.length - 1; i >= 0; i--)
+                 {
+                    s += inputs[i].value;
+                 }
+                 if(s.localeCompare("144"))
+                 {
+                     document.getElementById("final_div").innerHTML = "נכון, הקוד הוסף למאגר";
+                     localStorage.setItem("for_3", "OK");
+                 }
+                 else
+                 {
+                     document.getElementById("final_div").innerHTML = "לא נכון נסו שוב";
+                 }
+                 
+             }
         </script>
         
         <style>
@@ -181,10 +202,13 @@
             <input type="text" class="mini_txt" id="1_2"  maxlength="1">
             <input type="text" class="mini_txt" id="1_3"  maxlength="1">
             <input type="text" class="mini_txt" id="1_4"  maxlength="1">
+            <span style = "padding-left: 5%; padding-right: 5%;"></span>
+            
             <input type="text" class="mini_txt" id="1_5"  maxlength="1">
             <input type="text" class="mini_txt" id="1_6"  maxlength="1">
             <input type="text" class="mini_txt" id="1_7"  maxlength="1">
             <input type="text" class="mini_txt" id="1_8"  maxlength="1">
+            <br>
             <input type="text" class="mini_txt" id="1_9"  maxlength="1">
             <input type="text" class="mini_txt" id="1_10"  maxlength="1">
             <input type="text" class="mini_txt" id="1_11"  maxlength="1">
@@ -298,6 +322,19 @@
         <p class="Content" id="final">
             
         </p>
+        
+        <br><br>
+        <div class="Content" style="text-align: center">
+            <div style="text-decoration: underline">הקוד הוא: </div>
+            <form id="final">
+                <input type="text" class="mini_txt" id="final_1" maxlength="1" pattern ="[0-9]*" />
+                <input type="text" class="mini_txt" id="final_2" maxlength="1" pattern ="[0-9]*" />
+                <input type="text" class="mini_txt" id="final_3" maxlength="1" pattern ="[0-9]*" />
+            </form>
+            <input type="button" class="button_type" value="בדוק" onclick="CheckEnd();">
+            <div id="final_div">
+            </div>
+        </div>
         
     </body>
 </html>

@@ -20,9 +20,65 @@
                 }
                 
             }
+            
+            
+             function CheckEnd()
+            {
+                
+                var form = document.getElementById("final");
+                var inputs = form.getElementsByTagName("input");
+                s = ""
+                for(var i = inputs.length - 1; i >= 0; i --)
+                {
+                    s += inputs[i].value;
+                }
+                
+                if(s.localeCompare("169") == 0)
+                {
+                     document.getElementById("final_div").innerHTML = "נכון, הקוד הוסף למאגר";
+                     localStorage.setItem("for_5", "OK");
+                }
+                else
+                {
+                    document.getElementById("final_div").innerHTML = "לא נכון נסו שוב";
+                }
+            }
+            function Init()
+            {
+                var form = document.getElementById("final");
+                var inputs = form.getElementsByTagName("input");
+                 for(var k = inputs.length - 1; k > 0 ; k--)
+                {
+                    (function(){
+                    var inp = inputs[k];
+                    var next_inp = inputs[k - 1];
+                    if(next_inp.disabled)
+                    {
+                        if( k - 2 >= inputs.length)
+                        {
+
+                        }
+                        else
+                            {
+
+                            next_inp = inputs[k - 2];
+                            }
+                    }
+                    inp.addEventListener("input", function(event)
+                    {
+                        
+                        if(inp.value != "")
+                            {
+                        next_inp.focus();     
+                            }
+                    });
+                    }());
+                }
+            }
+            
         </script>
     </head>
-    <body>
+    <body onload="Init();">
         <img src="../resource/logo.png" class="wide_img"> 
         <div class="Center_div" id="Header_div">
             תחנה 5 - חניון יער
@@ -69,6 +125,18 @@
             </span>
         </p>
         <br>
+        
+          <div class="Content" style="text-align: center">
+            <div style="text-decoration: underline">הקוד הוא: </div>
+            <form id="final">
+                <input type="text" class="mini_txt" id="final_1" maxlength="1" pattern ="[0-9]*" />
+                <input type="text" class="mini_txt" id="final_2" maxlength="1" pattern ="[0-9]*" />
+                <input type="text" class="mini_txt" id="final_3" maxlength="1" pattern ="[0-9]*" />
+            </form>
+            <input type="button" class="button_type" value="בדוק" onclick="CheckEnd();">
+            <div id="final_div">
+            </div>
+        </div>
         
     </body>
 </html>

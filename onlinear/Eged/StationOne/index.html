@@ -5,12 +5,64 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="../resource/style.css"/>
-        <style>
-   
-        </style>
+        <script type="application/javascript">
+            function CheckEnd()
+            {
+                debugger;
+                var form = document.getElementById("final");
+                var inputs = form.getElementsByTagName("input");
+                s = ""
+                for(var i = inputs.length - 1; i >= 0; i --)
+                {
+                    s += inputs[i].value;
+                }
+                
+                if(s.localeCompare("341568") == 0)
+                {
+                     document.getElementById("final_div").innerHTML = "נכון, הקוד הוסף למאגר";
+                     localStorage.setItem("for_1", "OK");
+                }
+                else
+                {
+                    document.getElementById("final_div").innerHTML = "לא נכון נסו שוב";
+                }
+            }
+            function Init()
+            {
+                var form = document.getElementById("final");
+                var inputs = form.getElementsByTagName("input");
+                 for(var k = inputs.length - 1; k > 0 ; k--)
+                {
+                    (function(){
+                    var inp = inputs[k];
+                    var next_inp = inputs[k - 1];
+                    if(next_inp.disabled)
+                    {
+                        if( k - 2 >= inputs.length)
+                        {
+
+                        }
+                        else
+                            {
+
+                            next_inp = inputs[k - 2];
+                            }
+                    }
+                    inp.addEventListener("input", function(event)
+                    {
+                        
+                        if(inp.value != "")
+                            {
+                        next_inp.focus();     
+                            }
+                    });
+                    }());
+                }
+            }
+        </script>
     </head>
     
-    <body>
+    <body onload="Init();">
            <img src="../resource/logo.png" class="wide_img"> 
         
         <div class="Center_div" id="Header_div">
@@ -39,5 +91,21 @@
 5. הלילנד השתתף בהסעת כוחות במלחמת יום הכיפורים ושלום הגליל – שני מספרים – דו ספרתי ו 3 ספרתי <br><br>
 
         </p>
+        <br><br>
+        <div class="Content" style="text-align: center">
+            <div style="text-decoration: underline">הקוד הוא: </div>
+            <form id="final">
+                <input type="text" class="mini_txt" id="final_1" maxlength="1" pattern ="[0-9]*" />
+                <input type="text" class="mini_txt" id="final_2" maxlength="1" pattern ="[0-9]*" />
+                <input type="text" class="mini_txt" id="final_3" maxlength="1" pattern ="[0-9]*" />
+                <input type="text" class="mini_txt" id="final_4" maxlength="1" pattern ="[0-9]*" />
+                <input type="text" class="mini_txt" id="final_5" maxlength="1" pattern ="[0-9]*" />
+                <input type="text" class="mini_txt" id="final_6" maxlength="1" pattern ="[0-9]*" />
+            </form>
+            <input type="button" class="button_type" value="בדוק" onclick="CheckEnd();">
+            <div id="final_div">
+            </div>
+        </div>
+        
     </body>
 </html>

@@ -52,6 +52,7 @@
                 height: 5%;
                 width: 32%;
                 font-size: 18px;
+                min-height: 18px;
             }
             #HomeIcon
             {

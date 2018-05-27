@@ -55,6 +55,12 @@
             {
                 background-color: #9E9E9E;
             }
+            #final
+            {
+                font-size: 18px;
+                text-align: center;
+                width: 100%;
+            }
         </style>
         <script type="application/javascript" src="initScreen.js"></script>
         <script>
@@ -69,26 +75,46 @@
                 
                 if(typeof(Storage) != undefined)
                 {
-                    var for_one = localStorage.for_1;
                     for(var i = 1; i <= 8; i++)
                     {
                         var k = "for_" + i;
                         var value = localStorage.getItem(k);
                         if(value != undefined)
                         {
-                            if(value.localeCompare("OK"))
+                            
+                            if(value.localeCompare("OK") == 0)
                             {
                                 var img_id = "img_for_" + i;
                                 document.getElementById(img_id).src = "green_dot.png";
                             }
                         }
-                        
-                        
-                    }   
+                    }
+                    
+                    var count = 0;
+                    for (var i = 1; i <= 8; i++)
+                    {
+                        if(localStorage.getItem("for_" + i) != undefined)
+                        {
+                        var value = localStorage.getItem("for_" + i);
+                        if (value.localeCompare("OK") == 0)
+                            {
+                                count += 1;
+                            }
+                        }
+                    }
+                    
+                    if(count == 8)
+                    {
+                        document.getElementById("FinalButton").disabled = false;
+                    }
                 }
                 
             }
-                
+            function Show()
+            {
+                var s = "המשפט הוא: זאזי בזאזי";
+                document.getElementById("final").innerHTML = s; 
+            }
             
         </script>
     </head>
@@ -160,8 +186,9 @@
                   <br>
                   
                 <p class="Content">
-                  <input type="button" value="חשוף את הקוד הסודי"  disabled class="button_type">
-                  <span class="final"></span>
+                  <input type="button" value="חשוף את הקוד הסודי"  disabled class="button_type" id="FinalButton" onclick="Show();">
+                    <br>
+                  <span id="final"></span>
                 </p>
               </div>
                 
