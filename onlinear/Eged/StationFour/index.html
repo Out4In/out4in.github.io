@@ -5,14 +5,47 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="../resource/style.css"/>
+        <style>
+            select
+            {
+                background-color: white;
+                border: 0;
+                border-bottom: 1px solid black;
+                width: 100%;
+                text-align: center;
+                
+            }
+            option
+            {
+                text-align: center;
+            }
+        </style>
         <script type="application/javascript">
-            correct = []
+            var correct = ["True","True","False","False","False","False","False","False","True","False","False","False","False","True","False","True","False","False","True","True","False","False"]
             function Check()
             {
-                var inp = document.getElementsByClassName("input");
-                for(var i = 0; i < correct.length; i++)
+                debugger;
+                var inp = document.getElementsByTagName("select");
+                var corr = 0;
+                for(var i = 0; i < inp.length; i++)
                 {
+                    var k = inp[i];
+                    var id = k.id.split("_")[1];
+                    if(k.value.localeCompare(correct[id*1 - 1]) == 0)
+                    {
+                        corr += 1;
+                    }
                     
+                    
+                }
+                
+                if(corr == correct.length)
+                {
+                    document.getElementById("answer").innerHTML = "כל הכבוד! הקוד הסודי הוא:  669 ";
+                }
+                else
+                {
+                    document.getElementById("answer").innerHTML = "לא נכון נסו שוב";
                 }
             }
             function CheckEnd()
@@ -26,7 +59,7 @@
                     s += inputs[i].value;
                 }
                 
-                if(s.localeCompare("178") == 0)
+                if(s.localeCompare("669") == 0)
                 {
                      document.getElementById("final_div").innerHTML = "נכון, הקוד הוסף למאגר";
                      localStorage.setItem("for_4", "OK");
@@ -89,68 +122,244 @@
         <p class="Content">
           מה אתם יודעים עליכם ? <br>
 במידה ותענו נכון על השאלות תוכלו לקבל את קוד מספר 4 . <br>
-הכניסו את קוד 4 דרך האייקון האדום של קודי התחנות 
+הכניסו את קוד תחנה ארבע לתיבת הטקסט בתחתית העמוד
         </p>
-        
+    
         
         <p class="Content">
-            שאלה 1:
-            <input type="text" class="txt_input" style="margin-right: 8.4%; width: 55%; margin-left: 10%;" id = "1">
+            הסבת מערכות המידע להסכם השכר החדש באגד: משימות הוגדרו במסגרת התכנית לפיתוח והתאמת המערכות להסכם 
+            השכר קיימות מעל 47 משימות
+            <br>
+            <select id="select_1">
+                <option value="True">נכון</option>
+                <option value="False">לא נכון</option>
+            </select>
+            
+            
         </p>
+        <br>
                 
         <p class="Content">
             שאלה 2:
-            <input type="text" class="txt_input" style="margin-right: 8.4%; width: 55%; margin-left: 10%;" id = "2">
+                   ולידטור דור ב': ולידטור דור ב יכלול את היכולות הבאות: קריאת כרטיס קליפסו, קריאת ברקוד, קריאת כרטיסי אשראי.
+            
+            <select id="select_2">
+                <option value="True">נכון</option>
+                <option value="False">לא נכון</option>
+            </select>
+            
+            
         </p>
-                
+            <br>    
         <p class="Content">
             שאלה 3:
-            <input type="text" class="txt_input" style="margin-right: 8.4%; width: 55%; margin-left: 10%;" id = "3">
+              אפליקצית כירטוס לנוסע בסלולר: תאפשר גם רכש ערך צבור מיד בהפעלתה.
+            <select id="select_3">
+                <option value="True">נכון</option>
+                <option value="False">לא נכון</option>
+            </select>
+            
+            
         </p>
-                
+            <br>    
         <p class="Content">
             שאלה 4:
-            <input type="text" class="txt_input" style="margin-right: 8.4%; width: 55%; margin-left: 10%;" id = "4">
+            אפליקצית אגד לנוסע: מאפשרת לקבל תכנון מסע (מוצא / יעד) של כלל המפעילים.
+            <select id="select_4">
+                <option value="True">נכון</option>
+                <option value="False">לא נכון</option>
+            </select>
+            
+            
         </p>
-                
+            <br>    
         <p class="Content">
             שאלה 5:
-            <input type="text" class="txt_input" style="margin-right: 8.4%; width: 55%; margin-left: 10%;" id = "5">
+            אפליקציה סלולרית לעובדי המוסך: האפליקציה מופעלת בסלולר של חברת  APPLE
+            <select id="select_5">
+                <option value="True">נכון</option>
+                <option value="False">לא נכון</option>
+            </select>
+            
+            
         </p>
-                
+            <br>    
         <p class="Content">
             שאלה 6:
-            <input type="text" class="txt_input" style="margin-right: 8.4%; width: 55%; margin-left: 10%;" id = "6">
+            מערך מידע חדש (BI): דו"חות REPORTING מהווים חלק ממערך הBI  החדש
+            <select id="select_6">
+                <option value="True">נכון</option>
+                <option value="False">לא נכון</option>
+            </select>
+            
+            
         </p>
-                
+            <br>    
         <p class="Content">
             שאלה 7:
-            <input type="text" class="txt_input" style="margin-right: 8.4%; width: 55%; margin-left: 10%;" id = "7">
+            החלפת ספק התקשורת לHOT: במסגרת ההסכם החדש, חברת HOT תספק לאגד גם שירותי טלויזיה בכבלים
+            <select id="select_7">
+                <option value="True">נכון</option>
+                <option value="False">לא נכון</option>
+            </select>
+   
         </p>
-                
+                <br>
         <p class="Content">
             שאלה 8:
-            <input type="text" class="txt_input" style="margin-right: 8.4%; width: 55%; margin-left: 10%;" id = "8">
+            הקמת ענן פרטי: מערכת נוטאניקס מכילה בתוכה גם את האיחסון
+            <select id="select_8">
+                <option value="True">נכון</option>
+                <option value="False">לא נכון</option>
+            </select>
+            
+
         </p>
-                
+                <br>
         <p class="Content">
             שאלה 9:
-            <input type="text" class="txt_input" style="margin-right: 8.4%; width: 55%; margin-left: 10%;" id = "9">
+            הקמת אתרי אגד בתחנות מרכזיות חדשות: במהלך השנה הוקמו תשתיות בארבע תחנות מרכזיות חדשות
+            <select id="select_9">
+                <option value="True">נכון</option>
+                <option value="False">לא נכון</option>
+            </select>
+            
+ 
         </p>
-                
+                <br>
         <p class="Content">
             שאלה 10:
-            <input type="text" class="txt_input" style="margin-right: 5%; width: 55%; margin-left: 10%;" id = "10">
+            צמצום מכירה ע"י הנהג: לנהגים בירושלים מותר היום למכור כרטיס בודד וערך צבור בלבד
+            <select id="select_10">
+                <option value="True">נכון</option>
+                <option value="False">לא נכון</option>
+            </select>
+            
+
         </p>
-                
+                <br>
         <p class="Content">
             שאלה 11:
-            <input type="text" class="txt_input" style="margin-right: 5.5%; width: 55%; margin-left: 10%;" id = "11">
+            העברת מערכות אגד הסעים ותיור לאגד: כל עובדי אגד תיור עברו כבר לרשת אגד
+            <select id="select_11">
+                <option value="True">נכון</option>
+                <option value="False">לא נכון</option>
+            </select>
+            
+
         </p>
-                
+                <br>
         <p class="Content">
             שאלה 12:
-            <input type="text" class="txt_input" style="margin-right: 5%; width: 55%; margin-left: 10%;" id = "12">
+            החלפת מכשיר הכירטוס: חסרים עוד 400 מכשירי כירטוס חדשים להשלמת הפריסה בירושלים
+            <select id="select_12">
+                <option value="True">נכון</option>
+                <option value="False">לא נכון</option>
+            </select>
+
+        </p>
+        <br>
+        <p class="Content">
+            שאלה 13:
+            הקמת מערכת לניהול מוסך: קליטת מערכת נמ"ר במערכת ניהול מוסך מתבצעת כעת בהובלת הצוותים של נעים וגלית
+            <select id="select_13">
+                <option value="True">נכון</option>
+                <option value="False">לא נכון</option>
+            </select>
+            
+            
+        </p>
+<br>                
+        <p class="Content">
+            שאלה 14:
+            פיתוח מערכת חדשה לניהול תחבורה ציבורית- נתיב ( החלפת מערכת סדרן): נתיב תעלה בגירסה ראשונה בסוף שנה זו, תכלול בתוכה לראשונה מודול שיבוץ שבועי ויומי ושילוב תקנה 168 במלואה
+            <select id="select_14">
+                <option value="True">נכון</option>
+                <option value="False">לא נכון</option>
+            </select>
+            
+            
+        </p>
+    <br>            
+        <p class="Content">
+            שאלה 15:
+            הקמת מערכת רכש: הקמת מערכת הרכש מחולקת לשתי תכניות משנה, רכש כללי ורכש ח"ח
+            <select id="select_15">
+                <option value="True">נכון</option>
+                <option value="False">לא נכון</option>
+            </select>
+            
+            
+        </p>
+        <br>        
+        <p class="Content">
+            שאלה 16:
+            אתר פנים חברה, פורטל ארגוני לאגד: הפורטל הארגוני של אגד מתוכנן להיות זמין לכל אחד באינטרנט
+            <select id="select_16">
+                <option value="True">נכון</option>
+                <option value="False">לא נכון</option>
+            </select>
+            
+            
+        </p>
+            <br>    
+        <p class="Content">
+            שאלה 17:
+            מערכת לגיוס עובדים מתוכננת להיות מפותחת בתוך אגד ע"ב האורקל
+            <select id="select_17">
+                <option value="True">נכון</option>
+                <option value="False">לא נכון</option>
+            </select>
+            
+            
+        </p>
+                <br>
+        <p class="Content">
+            שאלה 18:
+            הנגשת אתרים באגד כוללת גם את אתרי אגד הסעים ותיור, וצגי מידע באוטובוסים
+            <select id="select_18">
+                <option value="True">נכון</option>
+                <option value="False">לא נכון</option>
+            </select>
+        </p>
+                <br>
+        <p class="Content">
+            שאלה 19:
+            אגד זכתה במכרז לתפעול הרכבת הקלה בתל אביב
+            <select id="select_19">
+                <option value="True">נכון</option>
+                <option value="False">לא נכון</option>
+            </select>
+   
+        </p>
+                <br>
+        <p class="Content">
+            שאלה 20:
+            SAFERIDE היא חברה העוסקת במיגון האוטובוסים מתקיפת סייבר ואגד רכשה את השליטה בה
+            <select id="select_20">
+                <option value="True">נכון</option>
+                <option value="False">לא נכון</option>
+            </select>
+            
+
+        </p>
+                <br>
+        <p class="Content">
+            שאלה 21:
+            מרכז השירות באגד מאויש 24/7
+            <select id="select_21">
+                <option value="True">נכון</option>
+                <option value="False">לא נכון</option>
+            </select>
+        </p>
+       
+        
+        
+        <p class="Content">
+
+            <input type="button" class="button_type" value="בדוק" onclick="Check();" >
+            <span id = "answer">
+            </span>
         </p>
                    <br><br>
         <div class="Content" style="text-align: center">
