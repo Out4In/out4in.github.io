@@ -1,0 +1,172 @@
+<html>
+
+    <head>
+        <title>משחק הזיכרון</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="MemoryGameScript.js" type="application/javascript">
+        </script> 
+        <script type="application/javascript">            
+            function OfferHint()
+            {
+                var answer = confirm("ראינו שאתם מתקשים, האם אתם רוצים עזרה?");
+                var resultDiv = document.getElementById("clueDiv");
+                var brDiv = document.getElementById("clueBr");
+                if(answer)
+                {
+                    resultDiv.style.display = "block";
+                    brDiv.style.display = "block";
+                    alert("אם עדיין לא הצלחתם, לא נורא חזרו למשחק מהתחלה.\nפתרו את השלב הראשון הוא די קל. כנסו לשלב ב' ספרו את מספר הקלפים שעל המסך הכפילו פי 32 .\nהכניסו את התוצאה לתיבת הטקסט בסוף הדף וקבלו  4 אתיות באנגלית ומספר תלת ספרתי.");                    
+                }
+                else
+                {
+                    resultDiv.style.display = "none";
+                    brDiv.style.display = "none";
+                    setTimeout(OfferHint, 120000);
+                }
+            }
+            
+            function Start()
+            {
+                document.getElementById("MemoryBody").style.backgroundColor = "black";
+                Init(1,false);
+                setTimeout(OfferHint,300000);
+            }
+        </script>
+    </head>
+    <!--- Grid 7x7, 7 rows with tr and in each row 7 td's. in each td there will be randomized if picture will be there or not.-->
+    <body id="MemoryBody" onload="Start();">
+        <audio id='sound'></audio>
+        <table id="MemoryTable">
+            <tr class="MemoryTableRow">
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+            </tr>
+            <tr class="MemoryTableRow">
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+            </tr>
+            <tr class="MemoryTableRow">
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+            </tr>
+            <tr class="MemoryTableRow">
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+            </tr>
+            <tr class="MemoryTableRow">
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+            </tr>
+            <tr class="MemoryTableRow">
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+            </tr>
+            <tr class="MemoryTableRow">
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+                <td class="MemoryTableTD">
+                </td>
+            </tr>
+            
+        </table>
+        
+        <div id = "clueBr" style="display: none;"><br><br><br></div>
+        <div id = "clueDiv" style="display: none;">
+            <br>
+            <form id = "clueForm">
+                <label for="result">הכנס את התוצאה:</label>
+                <input type="text" id="resID" name="resName">
+            </form>
+            <button type="button" class="btn btn-primary btn-lg btn-block" style="width: 35%;" onclick="checkEnd();">בדוק</button>
+            <br><br><br>
+        </div>
+    </body>
+    
+</html>

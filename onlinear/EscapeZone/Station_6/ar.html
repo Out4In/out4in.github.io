@@ -1,0 +1,113 @@
+<html>
+    
+    <head>
+    
+        <meta charset="utf-8"/>
+        <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/examples/vendor/aframe/build/aframe.min.js"></script>
+        <script src="../../shared-resources/packages/aframe-ar.js"></script>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!--<script src="https://unpkg.com/aframe-cubemap-component@0.1.2/dist/aframe-cubemap-component.min.js"></script> -->
+        
+        <style type="text/css">
+        
+            div#correct-answer-img
+            {
+                position: absolute; 
+                width: 100%;
+                height: 100%;
+                max-height: 100%; 
+                z-index: 20; 
+                background-image: url('resources/images/correct-answer.png'); 
+                background-size: contain; 
+                background-position: center; 
+                background-repeat: no-repeat;
+                background-color: white;
+                top: 0;
+                display: none;
+            }
+            
+            #doneBtn
+            {
+                position: absolute;
+                left: 0;
+                bottom: 11.5vh;
+                display: none;
+                font-size: 10vh;
+                background-image: url('resources/images/green-button.png');
+                background-size: 100% 100%;
+                background-color: rgba(0,0,0,0);
+                padding: 10px 20px 10px 20px;
+                border: 0;
+            }
+        
+        </style>
+        
+    </head>
+    
+    <body style='margin : 0px; overflow: hidden; width: 100%;'>
+        
+        <div id="correct-answer-img"></div>
+        
+        <a-scene embedded arjs="debugUIEnabled: false;">
+            
+            <a-marker preset="custom" type='pattern' url="resources/patterns/pattern-1.patt" id="marker-1">
+                <a-plane position="0      1.43028847 0.625"  rotation="0 0   0"   material="src: resources/images/london_04.jpg; side: front" scale="1.25 2.86057693"></a-plane> <!--FRONT--> <!--3.69726248-->
+                <a-plane position="0.625  1.43028847 0"      rotation="0 90  0"   material="src: resources/images/rome_01.jpg; side: front" scale="1.25 2.86057693"></a-plane> <!--RIGHT--> <!--4.60717949-->
+                <a-plane position="0      1.43028847 -0.625" rotation="0 180 0"   material="src: resources/images/madrid_02.jpg; side: front" scale="1.25 2.86057693"></a-plane> <!--BACK--> <!--3.50588235-->
+                <a-plane position="-0.625 1.43028847 0"      rotation="0 -90 0"   material="src: resources/images/vegas_01.jpg; side: front" scale="1.25 2.86057693"></a-plane> <!--LEFT--> <!--3.49427313-->
+                
+                
+            </a-marker>
+
+            <a-marker preset="custom" type='pattern' url="resources/patterns/pattern-2.patt" id="marker-2">
+                <a-plane position="0      1.43028847 0.625"  rotation="0 0   0"   material="src: resources/images/london_01.jpg; side: front" scale="1.25 2.86057693"></a-plane> <!--FRONT-->
+                <a-plane position="0.625  1.43028847 0"      rotation="0 90  0"   material="src:  resources/images/rome_02.jpg; side: front" scale="1.25 2.86057693"></a-plane> <!--RIGHT-->
+                <a-plane position="0      1.43028847 -0.625" rotation="0 180 0"   material="src: resources/images/madrid_03.jpg; side: front" scale="1.25 2.86057693"></a-plane> <!--BACK-->
+                <a-plane position="-0.625 1.43028847 0"      rotation="0 -90 0"   material="src: resources/images/vegas_02.jpg; side: front" scale="1.25 2.86057693"></a-plane> <!--LEFT-->
+                
+                <!---<a-plane position="0 2.86057693 0" rotation="-90 0 0" material="src: resources/images/Out4InLogoWhiteBG.png; side: front" scale="1.25 1.25"></a-plane> <!--TOP-->
+            </a-marker>
+            
+            <a-marker preset="custom" type='pattern' url="resources/patterns/pattern-3.patt" id="marker-3">
+                <a-plane position="0      1.43028847 0.625"  rotation="0 0   0"   material="src: resources/images/london_02.jpg; side: front" scale="1.25 2.86057693"></a-plane> <!--FRONT-->
+                <a-plane position="0.625  1.43028847 0"      rotation="0 90  0"   material="src:  resources/images/rome_01.jpg; side: front" scale="1.25 2.86057693"></a-plane> <!--RIGHT-->
+                <a-plane position="0      1.43028847 -0.625" rotation="0 180 0"   material="src: resources/images/madrid_04.jpg; side: front" scale="1.25 2.86057693"></a-plane> <!--BACK-->
+                <a-plane position="-0.625 1.43028847 0"      rotation="0 -90 0"   material="src:  resources/images/vegas_03.jpg; side: front" scale="1.25 2.86057693"></a-plane> <!--LEFT-->
+                
+            </a-marker>
+			
+			<a-marker preset="custom" type='pattern' url="resources/patterns/pattern-4.patt" id="marker-4">
+                <a-plane position="0      1.43028847 0.625"  rotation="0 0   0"   material="src: resources/images/london_03.jpg; side: front" scale="1.25 2.86057693"></a-plane> <!--FRONT-->
+                <a-plane position="0.625  1.43028847 0"      rotation="0 90  0"   material="src:  resources/images/rome_02.jpg; side: front" scale="1.25 2.86057693"></a-plane> <!--RIGHT-->
+                <a-plane position="0      1.43028847 -0.625" rotation="0 180 0"   material="src: resources/images/madrid_01.jpg; side: front" scale="1.25 2.86057693"></a-plane> <!--BACK-->
+                <a-plane position="-0.625 1.43028847 0"      rotation="0 -90 0"   material="src:  resources/images/vegas_04.jpg; side: front" scale="1.25 2.86057693"></a-plane> <!--LEFT-->
+                
+            </a-marker>
+            
+			<a-marker preset="custom" type='pattern' url="resources/patterns/pattern-5.patt" id="marker-5">
+                <a-plane position="0      1.43028847 0.625"  rotation="0 0   0"   material="src: resources/images/Kuwait_01.jpg; side: front" scale="1.25 2.86057693"></a-plane> <!--FRONT-->
+                <a-plane position="0.625  1.43028847 0"      rotation="0 90  0"   material="src:  resources/images/san_francisco_02.jpg; side: front" scale="1.25 2.86057693"></a-plane> <!--RIGHT-->
+                <a-plane position="0      1.43028847 -0.625" rotation="0 180 0"   material="src: resources/images/Kuwait_03.jpg; side: front" scale="1.25 2.86057693"></a-plane> <!--BACK-->
+                <a-plane position="-0.625 1.43028847 0"      rotation="0 -90 0"   material="src:  resources/images/san_francisco_04.jpg; side: front" scale="1.25 2.86057693"></a-plane> <!--LEFT-->
+                
+            </a-marker>
+			
+			<a-marker preset="custom" type='pattern' url="resources/patterns/pattern-6.patt" id="marker-6">
+                <a-plane position="0      1.43028847 0.625"  rotation="0 0   0"   material="src: resources/images/san_francisco_01.jpg; side: front" scale="1.25 2.86057693"></a-plane> <!--FRONT-->
+                <a-plane position="0.625  1.43028847 0"      rotation="0 90  0"   material="src:  resources/images/Kuwait_02.jpg; side: front" scale="1.25 2.86057693"></a-plane> <!--RIGHT-->
+                <a-plane position="0      1.43028847 -0.625" rotation="0 180 0"   material="src: resources/images/san_francisco_03.jpg; side: front" scale="1.25 2.86057693"></a-plane> <!--BACK-->
+                <a-plane position="-0.625 1.43028847 0"      rotation="0 -90 0"   material="src:  resources/images/Kuwait_04.jpg; side: front" scale="1.25 2.86057693"></a-plane> <!--LEFT-->
+                
+            </a-marker>
+            <a-entity camera></a-entity>
+        </a-scene>
+        
+        <script type="text/javascript" src="resources/js/puzzle-code.js"></script>
+        
+    </body>
+    
+</html>

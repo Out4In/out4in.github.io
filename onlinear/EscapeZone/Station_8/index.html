@@ -1,0 +1,139 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../Resources/style.css"/>
+    
+    <script type="application/javascript">
+            function CheckEnd()
+            {
+                var form = document.getElementById("final");
+                var inputs = form.getElementsByTagName("input");
+                s = ""
+                for(var i = inputs.length - 1; i >= 0; i --)
+                {
+                    s += inputs[i].value;
+                }
+                
+                s = s.toLowerCase();
+                if(s.localeCompare("face134") == 0)
+                {
+                     document.getElementById("final_div").innerHTML = "נכון, הקוד הוסף למאגר";
+                     localStorage.setItem("for_8", "OK");
+                }
+                else
+                {
+                    document.getElementById("final_div").innerHTML = "לא נכון נסו שוב";
+                }
+            }
+            function Init()
+            {
+                var form = document.getElementById("final");
+                var inputs = form.getElementsByTagName("input");
+                for(var k = inputs.length - 1; k > 0 ; k--)
+                {
+                    (function()
+					{
+						var inp = inputs[k];
+						var next_inp = inputs[k - 1];
+						if(next_inp.disabled)
+						{
+							if( k - 2 >= inputs.length)
+							{
+
+							}
+							else
+							{
+								next_inp = inputs[k - 2];
+							}
+						}
+						inp.addEventListener("input", function(event)
+						{
+							if(inp.value != "")
+							{
+								next_inp.focus();     
+							}
+						});
+                    }());
+                }
+            }
+            
+            function Start()
+            {
+                Init(1,false);
+                //setTimeout(OfferHint,300000);
+            }
+        
+            function StartGame()
+            {
+                document.location.href = "game.html";
+            }
+        </script>
+</head>
+<body onload="Start();">
+    
+    <div id = "explain">    
+        <div class="Center_div" id="Header_div">
+            תחנה 8 - הקלסתרון
+        </div>
+
+        <p id="HomeIcon">
+            <a href="../Welcome/index.html">
+                <span class="glyphicon glyphicon-home"></span>
+            </a>
+        </p>
+
+        <img src = "../Resources/clock.png" id = "clockImg" title = "כאשר סמל זה ייעלם מן המסך, יופיע רמז.">
+    
+        <p class="content">
+            עזרו למשטרה למצוא את קלסתרון ראש הכנופיה. חפשו וסרקו באמצעות הטלפון הסלולרי ברחבי המתחם 16 ברקודים. <br>
+            בתום סריקת הברקודים תוכלו להרכיב את תמונת הקלסתרון של מפקד הכנופיה.  <br>
+            כדי להרכיב את התמונה עליכם ללחוץ כל פעם על שני חלקים שיחליפו ביניהם מקום עד להרכבת התמונה במלואה. <br>
+            בסיום הרכבת הקלסתרון תקבלו את קוד הזירה מילה באנגלית עם 4 אותיות ומספר תלת ספרתי. <br>
+            הזינו את הקוד בתיבת הטקסט המתאימה בסיום המשימה. <br>
+        </p>
+        <div align = "center"><br><br>
+            <button type="button" class="btn btn-primary btn-lg btn-block" style="width: 45%;" onclick="StartGame();">לחץ כדי להתחיל את המשחק</button>
+        </div>
+        <br><br><br>
+    </div>
+    
+    <div class="Content" id = "answer_div" style="text-align: center; display: none;">
+        <p id="HomeIcon">
+            <a href="../Welcome/index.html">
+                <span class="glyphicon glyphicon-home"></span>
+            </a>
+        </p>
+        <br><br><br><br><br>
+        <div style="text-decoration: underline; margin-bottom: 3%;">אנא הכנס את קוד המשימה בתיבת הטקסט:</div>
+        <form id="final">
+            <input type="text" class="mini_txt" id="final_1" maxlength="1" pattern ="[0-9]*" />
+            <input type="text" class="mini_txt" id="final_2" maxlength="1" pattern ="[0-9]*" />
+            <input type="text" class="mini_txt" id="final_3" maxlength="1" pattern ="[0-9]*" />
+            <input type="text" class="mini_txt" id="final_4" maxlength="1" pattern ="[0-9]*" />
+            <input type="text" class="mini_txt" id="final_5" maxlength="1" pattern ="[0-9]*" />
+            <input type="text" class="mini_txt" id="final_6" maxlength="1" pattern ="[0-9]*" />
+            <input type="text" class="mini_txt" id="final_7" maxlength="1" pattern ="[0-9]*" />
+        </form>
+        <div align="center">
+        <button type="button" class="btn btn-primary btn-lg btn-block" style="width: 35%;" onclick="CheckEnd();">בדוק</button>
+        </div>
+        <div id="final_div">
+        </div>
+    </div>
+    <br><br><br>
+    
+    
+    <script>
+        var url = window.location.href;
+        if(url.indexOf("finish=yes") != -1)
+        {
+            document.getElementById("explain").style.display = "none";
+            document.getElementById("answer_div").style.display = "block";          
+        }
+    
+    </script>
+</body>
+</html>

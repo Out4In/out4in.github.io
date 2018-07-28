@@ -1,0 +1,108 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>קלסתרון</title>
+        <style>
+            #HomeIconClass
+            {
+                position: absolute;
+                left: 10;
+                top: 21;
+                font-size: 300px;
+                display: block;
+            }
+        </style>
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+        <script type="text/javascript" src="../Resources/libs/instascan.min.js"></script>
+        <script>
+            
+            function OfferHint()
+            {
+                var answer = confirm("ראינו שאתם מתקשים, האם אתם רוצים עזרה?");
+                if(answer)
+                {
+                     alert('טיפ קטן להרכבת הקלסתרון.\nחפשו את 4 חלקי הקלסתרון שעליהם מופיעים המספרים 9510, וסדרו אותם בשורה עליונה לפי הסדר הנ"ל משמאל לימין.\nעכשיו המשיכו בהרכבת הקלסתרון.');
+
+                }
+                else
+                {
+                    setTimeout(OfferHint, 120000);
+                }
+            }
+            
+            function Start()
+            {
+                setTimeout(OfferHint,180000);
+            }
+        
+        </script>
+    </head>
+        <body onload="Start();">
+        <div id="camera_holder">
+            <input type="button" value="להרכבת הקלסתרון" class="PuzzleButton" id="MoveToPuzzle" onclick="MoveToPuzzle();"/>
+            <video id="camera" playsinline>
+            </video>
+        </div>
+        
+        <div id="puzzle_holder">
+            <input type="button" value="לחיפוש החלקים" class="PuzzleButton" id="MoveToCamera" onclick="MoveToCamera();" />
+            <table class="PuzzleTable">
+                <tr>
+                    <td id="img1"></td>
+                    <td id="img2"></td>
+                    <td id="img3"></td>
+                    <td id="img4"></td>
+                </tr>
+                <tr>
+                    <td id="img5"></td>
+                    <td id="img6"></td>
+                    <td id="img7"></td>
+                    <td id="img8"></td>
+                </tr>
+                <tr>
+                    <td id="img9"></td>
+                    <td id="img10"></td>
+                    <td id="img11"></td>
+                    <td id="img12"></td>
+                </tr>
+                <tr>
+                    <td id="img13"></td>
+                    <td id="img14"></td>
+                    <td id="img15"></td>
+                    <td id="img16"></td>
+                </tr>
+            </table>
+        </div>
+        <script type="text/javascript">
+            let scaneer = new Instascan.Scanner({video: document.getElementById("camera"),mirror: false});
+            scaneer.addListener("scan",function(content)
+            {
+               AddImageAsDetected(content);
+               alert("מצאת תמונה: " + content);
+            });
+            Instascan.Camera.getCameras().then(function(cameras)
+                                               {
+            if(cameras.length > 0)
+            {
+                if(cameras[1])
+                {
+                    scaneer.start(cameras[1]);
+                }
+                else
+                {
+                    scaneer.start(cameras[0]);
+                }
+            }
+            else
+            {
+                alert("[E] no cameras found");
+                alert("אתה אינך יכול לשחק במשחק זה.");
+            }
+            });
+            
+        </script>
+    </body>
+    <script type="text/javascript" src="mechanics.js" ></script>
+</html>

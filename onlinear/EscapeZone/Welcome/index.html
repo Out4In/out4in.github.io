@@ -1,0 +1,235 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <style type="text/css">
+            body
+            {
+                direction: rtl;
+                text-align: right;
+                width: 100%;
+                height: 100%;
+            }
+            .background
+            {
+                width: 100%;
+                height: 100%;
+            }
+            .button_type
+            {
+                color:white;
+                background-color: #039BE5;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                
+                margin-top: 2%;
+                height: 5%;
+                width: 100%;
+                font-size: 18px;
+            }
+            .button_type:disabled
+            {
+                background-color: #9E9E9E;
+            }
+            #final
+            {
+                font-size: 18px;
+                text-align: center;
+                width: 100%;
+            }
+        </style>
+        
+        <script type="application/javascript" src="initScreen.js"></script>
+        <script>
+        function SendToInit()
+        {
+            var iw = window.innerWidth, ih = window.innerHeight;
+            InitScreen(iw, ih);
+            if(window.innerHeight > window.innerWidth){
+                setTimeout(function(){
+                    alert("העבר את הפלאפון למצב שוכב בשביל חווית משחק מירבית!");
+                    window.location.reload(false);
+                }, 250);
+            }
+            
+            if(typeof(Storage) != undefined)
+                {
+                    for(var i = 1; i <= 10; i++)
+                    {
+                        var k = "for_" + i;
+                        var value = localStorage.getItem(k);
+                        if(value != undefined)
+                        {
+                            
+                            if(value.localeCompare("OK") == 0)
+                            {
+                                var img_id = "img_for_" + i;
+                                document.getElementById(img_id).src = "green_dot.png";
+                            }
+                        }
+                    }
+                    
+                    var count = 0;
+                    for (var i = 1; i <= 10; i++)
+                    {
+                        if(localStorage.getItem("for_" + i) != undefined)
+                        {
+                        var value = localStorage.getItem("for_" + i);
+                        if (value.localeCompare("OK") == 0)
+                            {
+                                count += 1;
+                            }
+                        }
+                    }
+                    
+                    if(count == 10)
+                    {
+                        document.getElementById("FinalButton").disabled = false;
+                    }
+                }
+            
+            }
+            
+            function show()
+            {
+                alert("משהו קורה !");
+                document.location.href = "video.html";
+            }
+        </script>
+    </head>
+    
+    <body onload="SendToInit();">
+        <img src = "background.PNG" class="background" usemap="#background_map" />
+        <map name="#background_map">
+            <area shape="circle" coords="348,452,10" id="number_1" href="../Station_1/index.html">
+            <area shape="circle" coords="367,458,10" id="number_2" href="../Station_2/index.html">
+            <area shape="circle" coords="386,465,10" id="number_3" href="../Station_3/index.html">
+            <area shape="circle" coords="405,473,10" id="number_4" href="../Station_4/index.html">
+            <area shape="circle" coords="425,481,10" id="number_5" href="../Station_5/index.html">
+            <area shape="circle" coords="345,523,10" id="number_6" href="../Station_6/index.html">
+            <area shape="circle" coords="365,532,10" id="number_7" href="../Station_7/index.html">
+            <area shape="circle" coords="384,539,10" id="number_8" href="../Station_8/index.html">
+            <area shape="circle" coords="403,546,10" id="number_9" href="../Station_9/index.html">
+            <area shape="circle" coords="422,554,10" id="number_10" href="../Station_10/index.html">
+            <area shape="circle" coords="220,700,15" id="admin_answer" href="../admin_answer/index.html">
+            <area shape="circle" coords="440,960,15" href="#modal" id="finalCode" data-toggle="modal" data-target="#FinalCode">
+        </map>
+        
+        <div class="modal fade" id="FinalCode" tabindex="-1" role="dialog" aria-labelledby="FinalCodeLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" >מצב המשימות</h5>
+              </div>
+              <div class="modal-body">
+                <table style="width: 100%; text-align: center;">
+                    <tr >
+                        <td>1
+                            <br>
+                            <img src="red_dot.png" id="img_for_1">
+                        </td>
+                        <td>2
+                            <br>
+                            <img src="red_dot.png" id="img_for_2">
+                        </td>
+                        <td>3
+                            <br>
+                            <img src="red_dot.png" id="img_for_3">
+                        </td>
+                        <td>4
+                            <br>
+                            <img src="red_dot.png" id="img_for_4">
+                        </td>
+                    </tr>
+                    <tr style="margin-top: 15px">
+                        <td>5
+                            <br>
+                            <img src="red_dot.png" id="img_for_5">
+                        </td>
+                        <td>6
+                            <br>
+                            <img src="red_dot.png" id="img_for_6">
+                        </td>
+                        <td>7
+                            <br>
+                            <img src="red_dot.png" id="img_for_7">
+                        </td>
+                        <td>8
+                            <br>
+                            <img src="red_dot.png" id="img_for_8">
+                        </td>
+                    </tr>
+                    <tr style="margin-top: 15px">
+						<td>9
+							<br>
+							<img src="red_dot.png" id="img_for_9">
+						</td>
+						<td>10
+							<br>
+							<img src="red_dot.png" id="img_for_10">
+						</td>
+					</tr>
+                </table>
+                  <br>
+                  
+                <p class="Content">
+                    <button type="button" class="btn btn-primary btn-lg btn-block" style="width: 100%;" id="FinalButton" disabled onclick="show();">חשוף את סוף המשימה</button>
+                    <br>
+                  <span id="final"></span>
+                </p>
+              </div>
+                
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">סגור</button>                
+              </div>
+            </div>
+          </div>
+        </div>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

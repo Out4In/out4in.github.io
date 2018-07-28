@@ -1,0 +1,150 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../Resources/libs/instascan.min.js"></script>
+        <link rel="stylesheet" href="../Resources/style.css"/>
+        
+        <script type="application/javascript">
+            function CheckEnd()
+            {
+                var form = document.getElementById("final");
+                var inputs = form.getElementsByTagName("input");
+                s = ""
+                for(var i = inputs.length - 1; i >= 0; i --)
+                {
+                    s += inputs[i].value;
+                }
+                
+                s = s.toLowerCase();
+                if(s.localeCompare("tran684") == 0)
+                {
+                     document.getElementById("final_div").innerHTML = "נכון, הקוד של תחנה 1 הוסף למאגר";
+                     localStorage.setItem("for_1", "OK");
+                }
+                else if(s.localeCompare("cube088") == 0)
+                {
+                     document.getElementById("final_div").innerHTML = "נכון, הקוד של תחנה 2 הוסף למאגר";
+                     localStorage.setItem("for_2", "OK");
+                }
+                else if(s.localeCompare("memo768") == 0)
+                {
+                     document.getElementById("final_div").innerHTML = "נכון, הקוד של תחנה 3 הוסף למאגר";
+                     localStorage.setItem("for_3", "OK");
+                }
+                else if(s.localeCompare("clue815") == 0)
+                {
+                     document.getElementById("final_div").innerHTML = "נכון, הקוד של תחנה 4 הוסף למאגר";
+                     localStorage.setItem("for_4", "OK");
+                }
+                else if(s.localeCompare("stop264") == 0)
+                {
+                     document.getElementById("final_div").innerHTML = "נכון, הקוד של תחנה 5 הוסף למאגר";
+                     localStorage.setItem("for_5", "OK");
+                }
+                else if(s.localeCompare("puzz888") == 0)
+                {
+                     document.getElementById("final_div").innerHTML = "נכון, הקוד של תחנה 6 הוסף למאגר";
+                     localStorage.setItem("for_6", "OK");
+                }
+                else if(s.localeCompare("ring225") == 0)
+                {
+                     document.getElementById("final_div").innerHTML = "נכון, הקוד של תחנה 7 הוסף למאגר";
+                     localStorage.setItem("for_7", "OK");
+                }
+                else if(s.localeCompare("face134") == 0)
+                {
+                     document.getElementById("final_div").innerHTML = "נכון, הקוד של תחנה 8 הוסף למאגר";
+                     localStorage.setItem("for_8", "OK");
+                }
+                else if(s.localeCompare("brak123") == 0)
+                {
+                     document.getElementById("final_div").innerHTML = "נכון, הקוד של תחנה 9 הוסף למאגר";
+                     localStorage.setItem("for_9", "OK");
+                }
+                else if(s.localeCompare("boxt456") == 0)
+                {
+                     document.getElementById("final_div").innerHTML = "נכון, הקוד של תחנה 10 הוסף למאגר";
+                     localStorage.setItem("for_10", "OK");
+                }
+                else
+                {
+                    document.getElementById("final_div").innerHTML = "לא נכון נסו שוב";
+                }
+            }
+            function Init()
+            {
+                var form = document.getElementById("final");
+                var inputs = form.getElementsByTagName("input");
+                for(var k = inputs.length - 1; k > 0 ; k--)
+                {
+                    (function()
+					{
+						var inp = inputs[k];
+						var next_inp = inputs[k - 1];
+						if(next_inp.disabled)
+						{
+							if( k - 2 >= inputs.length)
+							{
+
+							}
+							else
+							{
+								next_inp = inputs[k - 2];
+							}
+						}
+						inp.addEventListener("input", function(event)
+						{
+							if(inp.value != "")
+							{
+								next_inp.focus();     
+							}
+						});
+                    }());
+                }
+            }
+            
+            function Start()
+            {
+                Init();
+            }
+        </script>
+        
+    </head>
+    <body onload="Start();">
+        <div class="Center_div" id="Header_div">
+            הכנסת קודים ידנית.
+        </div>
+
+        <p id="HomeIcon">
+            <a href="../Welcome/index.html">
+                <span class="glyphicon glyphicon-home"></span>
+            </a>
+        </p>
+
+        <br>
+        <p class="content">
+            במידה ואחת מן התחנות אינה עובדת במכשירך, אנא בקש ממנהל האירוע את הקוד לתחנה שאינה עובדת.<br>
+            לאחר מכן, הכנס את הקוד בתיבת הטקסט הבאה, והמשך לתחנה הבאה.<br>
+        </p>
+        <br><br><br>
+        <div class="Content" style="text-align: center">
+            <form id="final">
+                <input type="text" class="mini_txt" id="final_1" maxlength="1" pattern ="[0-9]*" />
+                <input type="text" class="mini_txt" id="final_2" maxlength="1" pattern ="[0-9]*" />
+                <input type="text" class="mini_txt" id="final_3" maxlength="1" pattern ="[0-9]*" />
+                <input type="text" class="mini_txt" id="final_4" maxlength="1" pattern ="[0-9]*" />
+                <input type="text" class="mini_txt" id="final_5" maxlength="1" pattern ="[0-9]*" />
+                <input type="text" class="mini_txt" id="final_6" maxlength="1" pattern ="[0-9]*" />
+                <input type="text" class="mini_txt" id="final_7" maxlength="1" pattern ="[0-9]*" />
+            </form>
+            <div align = "Center">
+                <button type="button" class="btn btn-primary btn-lg btn-block" style="width: 35%;" onclick="CheckEnd();">בדוק</button>
+            </div>
+            <div id="final_div">
+            </div>
+        </div>
+        <br><br><br>
+    </body>

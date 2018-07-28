@@ -1,0 +1,134 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../Resources/libs/instascan.min.js"></script>
+        <link rel="stylesheet" href="../Resources/style.css"/>
+        
+        <script type="application/javascript">
+            function CheckEnd()
+            {
+                var form = document.getElementById("final");
+                var inputs = form.getElementsByTagName("input");
+                s = ""
+                for(var i = inputs.length - 1; i >= 0; i --)
+                {
+                    s += inputs[i].value;
+                }
+                
+                s = s.toLowerCase();
+                if(s.localeCompare("boxt456") == 0)
+                {
+                     document.getElementById("final_div").innerHTML = "נכון, הקוד הוסף למאגר";
+                     localStorage.setItem("for_10", "OK");
+                }
+                else
+                {
+                    document.getElementById("final_div").innerHTML = "לא נכון נסו שוב";
+                }
+            }
+            function Init()
+            {
+                var form = document.getElementById("final");
+                var inputs = form.getElementsByTagName("input");
+                for(var k = inputs.length - 1; k > 0 ; k--)
+                {
+                    (function()
+					{
+						var inp = inputs[k];
+						var next_inp = inputs[k - 1];
+						if(next_inp.disabled)
+						{
+							if( k - 2 >= inputs.length)
+							{
+
+							}
+							else
+							{
+								next_inp = inputs[k - 2];
+							}
+						}
+						inp.addEventListener("input", function(event)
+						{
+							if(inp.value != "")
+							{
+								next_inp.focus();     
+							}
+						});
+                    }());
+                }
+            }
+            
+            function OfferHint()
+            {
+                var answer = confirm("ראינו שאתם מתקשים, האם אתם רוצים עזרה?");
+                if(answer)
+                {
+                     var clockImg = document.getElementById("clockImg");
+                    clockImg.style.display = "none";
+                    setTimeout(function(){          //To remove image before alert.
+                        alert("הפעם לא צריך רמז, אנחנו בטוחים שתצליחו במשימה !");
+                    }, 250);
+                }
+                else
+                {
+                    setTimeout(OfferHint, 120000);
+                }
+            }
+            
+            function Start()
+            {
+                Init();
+                setTimeout(OfferHint,300000);
+            }
+        </script>
+        
+    </head>
+    <body onload="Start();">
+        <div class="Center_div" id="Header_div">
+            תחנה 10 - קופסת העץ
+        </div>
+
+        <p id="HomeIcon">
+            <a href="../Welcome/index.html">
+                <span class="glyphicon glyphicon-home"></span>
+            </a>
+        </p>
+
+        <img src = "../Resources/clock.png" id = "clockImg" title = "כאשר סמל זה ייעלם מן המסך, יופיע רמז.">
+
+        <br>
+        <p class="content">
+            מסר מהכנופיה:<br>
+            בקופסא שלפניכם החבאנו את קוד הזירה:<br>
+            המנעול הוא חשמלי ופתיחתו תתאפשר רק אם תצליחו לעמוד באתגר "משחק ההקלקות" ולצבור 30 נקודות ולקבלת המילה SUCSESS  על לוח הלד.<br><br>
+            שלבי המשחק? <br>
+            א – להפעלת המשחק לחצו על הכפתור העליון <br>
+            ב -  לחצו על ארבעת הכפתורים בהתאם לסימונים שעל מסך המשחק כדי לאפס את הקליקרים.<br>
+            ג' -  על לוח הלד יופיעו 4-5 חיצים ברצף מסוים . עליכם ללחוץ על הקליקרים לפי הסדר משמאל לימין <br>
+            ד - כל הצלחה תקבלו נקודה (תקבלו אישור על הלד)<br><br>
+            כאשר תצברו 30 נקודות המנעול יפתח אוטומטית ותוכלו לצפות בקוד בתוך התיבה .<br>
+            הערה: בתום המשחק סגרו את התיבה חזרה 
+        </p>
+        <br><br>
+        <div class="Content" style="text-align: center">
+            <div style="text-decoration: underline; margin-bottom: 3%;">הקוד הוא: </div>
+            <form id="final">
+                <input type="text" class="mini_txt" id="final_1" maxlength="1" pattern ="[0-9]*" />
+                <input type="text" class="mini_txt" id="final_2" maxlength="1" pattern ="[0-9]*" />
+                <input type="text" class="mini_txt" id="final_3" maxlength="1" pattern ="[0-9]*" />
+                <input type="text" class="mini_txt" id="final_4" maxlength="1" pattern ="[0-9]*" />
+                <input type="text" class="mini_txt" id="final_5" maxlength="1" pattern ="[0-9]*" />
+                <input type="text" class="mini_txt" id="final_6" maxlength="1" pattern ="[0-9]*" />
+                <input type="text" class="mini_txt" id="final_7" maxlength="1" pattern ="[0-9]*" />
+            </form>
+            <div align = "Center">
+                <button type="button" class="btn btn-primary btn-lg btn-block" style="width: 35%;" onclick="CheckEnd();">בדוק</button>
+            </div>
+            <div id="final_div">
+            </div>
+        </div>
+        <br><br><br>
+    </body>

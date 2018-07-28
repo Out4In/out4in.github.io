@@ -1,0 +1,123 @@
+body
+{
+    background-image: url("Images/background.png");
+    background-size: cover;
+    background-position: center center;
+}
+#MemoryBody
+{
+    width: 100%;
+    height: 100%;
+    
+}
+#MemoryTable
+{
+    width: 100%;
+    height: 110%;
+    table-layout: fixed;
+}
+
+.MemoryTableTD
+{
+    width: 14%;
+    height: 14%;
+}
+
+.MemoryPicture
+{
+    width: 100%;
+    display: block;
+}
+
+.flip-container
+{
+    perspective: 1000px;
+    -webkit-perspective: 1000px;
+}
+
+.flip-container, .front_card, .back_card
+{
+    width: 100%;
+    height: 100%;
+}
+
+.flip-container:active .flipper, .flip-container.active .flipper 
+{
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+.flipper
+{   
+    -webkit-transition: -webkit-transform 0.6s;
+    transition: 0.6s;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+.front_card, .back_card
+{
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.front_card
+{
+    z-index: 2;
+    transform: rotateY(0deg);
+     -webkit-transform: rotateY(0deg);
+}
+
+.back_card
+{
+    background-color: blue;
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+td
+{
+    text-align: center;
+}
+
+.button_type
+{
+    color:white;
+    background-color: #039BE5;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+
+    margin-top: 2%;
+    height: 5%;
+    width: 32%;
+    font-size: 18px;
+    min-height: 18px;
+}
+
+#resID 
+{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#clueDiv
+{
+    direction: rtl;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    margin-right: 1%;
+    width: 30%;
+    position: absolute;
+    right: 0;
+}
