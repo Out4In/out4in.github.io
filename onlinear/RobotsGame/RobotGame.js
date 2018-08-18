@@ -16,12 +16,12 @@ var level;
 //Starting game when page loaded, and changing levels.
 $(document).ready(function(){
 	startGame();
-	level = setInterval(startGame, 1820);
+	level = setInterval(startGame, 1400);
 	
 	setTimeout(function(){
 		document.getElementById("wrap").style.display = "block";
 		document.getElementById("game").style.display = "none";
-	}, 60000);
+	}, 90000);
 });
 
 
@@ -122,7 +122,7 @@ function changeLevel(level, delay)
     setTimeout(function(){
 		alert("נגמר הזמן...\nצברת " + score + " נקודות.");
         document.getElementById("game").style.display = "none";
-	}, 60000);
+	}, 90000);
     
 	return new_level;
 }
