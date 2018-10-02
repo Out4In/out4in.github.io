@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        
+        <meta charset="utf-8"/>
+        
+        <title>חידון תרימה וראש השנה</title>
+    
+        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="resources/css/style.css"/>
+        
+    </head>
+    
+    <body class="non-q-page">
+        
+        <h1 style="width: 100%">חידון תרימה וראש השנה - ספטמבר 2018</h1>
+        <p>שלום לכם</p>
+        <p>זוהי ההזדמנות שלכם למצוא את הצופן של הכספת,</p>
+        <p>אם תענו נכון על כל השאלות תקבלו את צופן הכספת בן 5 ספרות ותוכלו לפתוח אותה.</p>
+        <p>החידון כולל 10 שאלות על תרימה ועל מנהגי ראש השנה, שימו לב להוראות בהצלחה.</p><br/>
+        <div class="centering-div"><img src="resources/images/logo.png" id="trima-logo"/></div>
+        <button type="button" class="pure-button pure-button-primary" onclick="startQuiz()">התחילו בחידון!</button>
+        
+        <script type="text/javascript">
+            
+            checkLocalStorage();
+            
+            function checkLocalStorage()
+            {
+                var str = "eduquiz_ls_test";
+                try
+                {
+                    localStorage.setItem(str, str);
+                    localStorage.removeItem(str);
+                }
+                catch (e)
+                {
+                    alert("דפדפן זה אינו תומך בטכנולוגיה הדרושה על-מנת להשתתף בחידון זה. אנא נסו לפתוח את החידון באפליקציית דפדפן אחרת או במכשיר אחר. עמכם הסליחה");
+                }
+            }
+            
+            function startQuiz()
+            {
+                window.location.href = "pages/q1.html";
+            }
+            
+        </script>
+        
+    </body>
+
+</html>

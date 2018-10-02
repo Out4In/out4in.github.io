@@ -13,20 +13,36 @@
         <script type="application/javascript">            
             function OfferHint()
             {
-                var answer = confirm("ראינו שאתם מתקשים, האם אתם רוצים עזרה?");
+                answer = confirm("ראינו שאתם מתקשים, האם אתם רוצים עזרה?");
                 var resultDiv = document.getElementById("clueDiv");
                 var brDiv = document.getElementById("clueBr");
                 if(answer)
-                {
-                    resultDiv.style.display = "block";
-                    brDiv.style.display = "block";
-                    alert("אם עדיין לא הצלחתם, לא נורא חזרו למשחק מהתחלה.\nפתרו את השלב הראשון הוא די קל. כנסו לשלב ב' ספרו את מספר הקלפים שעל המסך הכפילו פי 32 .\nהכניסו את התוצאה לתיבת הטקסט בסוף הדף וקבלו  4 אתיות באנגלית ומספר תלת ספרתי.");                    
+                {    
+                    answer = true;
+                    if (currect_level * 1 == 1)
+                    {
+                        resultDiv.style.display = "none";
+                        brDiv.style.display = "none";
+                        alert("אם עדיין לא הצלחתם, לא נורא.\nפתרו את השלב הראשון הוא די קל.\nעברו לשלב השני, ספרו את מספר הקלפים שעל המסך, והכפילו אותם פי 32.\nגללו לתחתית הדף, הכניסו את התוצאה לתיבת הטקסט, וקבלו את הקוד.");
+                    }
+                    else if (currect_level * 1 == 2)
+                    {
+                        resultDiv.style.display = "block";
+                        brDiv.style.display = "block";
+                        alert("אם עדיין לא הצלחתם, לא נורא.\nספרו את מספר הקלפים שעל המסך והכפילו אותם פי 32.\nגללו לתחתית הדף, הכניסו את התוצאה לתיבת הטקסט, וקבלו את הקוד.");
+                    }
+                    else if (currect_level * 1 == 3)
+                    {
+                        resultDiv.style.display = "block";
+                        brDiv.style.display = "block";
+                        alert("אם עדיין לא הצלחתם, לא נורא.\nספרו את מספר הקלפים שעל המסך והכפילו אותם פי 19.2.\nגללו לתחתית הדף, הכניסו את התוצאה לתיבת הטקסט, וקבלו את הקוד.");
+                    }
                 }
                 else
                 {
                     resultDiv.style.display = "none";
                     brDiv.style.display = "none";
-                    setTimeout(OfferHint, 120000);
+                    setTimeout(OfferHint, 60000);
                 }
             }
             
@@ -34,7 +50,7 @@
             {
                 document.getElementById("MemoryBody").style.backgroundColor = "black";
                 Init(1,false);
-                setTimeout(OfferHint,300000);
+                setTimeout(OfferHint,240000);
             }
         </script>
     </head>
@@ -164,7 +180,7 @@
                 <label for="result">הכנס את התוצאה:</label>
                 <input type="text" id="resID" name="resName">
             </form>
-            <button type="button" class="btn btn-primary btn-lg btn-block" style="width: 35%;" onclick="checkEnd();">בדוק</button>
+            <button type="button" class="btn btn-primary btn-lg btn-block" style="width: 100%; text-align: center;" onclick="checkClue();">בדוק</button>
             <br><br><br>
         </div>
     </body>

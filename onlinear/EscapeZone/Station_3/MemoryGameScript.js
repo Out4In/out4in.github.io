@@ -3,6 +3,7 @@ var IMAGES = ["Images/card1.png", "Images/card2.png","Images/card3.png","Images/
 
 var counter = 0;
 var flag = false;
+var answer = false;
 
 var IMG_1 = document.createElement("img");
 IMG_1.src = "Images/card1.png";
@@ -199,6 +200,12 @@ function Init(level, need_to_print)
         {
             str = "כל הכבוד עברת שלב 1 מתוך 3."
             str += "\nהקוד שלך מכיל את המילה memo."
+            
+            if(answer)
+            {
+                document.getElementById("clueDiv").style.display = "block";
+                document.getElementById("clueBr").style.display = "block";   
+            }
         }
         /*else
         {
@@ -207,7 +214,8 @@ function Init(level, need_to_print)
         alert(str);
     }
     
-    var number_of_images = (level * 1 == 1 ? 6 : level * 1 == 2 ? 12 : 20); // number of images per level go from 2 - 6 with jumps of 2.
+    // first level - 6 cards of a kind (12 total), second level - 12(24 total), third level - 20 (40 total).
+    var number_of_images = (level * 1 == 1 ? 6 : level * 1 == 2 ? 12 : 20); 
     currect_level = level;
     var SelectedImages =  GetRandomFromArray(number_of_images,IMAGES);
     var SelectedTD = GetRandomFromArray(number_of_images * 2, document.getElementsByClassName("MemoryTableTD"));//twice the number of images, there must be 2 cards
@@ -418,13 +426,13 @@ function random() {
     return x - Math.floor(x);
 }
 
-function checkEnd()
+function checkClue()
 {
     s = document.getElementById("resID");
     s_value = s.value;
     if(s_value.localeCompare("768") == 0)
     {
-        alert("נכון, הקוד של התחנה הנו memo768");
+        alert("נכון, הקוד של התחנה הנו memo768\nאנא הכנס את הקוד בתיבת הטקסט החדשה.");
         Init(5, true);
     }
     else

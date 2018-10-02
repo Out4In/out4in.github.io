@@ -57,14 +57,17 @@ body
 }
 #HomeIcon
 {
+    width: 10%;
+    height: 13%;
     position: absolute;
-    left: 10;
-    top: 21;
-    font-size: 30px;
+    left: 1%;
+    top: 20%;
+    background-repeat: no-repeat;
+    background-size: contain; 
 }
 .mini_txt
 {
-    width: 10%;
+    width: 100%;
     background-color: white;
     color: black;
     text-align: center;
@@ -73,6 +76,7 @@ body
     outline: 0;
     background: transparent;
     border-bottom: 1px solid black;
+    direction: ltr;
 }
 #clockImg
 {
@@ -81,7 +85,17 @@ body
     height: 15%;
 	position: fixed;
 	left: 0;
-	bottom: 0;
+	bottom: 14;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+#clueImg
+{
+    width: 12%;
+    height: 15%;
+	position: fixed;
+	left: 0;
+	bottom: 14;
     background-repeat: no-repeat;
     background-size: contain;
 }

@@ -1,187 +1,133 @@
 <html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head dir="rtl">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=0, user-scalable=no">
 	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<style>
-	
-		body
-		{
-			width: 95%;
-			height: 95%;
-			background: url("images/b1.jpg");
-			/*background-repeat: no-repeat;*/
-			background-size: contain;
-		}
-		div.a
-		{
-			width: 100px;
-			height:100px;
-			position:fixed;
-		}
-
-		div.b
-		{
-			width: 100px;
-			height:100px;
-			position:fixed;
-		}
-		
-		#content
-		{
-			position: absolute;
-			top: 1%;
-			left: 1%;
-			font-size: 52px;
-			font-family: Arial, Helvetica, sans-serif;
-		}
-	</style>
-	<script>
-		var first_prev = 0;
-		var second_prev = 0;
-		var alreadyPrinted = false;
-		//var first_img = 0;
-		//var second_img = 0;
-		
-		$(document).ready(function(){
-			alert("ברוכים הבאים, מטרת המשחק היא ללחוץ על תמונת הרובוט. כל פעם שאתה לוחץ על הרובוט אתה מקבל נקודה. שים לב: אם אתה לוחץ על הליצן יורדת לך נקודה, ואם אתה לוחץ על המסך אתה מפסיד !")
-			var first_div = document.getElementsByClassName("a");
-			animateDiv('.a');
-			animateDiv('.b');
-		});
-
-		function makeNewPosition(){
-			
-			// Get viewport dimensions (remove the dimension of the div)
-			var h = $(window).height() - 100;
-			var w = $(window).width() - 100;
-			
-			var nh = Math.floor(Math.random() * h);
-			var nw = Math.floor(Math.random() * w);
-			
-			//while(first_img == first_prev || second_img == second_prev)
-			//{
-				var first_img = Math.floor(Math.random() * 3 + 1);
-				var second_img = String(Math.floor(Math.random() * 3 + 4));
-			//}
-			
-			if(first_img == first_prev)
-			{
-				if(first_img != 3)
-				{
-					first_img++;
-				}
-				else
-				{
-					first_img = 1;
-				}
-			}
-			
-			if(second_img == second_prev)
-			{
-				if(second_img != 6)
-				{
-					second_img++;
-				}
-				else
-				{
-					second_img = 4;
-				}
-			}
-			
-			first_prev = first_img;
-			second_prev = second_img;
-			
-			//first_img = "images/img1.png";
-			//second_img = "images/img4.png";
-			return [nh,nw, first_img, second_img];
-			//return [nh,nw];
-			
-		}
-
-		function animateDiv(myclass){
-			var newq = makeNewPosition();
-			
-			if(newq[2] != undefined && newq[3] != undefined)
-			{
-				var first = "images/img" + newq[2] + ".png";
-				var second = "images/img" + newq[3] + ".png";
-				
-				document.getElementById("img_1").src = first;
-				document.getElementById("img_2").src = second;
-			}
-			  
-			$(myclass).animate({ top: newq[0], left: newq[1] }, 0,   function(){
-			  setTimeout(function(){
-				animateDiv(myclass);
-			  },1000);
-			});
-		};
-		
-		function printScore()
-		{
-			if(!alreadyPrinted)
-			{
-				document.getElementById("wrap").style.display = "none";
-				var header = document.createElement("h1");
-				header.innerHTML = "עשית " + counter + " נקודות.";
-				document.getElementById("header_div").appendChild(header);
-				alreadyPrinted = true;
-			}
-		}
-	</script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="style.css">
+    <title>תפוס ת'רובוט</title>
 </head>
 <body>
-
-	<div id = "wrap">
-		<div class='a' id = "first_div"><img style = "width: 200px;height:100px;" id = "img_1"/></div>
-		<div class='b' id = "second_div"><img style = "width: 200px;height:100px;" id = "img_2"/></div>
-		<p id = "content">תוצאה: 0</p>
-	</div>
-	<div align = "Center" id = "header_div"></div>
+    
+    <div id="firstWrap" style="display: none;"><br><br><br><br><br><br>
+        <div id = "firstWrapDiv" style="text-align: center; font-size: 56px;">סיימת  את שלב 1 ברמה קלה<br>אתה עובר לשלב 2 ברמה בינונית</div><br><br>
+        <div align = "Center"><button type="button" id = "firstWrapBut" class="btn btn-primary btn-lg btn-block" style="width: 35%; background-color: red; border-color: red; font-size: 36px;" onclick="changeLevel(level, 1100, 4000, 1400, 4);">המשך לשלב הבא</button></div>
+    </div>
+    
 	
-	<script>
-		var counter = 0;
-		var first_clicked = false, second_clicked = false;
-		var first_div = document.getElementById("first_div");
-		var second_div = document.getElementById("second_div");
-		var score_text = document.getElementById("content");
-		
-		first_div.addEventListener("click", function(){
-			counter--;
-			if(counter < 0)
-				counter = 0;
-			score_text.innerHTML = "תוצאה: " + counter;
-			//first_clicked = true;
-		});
+	<div id="secondWrap" style="display: none;"><br><br><br><br><br><br>
+        <div id = "secondWrapDiv" style="text-align: center; font-size: 56px;">סיימת את שלב 2 ברמה בינונית<br>אתה עובר לרמה 3 ברמה קשה</div><br><br>
+        <div align = "Center"><button type="button" id = "secondWrapBut" class="btn btn-primary btn-lg btn-block" style="width: 35%; background-color: red; border-color: red; font-size: 36px;" onclick="changeLevel(new_level, 1000, 3500, 1300, 3);">המשך לשלב הבא</button></div>
+    </div>
+    
+    <div id="thirdWrap" style="display: none;"><br><br><br><br><br><br>
+        <div id = "thirdWrapDiv" style="text-align: center; font-size: 56px;">סיימת את שלב 3 ברמה קשה<br>אתה עובר לשלב 4 ברמה מטורפת</div><br><br>
+        <div align = "Center"><button type="button" id = "thirdWrapBut" class="btn btn-primary btn-lg btn-block" style="width: 35%; background-color: red; border-color: red; font-size: 36px;" onclick="changeLevel(new_level, 900, 2500, 1100, 3);">המשך לשלב הבא</button></div>
+    </div>
+    
+    <div id="game">
+        <img src = "images/score.png" id = "score_img" style="position: absolute; top: 1%; left: 1%; width: 5.5%; height: 11%;">
+        <div class="container">
+            <strong id = "score_text" style = "position: absolute; top: 3%; left: 3%;font-size: 46px;">0</strong>
+        </div>
+        
+        <div class='a' id = "first_div"><img id = "img_1"/></div>
+        <div class='b' id = "second_div"><img id = "img_2"/></div>
+        <div class='c' id = "third_div"><img src="images/ship1.png" id = "img_3"/></div>
+        <div class='d' id = "forth_div"><img src="images/ship2.png" id = "img_4"/></div>
+    </div>
+    
+    <audio id="sound"></audio>
+    
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
 
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close" id = "close_button">&times;</span>
+            <p>
+                אנא הפכו את הטלפון למצב שוכב<br/>
+                <div align = "center" id = "phone_img"><img src = "../EscapeZone/Resources/vertical_to_horizontal.png" alt="מצטערים, משהו קרה עם התמונה." style="width: 20%; height: 20%;"></div>
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        var modal = document.getElementById('myModal');
+        var span = document.getElementsByClassName("close")[0];
+        var modal_text = modal.querySelector('p');
+        var passed_turn = false;
+        var finished_game = false;
+        
+        span.onclick = function() {
+            modal.style.display = "none";
+            passed_turn = localStorage.getItem("passed_turn");
+            finished_game = localStorage.getItem("finishedRobots");
+            
+            if(passed_turn == "false" || passed_turn == false)
+            {
+                if(finished_game == "true" || finished_game == true)
+                {
+                    document.location.href = "../EscapeZone/Station_6/index.html";
+                }
+                else
+                {
+                    window.location.reload(false);
+                }
+            }
+            else
+            {
+                if(finished_game == "true" || finished_game == true)
+                {
+                    document.location.href = "../EscapeZone/Station_6/index.html";
+                }
+            }
+        }
 
-		second_div.addEventListener("click", function(){
-			if(!second_clicked)
-			{
-				//$( "#second_div" ).toggle( "explode" );
-				//$( "#second_div" ).toggle( "explode" );
-				counter++;
-				score_text.innerHTML = "תוצאה: " + counter;
-				//second_clicked = true;
-			}
-		});
-		
-		$('body').click(function(evt){
-			console.log(evt.target.id);
-			if(!(evt.target.id == "first_div" || evt.target.id == "second_div" || evt.target.id == "img_1" || evt.target.id == "img_2") && !alreadyPrinted)
-			{
-				alert("נגעת במסך - הפסדת !");
-				printScore();
-			}
-		});
-	</script>
-	
-	<script>
-		setTimeout(function(){
-				printScore();
-		}, 20000);
-	</script>
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+                passed_turn = localStorage.getItem("passed_turn");
+                finished_game = localStorage.getItem("finishedRobots");
+                
+                if(passed_turn == "false" || passed_turn == false)
+                {
+                    if(finished_game == "true" || finished_game == true)
+                    {
+                        document.location.href = "../EscapeZone/Station_6/index.html";
+                    }
+                    else
+                    {
+                        window.location.reload(false);
+                    }
+                }
+                else
+                {
+                    if(finished_game == "true" || finished_game == true)
+                    {
+                        document.location.href = "../EscapeZone/Station_6/index.html";
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <script>
+        if(window.innerHeight > window.innerWidth)
+        {
+            localStorage.setItem("passed_turn", false);
+            modal.style.display = "block";
+        }
+        else
+        {
+            localStorage.setItem("passed_turn", true);
+        }
+    </script>
+    
+    <script src = "RobotGame.js"></script>
 </body>
 </html>

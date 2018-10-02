@@ -1,134 +1,263 @@
 <html>
 <head>
+    <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../Resources/style.css"/>
+    <title>זירה 3</title>
+    <style>
+            body
+            {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                height: 100%;
+                direction: rtl;
+                text-align: right;
+                min-height:100%;
+                font-size: 5vh;
+            }
+            .background
+            {
+                width: 100%;
+                height: 160%;
+                min-height:160%;
+            }
+            .container
+            {
+                width: 100%;
+                height: 100%;
+                position: relative;
+                margin: 0;
+                padding: 0;
+                min-height:100%;
+                /*margin-left: 5%;
+                margin-right: 5%;*/
+            }
+            #zone_text
+            {
+                position: absolute;
+                top: 48%;
+                right: 3%;
+                min-height:100%;
+            }
+        #final_div
+            {
+                text-align: center;
+                position: absolute;
+                top: 45%;
+                right: 15%;
+                font-size: 5vh;
+            }
+        </style>
     
     <script type="application/javascript">
-            function CheckEnd()
-            {
-                var form = document.getElementById("final");
-                var inputs = form.getElementsByTagName("input");
-                s = ""
-                for(var i = inputs.length - 1; i >= 0; i --)
-                {
-                    s += inputs[i].value;
-                }
-                
-                s = s.toLowerCase();
-                if(s.localeCompare("memo768") == 0)
-                {
-                     document.getElementById("final_div").innerHTML = "נכון, הקוד הוסף למאגר";
-                     localStorage.setItem("for_3", "OK");
-                }
-                else
-                {
-                    document.getElementById("final_div").innerHTML = "לא נכון נסו שוב";
-                }
-            }
-            function Init()
-            {
-                var form = document.getElementById("final");
-                var inputs = form.getElementsByTagName("input");
-                for(var k = inputs.length - 1; k > 0 ; k--)
-                {
-                    (function()
-					{
-						var inp = inputs[k];
-						var next_inp = inputs[k - 1];
-						if(next_inp.disabled)
-						{
-							if( k - 2 >= inputs.length)
-							{
+        localStorage.setItem("reloaded", "false");
 
-							}
-							else
-							{
-								next_inp = inputs[k - 2];
-							}
-						}
-						inp.addEventListener("input", function(event)
-						{
-							if(inp.value != "")
-							{
-								next_inp.focus();     
-							}
-						});
-                    }());
+        // Checks if player finished all of the stations.
+        function checkFinished()
+        {
+            var s = "";
+            var val = "";
+            for(var i = 1; i <= 8; i++)
+            {
+                s = "for_" + i;
+                val = localStorage.getItem(s);
+                if(val == null || val != "OK")
+                {
+                    return false;
                 }
             }
-            
-            function Start()
+
+            return true;
+        }
+
+        function CheckEnd()
+        {
+            var form = document.getElementById("final");
+            var inputs = form.getElementsByTagName("input");
+            s = ""
+            for(var i = inputs.length - 1; i >= 0; i --)
             {
-                Init(1,false);
-                //setTimeout(OfferHint,300000);
+                s += inputs[i].value;
             }
-        
-            function StartGame()
+
+            s = s.toLowerCase();
+            if(s.localeCompare("memo768") == 0)
             {
-                document.location.href = "game.html";
+                document.getElementById("incorrect_div").style.display = "none";
+                setTimeout(function(){
+                    document.getElementById("answer_div").style.display = "none";
+                    document.getElementById("head").style.display = "none";
+                    document.getElementById("code_head").style.display = "none";
+                    document.getElementById("final_div").innerHTML = "נכון, הקוד הוסף אוטומטית למאגר (סטטוס הקודים – בדף הבית). <br>גלול למעלה וחזור לדף הבית.";
+                    localStorage.setItem("for_3", "OK");
+
+                    if(checkFinished())
+                    {
+                        alert("כל הכבוד, סיימת את כל התחנות !\nאנא גש לדף הבית, לחץ על סטטוס הקודים, וחשוף את סוף המשימה !");
+                    }
+                    
+                    document.location.href = "#final_div";
+                }, 250);
             }
-        </script>
+            else
+            {
+                document.getElementById("incorrect_div").innerHTML = "לא נכון נסו שוב";
+            }
+        }
+        function Init()
+        {
+            var form = document.getElementById("final");
+            var inputs = form.getElementsByTagName("input");
+            for(var k = inputs.length - 1; k > 0 ; k--)
+            {
+                (function()
+                {
+                    var inp = inputs[k];
+                    var next_inp = inputs[k - 1];
+                    if(next_inp.disabled)
+                    {
+                        if( k - 2 >= inputs.length)
+                        {
+
+                        }
+                        else
+                        {
+                            next_inp = inputs[k - 2];
+                        }
+                    }
+                    inp.addEventListener("input", function(event)
+                    {
+                        if(inp.value != "")
+                        {
+                            next_inp.focus();     
+                        }
+                    });
+                }());
+            }
+        }
+
+        function Start()
+        {
+            Init(1,false);
+            //setTimeout(OfferHint,300000);
+        }
+
+        function StartGame()
+        {
+            document.location.href = "game.html";
+        }
+    </script>
 </head>
 <body onload="Start();">
-    
-    <div id = "explain">    
-        <div class="Center_div" id="Header_div">
-            תחנה 3 - משחק הזיכרון
+    <div class="container">
+        <img src = "../Resources/stations-background.jpg" class="background" id="background_img">
+        <a href = "../Welcome/index.html"><img src = "../Resources/home-icon.png" id = "HomeIcon" title = "לחץ כדי לחזור לדף הבית"></a>
+        <div id = "head" style = "position: absolute; top: 30%; left: 33%; font-size: 6vh;">
+            <b><i>זירה 3 - משחק הזיכרון</i></b>
         </div>
+        <div id = "explain">
+            <img src = "../Resources/clock.png" id = "clockImg" title = "כאשר סמל זה ייעלם מן המסך, יופיע רמז.">
+            <p id="zone_text">
+                מסר מההאקרים:<br>
+                "הפעם השתמשנו במה שאנחנו הכי אוהבים - חידות ומשחקים".<br>
 
-        <p id="HomeIcon">
-            <a href="../Welcome/index.html">
-                <span class="glyphicon glyphicon-home"></span>
-            </a>
-        </p>
-
-        <img src = "../Resources/clock.png" id = "clockImg" title = "כאשר סמל זה ייעלם מן המסך, יופיע רמז.">
-    
-        <p class="content">
-            מסר מההאקרים: <br>
-            "הפעם השתמשנו במה שאנחנו יודעים הכי טוב -  לפתח משחקים". <br>
-            הקוד הבא מסתתר בסוף משחק זיכרון. רק לאחר שלושה שלבים תקבלו את הקוד הזירה שיהיה מורכב  ממילה באנגלית בת 4 אותיות ומספר תלת ספרי. <br>
-            דרך אגב בזמן שאתם פותרים את המשחק אנחנו נוכל להתרחק ולברוח. <br>
-        </p>
-        <div align = "center"><br><br>
-            <button type="button" class="btn btn-primary btn-lg btn-block" style="width: 45%;" onclick="StartGame();">לחץ כדי להתחיל את המשחק</button>
+                הקוד הבא מסתתר בסוף אתגר הזיכרון. רק לאחר שלושה שלבים תקבלו את קוד הזירה
+                שיהיה מורכב ממילה באנגלית בת 4 אותיות ומספר תלת ספרתי.
+            </p>
+            <div style="text-align: center; position: absolute; top: 75%; left: 28%; font-size: 4vh;"><br><br>
+                <button type="button" class="btn btn-primary btn-lg btn-block" style="width: 100%; background-color: red; border-color: red; font-size: 5vh;" onclick="StartGame();">לחץ כדי להתחיל את אתגר הזיכרון</button>
+            </div>
         </div>
-        <br><br><br>
-    </div>
-    
-    <div class="Content" id = "answer_div" style="text-align: center; display: none;">
-        <p id="HomeIcon">
-            <a href="../Welcome/index.html">
-                <span class="glyphicon glyphicon-home"></span>
-            </a>
-        </p>
-        <br><br><br><br><br>
-        <div style="text-decoration: underline; margin-bottom: 3%;">אנא הכנס את קוד המשימה בתיבת הטקסט:</div>
-        <form id="final">
-            <input type="text" class="mini_txt" id="final_1" maxlength="1" pattern ="[0-9]*" />
-            <input type="text" class="mini_txt" id="final_2" maxlength="1" pattern ="[0-9]*" />
-            <input type="text" class="mini_txt" id="final_3" maxlength="1" pattern ="[0-9]*" />
-            <input type="text" class="mini_txt" id="final_4" maxlength="1" pattern ="[0-9]*" />
-            <input type="text" class="mini_txt" id="final_5" maxlength="1" pattern ="[0-9]*" />
-            <input type="text" class="mini_txt" id="final_6" maxlength="1" pattern ="[0-9]*" />
-            <input type="text" class="mini_txt" id="final_7" maxlength="1" pattern ="[0-9]*" />
-        </form>
-        <div align="center">
-        <button type="button" class="btn btn-primary btn-lg btn-block" style="width: 35%;" onclick="CheckEnd();">בדוק</button>
+        
+        <div class="Content" id = "answer_div" style="text-align: center; display: none; position: absolute; top: 60%; right: 24%;">
+            <div id = "code_head" style="text-decoration: underline; margin-bottom: 3%; font-size: 5vh;">הקוד הוא: </div>
+            <form id="final">
+                <input type="text" class="mini_txt" id="final_1" maxlength="7"/>
+                <!--<input type="text" class="mini_txt" id="final_2" maxlength="1"/>
+                <input type="text" class="mini_txt" id="final_3" maxlength="1"/>
+                <input type="text" class="mini_txt" id="final_4" maxlength="1"/>
+                <input type="text" class="mini_txt" id="final_5" maxlength="1"/>
+                <input type="text" class="mini_txt" id="final_6" maxlength="1"/>
+                <input type="text" class="mini_txt" id="final_7" maxlength="1"/>-->
+            </form>
+            <div align = "Center">
+                <button type="button" class="btn btn-primary btn-lg btn-block" style="width: 35%; background-color: red; border-color: red;" onclick="CheckEnd();">בדוק</button>
+            </div>
+            <div id="incorrect_div">
+            </div>
         </div>
         <div id="final_div">
         </div>
     </div>
-    <br><br><br>
+    
+    
+    <script>
+        /*
+            This script's purpose is that when the keyboard is open,
+            the text will disappear and the form will jump up, because 
+            otherwise the text and the form gets confused and it very
+            inconvenient.
+        */
+        var text = document.getElementById("zone_text");
+        var form = document.getElementById("form_div");
+        var form_input = document.getElementById("final_1");
+        //var form_input2 = document.getElementById("final_2");
+        var clicked = false;
+        var s = "";
+        setInterval(function(){
+            if($(document.activeElement).attr('type') == "text")    //Keyobard is open
+            {
+                if(!clicked)
+                {
+                    console.log("Keyboard is visible");
+
+                    /*for(var i = 7; i >= 1; i--)     //finds first clear input.
+                    {
+                        s = "final_" + i;
+                        form_input = document.getElementById(s);
+                        if(form_input.value.length <= 0)
+                        {
+                            break;   
+                        }
+                    }*/
+                    
+                    text.style.display = "none";
+                    document.getElementById("head").style.display = "none";
+                    document.getElementById("code_head").style.display = "none";
+                    $("#form_div").animate({ top: '60%', right: '24%' }, 0);
+                    document.location.href = "#form_div";
+                    form_input.focus();
+                    form_input.select();
+                    clicked = !clicked;
+                    //form_input.style.display = "block";   
+                }
+            }
+            else
+            {
+                if(clicked)
+                {
+                    console.log("Keyboard is NOT visible");
+                    text.style.display = "block";
+                    document.getElementById("head").style.display = "block";
+                    document.getElementById("code_head").style.display = "block";
+                    $("#form_div").animate({ top: '80%', right: '24%' }, 0);
+                    document.location.href = "#form_div";
+                    clicked = !clicked;
+                }
+            }
+        }, 100);
+    </script>
     
     
     <script>
         var url = window.location.href;
         if(url.indexOf("finish=yes") != -1)
         {
+            document.getElementById("background_img").style.height = "250%";
             document.getElementById("explain").style.display = "none";
             document.getElementById("answer_div").style.display = "block";          
         }

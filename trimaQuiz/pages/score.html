@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        
+        <meta charset="utf-8"/>
+        
+        <title>השלמתם את החידון!</title>
+    
+        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="../resources/css/style.css"/>
+        
+        <script>
+            function playAudio()
+            {
+                document.getElementById("but").style.display = "none";
+                document.getElementById("text").style.display = "block";
+                document.getElementById("sound").play();
+            }
+        </script>
+    </head>
+    
+    <body id = "b" class="non-q-page">
+        <audio src = "../resources/audio/finished.mp3" id = "sound"></audio>
+        <button class="pure-button pure-button-primary" style = "margin: 1%;" id = "but" onclick="playAudio();">חשוף את קוד הצופן לכספת</button>
+        
+        <div id = "text" style = "display: none;">
+            <h1>כל הכבוד ! הצלחתם לפתור נכון את חידון תרימה !</h1>
+
+            <p>הכניסו את המספר 359  לנוסחה שקיבלתם בתחילת הפעילות במקום המיועד לקוד החידון.</p>
+            <p>פתרו את הנוסחה ותקבלו את הקוד לכספת , רוצו לפתוח אותה, "הראשון זוכה השני בוכה" !</p>
+            <p>בהצלחה.</p>
+        </div>
+    </body>
+
+</html>

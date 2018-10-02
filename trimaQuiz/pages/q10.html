@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        
+        <meta charset="utf-8"/>
+        
+        <title>שאלה {{qNum}}</title>
+    
+        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="../resources/css/style.css"/>
+        
+    </head>
+    
+    <body class="health">
+    
+        <div class="content">
+        
+            <h1>שאלה <span id="qNum"></span></h1>
+
+            <form action="javascript:saveAnswer()" class="pure-form" id="userAnswerForm">
+
+                <h2>
+                    ראש השנה נחשב ליום שבו דן האלוהים את כל באי העולם אודות מעשיהם בשנה שעברה וכפועל יוצא מה יקרה בשנה הבאה
+                </h2>
+
+                <input type="radio" name="answer" id="a1" value="0" hidden>
+                <label for="a1" class="pure-radio">
+                    לא נכון
+                </label>
+                <hr/>
+                <input type="radio" name="answer" id="a2" value="1" hidden>
+                <label for="a2" class="pure-radio">
+                    נכון
+                </label>
+
+                <br/><button type="submit" class="pure-button pure-button-primary">השב והמשך</button>
+
+            </form>
+        
+        </div>
+            
+        <script type="text/javascript" src="radioScript.js"></script>
+        
+    </body>
+
+</html>
