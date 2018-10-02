@@ -1,5 +1,5 @@
 var IMG_WIDTH = 3544
-var IMG_HEIGHT = 1578
+var IMG_HEIGHT = 1596
 
 function InitScreen(width, height)
 {
