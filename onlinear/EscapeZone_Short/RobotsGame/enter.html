@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../Resources/libs/instascan.min.js"></script>
+        <title>תפוס ת'רובוט</title>
+        
+        <style>
+            body
+            {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                height: 100%;
+                direction: rtl;
+                text-align: right;
+                min-height:100%;
+                font-size: 5vh;
+            }
+            .background
+            {
+                width: 100%;
+                height: 270%;
+                min-height:270%;
+            }
+            .container
+            {
+                width: 100%;
+                height: 100%;
+                position: relative;
+                margin: 0;
+                padding: 0;
+                min-height:100%;
+                /*margin-left: 5%;
+                margin-right: 5%;*/
+            }
+            #zone_text
+            {
+                position: absolute;
+                top: 85%;
+                right: 3%;
+                min-height:100%;
+            }
+            #HomeIcon
+            {
+                width: 10%;
+                height: 16%;
+                position: absolute;
+                left: 1%;
+                top: 14%;
+                background-repeat: no-repeat;
+                background-size: contain; 
+            }
+        </style>
+    </head>
+    <body>
+        
+        <div class="container">
+            <img src = "../Resources/stations-background.jpg" class="background" id="background_img">
+            <a href = "../Welcome/index.html"><img src = "../Resources/home-icon.png" id = "HomeIcon" title = "לחץ כדי לחזור לדף הבית"></a>
+            <img src="logo.png" width="45%" height="45%" style="position: absolute; top: 39%; left: 5%;">
+            <p id="zone_text">
+                
+                <b><i><font color = "black">הוראות:</font></i><br>
+                <img src = "50_points.png" style="width: 12%; height: 16%;"><font color = "Tomato">להשיג 50 נקודות ומעלה ולקבל רמז</font><br/><br/>
+                <img src = "../Station_6/robot.png" style = "width: 14%; height: 16%;"><font color = "DodgerBlue">ללחוץ על רובוטים</font><br/><br/>
+                <img src = "images/ship2.png" style = "width: 14%; height: 16%;"><font color = "MediumSeaGreen">ללחוץ על חלליות (ניקוד כפול)</font><br/><br/>
+                <img src = "images/img3.png" style = "width: 14%; height: 16%;"><font color = "Navy">לא ללחוץ על ליצנים! מוריד נקודה</font><br/><br/>
+            </p>
+            <p style = "position: absolute; top: 190%; left: 29%; color:Orange;"><b><i>לחצו על הרובוט כדי להתחיל לשחק !</i></b></p>
+            <a href = "index.html"><img src = "../Station_6/robot.png" style = "position: absolute; top:205%; left: 44%; width: 14%; height: 16%;"></a>
+        </div>
+    </body>
+</html>
