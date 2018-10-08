@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="../Resources/style.css"/>
+        <title>כל הכבוד !</title>
+        <style>
+            body
+            {
+                margin: 0;
+                padding: 1%;
+                width: 100%;
+                height: 100%;
+                direction: rtl;
+                text-align: right;
+                min-height:100%;
+            }
+            
+            #text
+            {
+                position: relative;
+                top: 10%;
+                padding: 3%;
+                border: 2px solid black;
+                margin: auto;
+                width: 100%;
+            }
+            
+            #myVideo
+            {
+                display: none;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+            }
+        </style>
+        
+        <script>
+            function startVid()
+            {
+                var video = document.getElementById('myVideo');
+                var source = document.createElement('source');
+                video.style.display = "block";
+                document.getElementById("text").style.display = "none";
+                source.setAttribute('src', 'resources/images/success_video.mp4');
+                video.appendChild(source);
+                video.play();
+            }
+        </script>
+    </head>
+    <body>
+        <div id = "text">
+            <p class = "Content" style = "margin-top: 2%;">
+                כל הכבוד ! סיימתם את המשימה והצלחתם לפצח את הקוד של כנופיית ההאקרים ולהציל את המדינה מהשתלטות עוינת.<br>
+                מסתבר שכל המדינה&nbsp;שמעה&nbsp;על&nbsp;ההצלחה שלכם. <br>
+                לחצו על הלינק לסרטון של מבזק חדשות קצר ששודר לפני דקה בטלויזיה בשדור חי.<br>
+                מישהו רוצה גם להודות לכם !<br><br>
+                <button type="button" class="btn btn-primary btn-lg btn-block" style="width: 100%;" onclick = "startVid();">לחצו כדי לצפות בסרטון</button>
+            </p>
+            <br/><br/>
+        </div>
+        
+        <video controls id="myVideo"></video>
+    </body>
+</html>

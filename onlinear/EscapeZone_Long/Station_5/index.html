@@ -1,0 +1,342 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../Resources/style.css"/>
+    <title>זירה 5</title>
+    <style>
+        body
+        {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            direction: rtl;
+            text-align: right;
+            min-height:100%;
+            font-size: 5vh;
+        }
+        .background
+        {
+            width: 100%;
+            height: 320%;
+            min-height:320%;
+        }
+        .container
+        {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            min-height:100%;
+            /*margin-left: 5%;
+            margin-right: 5%;*/
+        }
+        #zone_text
+        {
+            position: absolute;
+            top: 55%;
+            right: 3%;
+            min-height:100%;
+        }
+        #final_div
+        {
+            text-align: center;
+            position: absolute;
+            top: 45%;
+            right: 15%;
+            font-size: 5vh;
+        }
+        #giving_code
+        {
+            display: none;
+            text-align: center;
+            position: absolute;
+            top: 45%;
+            right: 30%;
+            font-size: 10vh;
+            color: mediumseagreen;
+        }
+        #myVideo
+        {
+            position: absolute;
+            top: 150%;
+            left: 1%;
+            width: 50%;
+            height: 60%;
+            border: 2px solid black;
+        }
+        #choose_type
+        {
+            position: absolute;
+            top: 160%;
+            right: 2%;
+            min-height: inherit;
+            border: 3px solid red;
+            border-radius: 25px;
+            padding: 15px;
+            font-weight: bold;
+            color: red;
+        }
+        #text_exp
+        {
+            position: absolute;
+            top: 200%;
+            right: 3%;
+        }
+    </style>
+    <script type="application/javascript">
+        localStorage.setItem("reloaded", "false");
+        
+        // Checks if player finished all of the stations.
+        function checkFinished()
+        {
+            var s = "";
+            var val = "";
+            for(var i = 1; i <= 8; i++)
+            {
+                s = "for_" + i;
+                val = localStorage.getItem(s);
+                if(val == null || val != "OK")
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+        function CheckEnd()
+        {
+            var form = document.getElementById("final");
+            var inputs = form.getElementsByTagName("input");
+            s = ""
+            for(var i = inputs.length - 1; i >= 0; i --)
+            {
+                s += inputs[i].value;
+            }
+
+            s = s.toLowerCase();
+            if(s.localeCompare("puzz576") == 0)
+            {
+                document.getElementById("incorrect_div").style.display = "none";
+                setTimeout(function(){
+                    document.getElementById("answer_div").style.display = "none";
+                    document.getElementById("zone_text").style.display = "none";
+                    document.getElementById("head").style.display = "none";
+                    document.getElementById("code_head").style.display = "none";
+                    document.getElementById("final_div").innerHTML = "נכון, הקוד הוסף אוטומטית למאגר (סטטוס הקודים – בדף הבית). <br>גלול למעלה וחזור לדף הבית.";
+                    setTimeout(function(){
+                        document.getElementById("giving_code").style.display = "none";
+                    }, 250);
+                    localStorage.setItem("for_5", "OK");
+
+                    if(checkFinished())
+                    {
+                        alert("כל הכבוד, סיימת את כל התחנות !\nאנא גש לדף הבית, לחץ על סטטוס הקודים, וחשוף את סוף המשימה !");
+                    }
+                    
+                    document.location.href = "#final_div";
+                }, 250);
+            }
+            else
+            {
+                document.getElementById("incorrect_div").innerHTML = "לא נכון נסו שוב";
+            }
+        }
+        function Init()
+        {
+            var form = document.getElementById("final");
+            var inputs = form.getElementsByTagName("input");
+            for(var k = inputs.length - 1; k > 0 ; k--)
+            {
+                (function()
+                {
+                    var inp = inputs[k];
+                    var next_inp = inputs[k - 1];
+                    if(next_inp.disabled)
+                    {
+                        if( k - 2 >= inputs.length)
+                        {
+
+                        }
+                        else
+                        {
+                            next_inp = inputs[k - 2];
+                        }
+                    }
+                    inp.addEventListener("input", function(event)
+                    {
+                        if(inp.value != "")
+                        {
+                            next_inp.focus();     
+                        }
+                    });
+                }());
+            }
+        }
+
+        function Start()
+        {
+            Init();
+            //setTimeout(OfferHint,240000);
+        }
+
+        function StartGame()
+        {
+            document.location.href = "https://out4in.github.io/out4in.github.io/onlinear/EscapeZone_Long/Station_5/ar.html";
+        }
+    </script>
+</head>
+<body onload="Start();">
+    <div class="container">
+        <img src = "../Resources/stations-background.jpg" class="background" id="background_img">
+        <a href = "../Welcome/index.html"><img src = "../Resources/home-icon.png" id = "HomeIcon" title = "לחץ כדי לחזור לדף הבית"></a>
+        <div id = "head" style = "position: absolute; top: 35%; left: 33%; font-size: 6vh;">
+            <b><i>זירה 5 - מסביב לעולם</i></b>
+        </div>
+        
+        <div id = "giving_code">
+            <b>הקוד הוא: puzz576</b>
+        </div>
+        
+        <div id = "explain">
+            <img src = "../Resources/clock.png" id = "clockImg" title = "כאשר סמל זה ייעלם מן המסך, יופיע רמז.">
+            <video controls id="myVideo">
+                <source src="resources/videos/ar_vid.mp4" type="video/mp4">
+                Your browser does not support HTML5 video.
+            </video>
+            <p id = "choose_type">
+                אנא בחר את סוג ההסבר: סרטון  &#10229;<br/>
+                או טקסט  &#8595;
+            </p>
+            <p id="zone_text">
+                <u>עדות שכנה:</u><br/>
+                אחת השכנות מסרה לידי המשטרה תיבה שהושארה אצלה למשמרת מידי חבורת ההאקרים.<br/>
+                במכתב שהשאירו ההאקרים נכתב:<br/>
+
+                אתם אינכם מכירים אותנו הגענו לישראל מ 4 ערים שונות ברחבי העולם. החבאנו את שמות הערים בחידת משחק.<br/>
+                נראה אם תצליחו לגלות מאיפה הגענו ? <br/><br/>
+
+                <u>מה המטרה?</u><br/>
+                עליכם להרכיב את תמונות הערים מ 4 חלקים וירטואליים ולייצר קוד של מילה באנגלית ו 3 ספרות. <br/>
+            </p>
+            
+            <p id = "text_exp">
+                <u>מה עושים?</u><br/>
+                לפניכם 4 ריבועים ממוספרים מ 1-4 <br/>
+                1.סדרו אותם בשורה אופקית <br/>
+                2.לחצו על כפתור האדום למטה "התחלת המשימה" <br/>
+                3.צפו בריבועים דרך המצלמה ותוכלו לראות חלקי תמונה של עיר <br/>
+                4.סדרו את הריבועים בסדר הנכון עד שתקבלו את התמונה המלאה של העיר <br/>
+                הטלפון יודיע לכם במידה והרכבתם נכון את התמונה<br/>
+                5. כעת סובבו את כל אחד מהריבועים 90 מעלות שמאלה והרכיבו עיר נוספת<br/>
+                6. סובבו עוד פעמיים – עד להשלמת 4 תמונות של ערים<br/>
+
+                בסיום הרכבת 4 הערים תקבלו את קוד הזירה: 4 אותיות באנגלית ומספר תלת ספרתי 
+            </p>
+            <div style="text-align: center; position: absolute; top: 270%; left: 41%;"><br><br>
+                <button type="button" class="btn btn-primary btn-lg btn-block" style="width: 100%; background-color: red; border-color: red; font-size: 5vh;" onclick="StartGame();">להתחלת המשחק</button>
+            </div>
+        </div>
+        
+        <div class="Content" id = "answer_div" style="text-align: center; display: none; position: absolute; top: 80%; right: 24%;">
+            <div id = "code_head" style="text-decoration: underline; margin-bottom: 3%; font-size: 5vh;">אנא הכנס את קוד המשימה בתיבת הטקסט</div>
+            <form id="final">
+                <input type="text" class="mini_txt" id="final_1" maxlength="7"/>
+                <!--<input type="text" class="mini_txt" id="final_2" maxlength="1"/>
+                <input type="text" class="mini_txt" id="final_3" maxlength="1"/>
+                <input type="text" class="mini_txt" id="final_4" maxlength="1"/>
+                <input type="text" class="mini_txt" id="final_5" maxlength="1"/>
+                <input type="text" class="mini_txt" id="final_6" maxlength="1"/>
+                <input type="text" class="mini_txt" id="final_7" maxlength="1"/>-->
+            </form>
+            <div align = "Center">
+                <button type="button" class="btn btn-primary btn-lg btn-block" style="width: 35%; background-color: red; border-color: red;" onclick="CheckEnd();">בדוק</button>
+            </div>
+            <div id="incorrect_div">
+            </div>
+        </div>
+        <div id="final_div">
+        </div>
+    </div>
+    
+    
+    <script>
+        /*
+            This script's purpose is that when the keyboard is open,
+            the text will disappear and the form will jump up, because 
+            otherwise the text and the form gets confused and it very
+            inconvenient.
+        */
+        var text = document.getElementById("zone_text");
+        var form = document.getElementById("answer_div");
+        var form_input = document.getElementById("final_1");
+        //var form_input2 = document.getElementById("final_2");
+        var clicked = false;
+        var s = "";
+        setInterval(function(){
+            if($(document.activeElement).attr('type') == "text")    //Keyobard is open
+            {
+                if(!clicked)
+                {
+                    console.log("Keyboard is visible");
+
+                    /*for(var i = 7; i >= 1; i--)     //finds first clear input.
+                    {
+                        s = "final_" + i;
+                        form_input = document.getElementById(s);
+                        if(form_input.value.length <= 0)
+                        {
+                            break;   
+                        }
+                    }*/
+                    
+                    text.style.display = "none";
+                    //document.getElementById("head").style.display = "none";
+                    document.getElementById("giving_code").style.display = "none";
+                    document.getElementById("code_head").style.display = "none";
+                    $("#answer_div").animate({ top: '80%', right: '24%' }, 0);
+                    document.location.href = "#answer_div";
+                    form_input.focus();
+                    form_input.select();
+                    clicked = !clicked;
+                    //form_input.style.display = "block";   
+                }
+            }
+            else
+            {
+                if(clicked)
+                {
+                    console.log("Keyboard is NOT visible");
+                    text.style.display = "block";
+                    //document.getElementById("head").style.display = "block";
+                    document.getElementById("giving_code").style.display = "block";
+                    document.getElementById("code_head").style.display = "block";
+                    document.location.href = "#answer_div";
+                    clicked = !clicked;
+                }
+            }
+        }, 100);
+    </script>
+    
+    
+    <script>
+        var url = window.location.href;
+        if(url.indexOf("finish=yes") != -1)
+        {
+            localStorage.setItem("for_5", "OK");
+            document.location.href = "http://out4in.xyz/EscapeZone_Long/Welcome/index.html";
+            
+            /*document.getElementById("head").style.display = "none";
+            document.getElementById("explain").style.display = "none";
+            document.getElementById("answer_div").style.display = "block";
+            document.getElementById("giving_code").style.display = "block";*/
+        }
+    
+    </script>
+</body>
+</html>

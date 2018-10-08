@@ -1,0 +1,379 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="../Resources/style.css"/>
+        <title>זירה 8</title>
+        
+        <style>
+            #CodeForm{
+                display: none;
+            }
+            body
+            {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                height: 100%;
+                direction: rtl;
+                text-align: right;
+                min-height:100%;
+                font-size: 5vh;
+            }
+            .background
+            {
+                width: 100%;
+                height: 265%;
+                min-height:265%;
+            }
+            .container
+            {
+                width: 100%;
+                height: 100%;
+                position: relative;
+                margin: 0;
+                padding: 0;
+                min-height:100%;
+                /*margin-left: 5%;
+                margin-right: 5%;*/
+            }
+            #zone_text
+            {
+                position: absolute;
+                top: 55%;
+                right: 3%;
+                min-height:100%;
+            }
+            #final_div
+            {
+                text-align: center;
+                position: absolute;
+                top: 45%;
+                right: 15%;
+                font-size: 5vh;
+            }
+        </style>
+        <script type="application/javascript">
+            localStorage.setItem("reloaded", "false");
+            
+            // Checks if player finished all of the stations.
+            function checkFinished()
+            {
+                var s = "";
+                var val = "";
+                for(var i = 1; i <= 8; i++)
+                {
+                    s = "for_" + i;
+                    val = localStorage.getItem(s);
+                    if(val == null || val != "OK")
+                    {
+                        return false;
+                    }
+                }
+                
+                return true;
+            }
+            
+            function CheckEnd()
+            {
+                var form = document.getElementById("final");
+                var inputs = form.getElementsByTagName("input");
+                s = ""
+                for(var i = inputs.length - 1; i >= 0; i --)
+                {
+                    s += inputs[i].value;
+                }
+                
+                s = s.toLowerCase();
+                if(s.localeCompare("boxt456") == 0)
+                {
+                    document.getElementById("incorrect_div").style.display = "none";
+                    setTimeout(function(){
+                        document.getElementById("CodeForm").style.display = "none";
+                        document.getElementById("zone_text").style.display = "none";
+                        document.getElementById("head").style.display = "none";
+                        document.getElementById("code_head").style.display = "none";
+                        document.getElementById("final_div").innerHTML = "נכון, הקוד הוסף אוטומטית למאגר (סטטוס הקודים – בדף הבית). <br>גלול למעלה וחזור לדף הבית.";
+                        localStorage.setItem("for_8", "OK");
+                        
+                        if(checkFinished())
+                        {
+                            alert("כל הכבוד, סיימת את כל התחנות !\nאנא גש לדף הבית, לחץ על סטטוס הקודים, וחשוף את סוף המשימה !");
+                        }
+                        
+                        document.location.href = "#final_div";
+                    }, 250);
+                }
+                else
+                {
+                    document.getElementById("incorrect_div").innerHTML = "לא נכון נסו שוב";
+                }
+            }
+            
+            function CheckEndSuccess()
+            {
+                var form = document.getElementById("first");
+                var inputs = form.getElementsByTagName("input");
+                s = ""
+                for(var i = inputs.length - 1; i >= 0; i --)
+                {
+                    s += inputs[i].value;
+                }
+                
+                s = s.toLowerCase();
+                if(s.localeCompare("success") == 0)
+                {
+                    /*
+                        Eran wanted that instead of getting the code in an alert, and 
+                        then entering it into the new text box, the whole thing would
+                        be just automatic, and when typing the first answer, the mission
+                        will be finished.
+                        Therefore, the function "CheckEnd" and several more stuff are
+                        useless at this point.
+                    */
+                    document.getElementById("incorrect_div").style.display = "none";
+                    setTimeout(function(){
+                        document.getElementById("successForm").style.display = "none";
+                        document.getElementById("CodeForm").style.display = "none";
+                        document.getElementById("zone_text").style.display = "none";
+                        document.getElementById("head").style.display = "none";
+                        document.getElementById("code_head").style.display = "none";
+
+                        localStorage.setItem("for_8", "OK");
+
+                        document.getElementById("final_div").innerHTML = "נכון, הקוד boxt456 הוסף אוטומטית למאגר (סטטוס הקודים - בדף הבית) <br>גלול למעלה וחזור לדף הבית.";
+                        document.location.href = "#final_div";
+
+                        if(checkFinished())
+                        {
+                            alert("כל הכבוד, סיימת את כל התחנות !\nאנא גש לדף הבית, לחץ על סטטוס הקודים, וחשוף את סוף המשימה !");
+                        }
+                    }, 250);
+                    
+                    //document.getElementById("CodeForm").style.display = "block";
+                    //Init("CodeForm");
+                }
+                else
+                {
+                    document.getElementById("first_div").innerHTML = "לא נכון נסו שוב";
+                }
+            }
+            function Init(formName)
+            {
+                var form = document.getElementById(formName);
+                var inputs = form.getElementsByTagName("input");
+                for(var k = inputs.length - 1; k > 0 ; k--)
+                {
+                    (function()
+					{
+						var inp = inputs[k];
+						var next_inp = inputs[k - 1];
+						if(next_inp.disabled)
+						{
+							if( k - 2 >= inputs.length)
+							{
+
+							}
+							else
+							{
+								next_inp = inputs[k - 2];
+							}
+						}
+						inp.addEventListener("input", function(event)
+						{
+							if(inp.value != "")
+							{
+								next_inp.focus();     
+							}
+						});
+                    }());
+                }
+            }
+            
+            function OfferHint()
+            {
+                var answer = confirm("ראינו שאתם מתקשים, האם אתם רוצים עזרה?");
+                if(answer)
+                {
+                     var clockImg = document.getElementById("clockImg");
+                    clockImg.style.display = "none";
+                    setTimeout(function(){          //To remove image before alert.
+                        alert("אתם בדרך ל **הצלחה** במשימה ותרגומה באנגלית היא התשובה.");
+                    }, 250);
+                }
+                else
+                {
+                    setTimeout(OfferHint, 60000);
+                }
+            }
+            
+            function Start()
+            {
+                Init("first");
+                setTimeout(OfferHint,300000);
+            }
+        </script>
+        
+    </head>
+    <body onload="Start();">
+        <!--<br><br><br><br><br><br><br>-->
+        
+        <div class="container">
+            <img src = "../Resources/stations-background.jpg" class="background">
+            <a href = "../Welcome/index.html"><img src = "../Resources/home-icon.png" id = "HomeIcon" title = "לחץ כדי לחזור לדף הבית"></a>
+            <img src = "../Resources/clock.png" id = "clockImg" title = "כאשר סמל זה ייעלם מן המסך, יופיע רמז.">
+            <div id = "head" style = "position: absolute; top: 35%; left: 33%; font-size: 6vh;">
+                <b><i>זירה 8 - קוד בקליק</i></b>
+            </div>
+            <p id="zone_text">
+                <u>מסר מהכנופיה:</u><br/>
+                לפניכם אתגר הקליקים אם תצליחו לעמוד בו תופיע על מסך הלד מילה באנגלית בת 7 אותיות- זוהי התשובה לפתרון הקוד בתחנה.<br/>
+                <u>שלבי המשחק?</u><br/>
+                א – להפעלת המשחק לחצו על הכפתור העליון start.<br/>
+                ב -  לחצו על כל אחד מארבעת הכפתורים בהתאם לסימונים שעל מסך הלד כדי להתחיל את המשחק.
+                על המסך יופיע היעד המספרי שעליכם להגיע אליו.<br/>
+                ג' -  על לוח הלד יופיעו חיצים ברצף מסוים. עליכם ללחוץ על הקליקרים לפי הסדר משמאל לימין והכל תוך פרק זמו מוקצב.<br/>
+                <u>הערה חשובה מאוד - שימו לב !</u><br/>
+                <font style = "background-color: red; color: white;">רק לאחר שתגיעו ליעד המספרי תופיע על הצג רק לשנייה אחת בלבד מילה באנגלית בת 7 אותיות, הכניסו את האותיות שלה לתיבת הקוד למטה. </font><br/>
+                אם לא הצלחתם נסו שנית או חכו לרמז שיופיע תוך פרק זמן קצר.
+            </p>
+            
+            <div class="Content" id = "successForm" style="text-align: center; position: absolute; top: 170%; right: 24%;">
+                <div id = "word_head" style="text-decoration: underline; margin-bottom: 3%; font-size: 5vh;">המילה היא: </div>
+                <form id="first">
+                    <input type="text" class="mini_txt" id="first_1" maxlength="7"/>
+                    <!--<input type="text" class="mini_txt" id="first_2" maxlength="1"/>
+                    <input type="text" class="mini_txt" id="first_3" maxlength="1"/>
+                    <input type="text" class="mini_txt" id="first_4" maxlength="1"/>
+                    <input type="text" class="mini_txt" id="first_5" maxlength="1"/>
+                    <input type="text" class="mini_txt" id="first_6" maxlength="1"/>
+                    <input type="text" class="mini_txt" id="first_7" maxlength="1"/>-->
+                </form>
+                <div align = "Center">
+                    <button type="button" class="btn btn-primary btn-lg btn-block" style="width: 35%; background-color: red; border-color: red;" onclick="CheckEndSuccess();">בדוק</button>
+                </div>
+                <div id="first_div">
+                </div>
+            </div>
+            
+            <div class="Content" id = "CodeForm" style="text-align: center; position: absolute; top: 170%; right: 24%;">
+                <div id = "code_head" style="text-decoration: underline; margin-bottom: 3%; font-size: 5vh;">הקוד הוא: </div>
+                <form id="final">
+                    <input type="text" class="mini_txt" id="final_1" maxlength="7"/>
+                    <!--<input type="text" class="mini_txt" id="final_2" maxlength="1"/>
+                    <input type="text" class="mini_txt" id="final_3" maxlength="1"/>
+                    <input type="text" class="mini_txt" id="final_4" maxlength="1"/>
+                    <input type="text" class="mini_txt" id="final_5" maxlength="1"/>
+                    <input type="text" class="mini_txt" id="final_6" maxlength="1"/>
+                    <input type="text" class="mini_txt" id="final_7" maxlength="1"/>-->
+                </form>
+                <div align = "Center">
+                    <button type="button" class="btn btn-primary btn-lg btn-block" style="width: 35%; background-color: red; border-color: red;" onclick="CheckEnd();">בדוק</button>
+                </div>
+                <div id="incorrect_div">
+                </div>
+            </div>
+            <div id="final_div">
+            </div>
+        </div>
+        
+        
+        <script>
+            /*
+                This script's purpose is that when the keyboard is open,
+                the text will disappear and the form will jump up, because 
+                otherwise the text and the form gets confused and it very
+                inconvenient.
+            */
+            var text = document.getElementById("zone_text");
+            var success = document.getElementById("successForm");
+            var success_input = document.getElementById("first_1");
+            var code = document.getElementById("CodeForm");
+            var code_input = document.getElementById("final_1");
+            
+            var clicked = false;
+            var s = "";
+            setInterval(function(){
+                if($(document.activeElement).attr('type') == "text")    //Keyobard is open
+                {
+                    if(!clicked)
+                    {
+                        console.log("Keyboard is visible");
+                        if(success.style.display != "none")
+                        {
+                            /*for(var i = 7; i >= 1; i--)     //finds first clear input.
+                            {
+                                s = "first_" + i;
+                                success_input = document.getElementById(s);
+                                if(success_input.value.length <= 0)
+                                {
+                                    break;   
+                                }
+                            }*/
+                            
+                            text.style.display = "none";
+                            document.getElementById("head").style.display = "none";
+                            document.getElementById("word_head").style.display = "none";
+                            $("#successForm").animate({ top: '80%', right: '24%' }, 0);
+                            document.location.href = "#successForm";
+                            success_input.focus();
+                            success_input.select();
+                            clicked = !clicked;
+                            //form_input.style.display = "block"; 
+                        }
+                        else
+                        {
+                            /*for(var i = 7; i >= 1; i--)     //finds first clear input.
+                            {
+                                s = "final_" + i;
+                                code_input = document.getElementById(s);
+                                if(code_input.value.length <= 0)
+                                {
+                                    break;   
+                                }
+                            }*/
+                            
+                            text.style.display = "none";
+                            document.getElementById("head").style.display = "none";
+                            document.getElementById("code_head").style.display = "none";
+                            $("#CodeForm").animate({ top: '80%', right: '24%' }, 0);
+                            document.location.href = "#CodeForm";
+                            code_input.focus();
+                            code_input.select();
+                            clicked = !clicked;
+                            //form_input.style.display = "block";  
+                        } 
+                    }
+                }
+                else
+                {
+                    if(clicked)
+                    {
+                        console.log("Keyboard is NOT visible");
+                        if(success.style.display != "none")
+                        {
+                            text.style.display = "block";
+                            document.getElementById("head").style.display = "block";
+                            document.getElementById("word_head").style.display = "block";
+                            $("#successForm").animate({ top: '175%', right: '24%' }, 0);
+                            document.location.href = "#successForm";
+                            clicked = !clicked;
+                        }
+                        else
+                        {
+                            text.style.display = "block";
+                            document.getElementById("head").style.display = "block";
+                            document.getElementById("code_head").style.display = "block";
+                            $("#CodeForm").animate({ top: '175%', right: '24%' }, 0);
+                            document.location.href = "#CodeForm";
+                            clicked = !clicked;
+                        }
+                    }
+                }
+            }, 100);
+        </script>
+    </body>
+</html>

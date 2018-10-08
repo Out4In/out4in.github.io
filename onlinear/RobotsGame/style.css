@@ -5,7 +5,9 @@ body
     background: url("images/b1.jpg");
     /*background-repeat: no-repeat;*/
     background-size: contain;
+    overflow: hidden;
 }
+
 div.a
 {
     width: 13%;
