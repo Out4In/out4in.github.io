@@ -54,6 +54,49 @@
                 right: 15%;
                 font-size: 5vh;
             }
+            
+            /* The Modal (The text box instead of the basic alert) */
+            .modal {
+                display: none; /* Hidden by default */
+                position: fixed; /* Stay in place */
+                z-index: 1; /* Sit on top */
+                padding-top: 100px; /* Location of the box */
+                left: 0;
+                top: 0;
+                width: 100%; /* Full width */
+                height: 100%; /* Full height */
+                overflow: auto; /* Enable scroll if needed */
+                background-color: rgb(0,0,0); /* Fallback color */
+                background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+                direction: rtl;
+            }
+
+            /* Modal Content */
+            .modal-content {
+                background-color: #fefefe;
+                margin: auto;
+                padding: 20px;
+                border: 1px solid #888;
+                width: 80%;
+                color: red;
+                font-size: 7.5vh;
+                text-align: center;
+            }
+
+            /* The Close Button */
+            .close {
+                color: #000;
+                float: right;
+                font-size: 9vh;
+                font-weight: bolder;
+            }
+
+            .close:hover,
+            .close:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
         </style>
         <script type="application/javascript">
             localStorage.setItem("reloaded", "false");
@@ -63,7 +106,7 @@
             {
                 var s = "";
                 var val = "";
-                for(var i = 1; i <= 6; i++)
+                for(var i = 1; i <= 8; i++)
                 {
                     s = "for_" + i;
                     val = localStorage.getItem(s);
@@ -196,10 +239,15 @@
             
             function OfferHint()
             {
-                var answer = confirm("ראינו שאתם מתקשים, האם אתם רוצים עזרה?");
+                document.getElementById("myModal").style.display = "block";
+                
+                var clockImg = document.getElementById("clockImg");
+                clockImg.style.display = "none";
+                
+                /*var answer = confirm("ראינו שאתם מתקשים, האם אתם רוצים עזרה?");
                 if(answer)
                 {
-                     var clockImg = document.getElementById("clockImg");
+                    var clockImg = document.getElementById("clockImg");
                     clockImg.style.display = "none";
                     setTimeout(function(){          //To remove image before alert.
                         alert("הספרה השניה (גלגל צהוב) היא 9 – מהי הספרה השלישית? ");
@@ -208,7 +256,7 @@
                 else
                 {
                     setTimeout(OfferHint, 60000);
-                }
+                }*/
             }
             
             function Start()
@@ -234,8 +282,7 @@
                 כמו בתמונה המצורפת - הסכום המשותף הוא 8.<br/>
                 <img src = "img.png" width = "24%" height="35%"><br/>
                 
-                לתיבת הקוד למטה עליכם להכניס את שלושת המספרים בשלשה שמסומנת בחץ שחור ומתחילה בספרה 6  על הגלגל האדום.<br/>
-                כאשר תכניסו את שתי הספרות הנוספות תקבלו את קוד הזירה. <br/>
+                <font color = "red" style="font-weight: bold">עליכם להכניס לתיבת הקוד למטה את שלושת המספרים בשלשה שמסומנת בחץ שחור ומתחילה בספרה 6 על הגלגל האדום.</font><br/>
 
                 <br/><u>רוצים רמז למספר המשותף?</u><br/>
                 לחצו על האייקון של ראש הרובוט ! <a href = "../RobotsGame/enter.html"><img src = "robot.png" width = "14%" height="16%"></a>
@@ -275,6 +322,37 @@
             </div>
         </div>
         
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+          <!-- Modal content -->
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>
+                <font color = "black">רמז: </font><br/>
+                <font size = "6"  style = "font-weight: bold;">הספרה השניה (גלגל צהוב) היא 9 – מהי הספרה השלישית?</font>
+            </p>
+          </div>
+
+        </div>
+        
+        <script>
+            //The modal script
+            var modal = document.getElementById('myModal');
+            var span = document.getElementsByClassName("close")[0];
+            var modal_text = modal.querySelector('p');
+            
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        </script>
         
         <script>
             /*
