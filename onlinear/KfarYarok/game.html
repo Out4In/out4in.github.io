@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>משחק הקלסתרון</title>
         <link rel="stylesheet" type="text/css" href="style.css"/>
-        <script type="text/javascript" src="../Resources/libs/instascan.min.js"></script>
+        <script type="text/javascript" src="Resources/libs/instascan.min.js"></script>
         
         <style>
             #doneBtn
@@ -68,25 +68,9 @@
             }
         </style>
         
-        <script>
-            
-            function OfferHint()
-            {
-                var answer = confirm("ראינו שאתם מתקשים, האם אתם רוצים עזרה?");
-                if(answer)
-                {
-                     alert('טיפ קטן להרכבת הקלסתרון.\nחפשו את 4 חלקי הקלסתרון שעליהם מופיעים המספרים 9510, וסדרו אותם בשורה עליונה לפי הסדר הנ"ל משמאל לימין.\nעכשיו המשיכו בהרכבת הקלסתרון.');
-
-                }
-                else
-                {
-                    setTimeout(OfferHint, 60000);
-                }
-            }
-            
+        <script> 
             function Start()
             {
-                setTimeout(OfferHint,180000);
                 if(window.innerHeight < window.innerWidth)
                 {
                     localStorage.setItem("passed_turn", false);
@@ -100,15 +84,9 @@
         
         </script>
     </head>
-    <body onload="Start();">
-        <div id="camera_holder">
-            <input type="button" value="להרכבת הקלסתרון" class="PuzzleButton" id="MoveToPuzzle" onclick="MoveToPuzzle();"/>
-            <video id="camera" playsinline>
-            </video>
-        </div>
-
+    <body onload="Start();"
         <div id="puzzle_holder">
-            <input type="button" value="לחיפוש החלקים" class="PuzzleButton" id="MoveToCamera" onclick="MoveToCamera();" />
+            <input type="button" value="לחיפוש החלקים" class="PuzzleButton" onclick="" />
             <table class="PuzzleTable">
                 <tr>
                     <td id="img1"></td>
@@ -155,6 +133,7 @@
         <button type="button" id="doneBtn" onclick="done()">לחצו לסיום המשימה</button>
             
         <script type="text/javascript">
+            /*
             let scaneer = new Instascan.Scanner({video: document.getElementById("camera"),mirror: false});
             scaneer.addListener("scan",function(content)
             {
@@ -179,6 +158,7 @@
                 alert("אתה אינך יכול לשחק במשחק זה.");
             }
             });
+            */
             
         </script>
     
