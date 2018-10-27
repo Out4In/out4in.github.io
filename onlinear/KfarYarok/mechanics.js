@@ -84,7 +84,7 @@ function AddImageAsDetected(image_name)
     {
 	if(index == 0 || index == PARTS)
 	{
-		TD_ELEMENTS[index].appendChild(ALL_IMAGES[index];
+		TD_ELEMENTS[index].appendChild(ALL_IMAGES[index]);
 	}
 	else
 	{
