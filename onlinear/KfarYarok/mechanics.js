@@ -140,7 +140,7 @@ function ClickedImg(img)
             if(CheckWin())
             {
                 //alert("כל הכבוד, הרכבת את הקלסטרון !\nהנה מקטע הקוד: Face134");
-                var audio = new Audio('resources/audio/right-answer.mp3');
+                var audio = new Audio('Resources/audio/right-answer.mp3');
                 audio.play();
                 setTimeout(function(){                          //So the player can see the entire face.
                     elm_doneBtn.style.display = "block";
@@ -180,26 +180,6 @@ function done()
     
     alert("OUT!");
 }*/
-
-function MoveToPuzzle()
-{
-    var elm = document.getElementById('camera_holder');
-    elm.style.visibility = "hidden";
-    elm.style.display = "none";
-    elm = document.getElementById("puzzle_holder");
-    elm.style.visibility = "visible";
-    elm.style.display = "block";
-}
-
-function MoveToCamera()
-{
-    var elm = document.getElementById('puzzle_holder');
-    elm.style.visibility = "hidden";
-    elm.style.display = "none";
-    elm = document.getElementById("camera_holder");
-    elm.style.visibility = "visible";
-    elm.style.display = "block";
-}
 
 function modalFunctions()
 {
