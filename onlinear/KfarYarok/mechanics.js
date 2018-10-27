@@ -82,12 +82,19 @@ function AddImageAsDetected(image_name)
     var attach_img = false;
     while(!attach_img)
     {
-        var r_number = Math.floor(Math.random()*PARTS + 1);
-        if(!TD_ELEMENTS[r_number - 1].hasChildNodes())			//if TD is empty.
-        {
-            TD_ELEMENTS[r_number - 1].appendChild(ALL_IMAGES[index]);
-            attach_img = true;
-        }
+	if(index == 0 || index == PARTS)
+	{
+		TD_ELEMENTS[index].appendChild(ALL_IMAGES[index];
+	}
+	else
+	{
+        	var r_number = Math.floor(Math.random()*PARTS + 1);
+        	if(!TD_ELEMENTS[r_number - 1].hasChildNodes())			//if TD is empty.
+        	{
+            	TD_ELEMENTS[r_number - 1].appendChild(ALL_IMAGES[index]);
+            	attach_img = true;
+        	}
+	}
     }   
     
 }
