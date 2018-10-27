@@ -80,7 +80,10 @@
                 {
                     localStorage.setItem("passed_turn", true);
                 }
-                AddImageAsDetected("img2");
+                for(var i = 0; i < 12; i++)
+                {
+                    AddImageAsDetected("img" + i);
+                }
             }
         
         </script>
