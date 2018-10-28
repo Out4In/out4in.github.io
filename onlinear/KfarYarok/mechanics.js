@@ -11,7 +11,7 @@ var modal_text = modal.querySelector('p');
 
 //modalFunctions();
 
-for(var i = 1; i <= PARTS; i++)
+for(var i = 2; i < PARTS; i++)
 {
     var tmp_img = document.createElement("img");
   
