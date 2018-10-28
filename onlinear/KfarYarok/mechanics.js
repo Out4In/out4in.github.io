@@ -9,7 +9,7 @@ var modal = document.getElementById('myModal');
 var span = document.getElementsByClassName("close")[0];
 var modal_text = modal.querySelector('p');
 
-modalFunctions();
+//modalFunctions();
 
 for(var i = 1; i <= PARTS; i++)
 {
