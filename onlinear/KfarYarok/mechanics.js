@@ -76,7 +76,7 @@ function AddImageAsDetected(image_name)
     {
 	if(index == 3)
 	{
-		TD_ELEMENTS[3].appendChild(ALL_IMAGES[0]);
+		TD_ELEMENTS[3].appendChild(ALL_IMAGES[3]);
 		attach_img = true;
 	}
 	else
