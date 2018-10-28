@@ -14,10 +14,10 @@ var modal_text = modal.querySelector('p');
 for(var i = 1; i <= PARTS; i++)
 {
     var tmp_img = document.createElement("img");
-    tmp_img.src = "images/img" + i  +".png";
+    tmp_img.src = "Emily/images/img" + i  +".png";
     tmp_img.id = "img" + i;
     //tmp_img.width = "100%";
-    //tmp_img.width = "100%";
+    tmp_img.height = "300px";
     tmp_img.addEventListener("click",function()
 	{
         ClickedImg(this);
