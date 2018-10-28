@@ -18,12 +18,12 @@ for(var i = 1; i <= PARTS; i++)
     tmp_img.src = "images/" + window.location.search.split('?')[1] + "/img" + i +".png";
     tmp_img.id = "img" + i;
     //tmp_img.width = "100%";
-    //if(i > 1 && i < PARTS) {
+    if(i != 3 && i != 8) {
     	tmp_img.addEventListener("click",function()
 		{
         	ClickedImg(this);
     	});
-    //}
+    }
     ALL_IMAGES.push(tmp_img);
     
     var td = document.getElementById("img" + i);
@@ -74,15 +74,15 @@ function AddImageAsDetected(image_name)
     var attach_img = false;
     while(!attach_img)
     {
-	if(index == 3)
+	if(index == 3 || index == 8)
 	{
-		TD_ELEMENTS[3].appendChild(ALL_IMAGES[3]);
+		TD_ELEMENTS[index].appendChild(ALL_IMAGES[index]);
 		attach_img = true;
 	}
 	else
 	{
         	var r_number = Math.floor(Math.random()*PARTS + 1);
-        	if(!TD_ELEMENTS[r_number - 1].hasChildNodes() && r_number - 1 != 3)			//if TD is empty.
+        	if(!TD_ELEMENTS[r_number - 1].hasChildNodes() && r_number - 1 != 3 && r_number - 1 != 8)			//if TD is empty.
         	{
             		TD_ELEMENTS[r_number - 1].appendChild(ALL_IMAGES[index]);
             		attach_img = true;
