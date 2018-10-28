@@ -76,13 +76,13 @@ function AddImageAsDetected(image_name)
     {
 	if(index == 3)
 	{
-		TD_ELEMENTS[0].appendChild(ALL_IMAGES[index]);
+		TD_ELEMENTS[3].appendChild(ALL_IMAGES[0]);
 		attach_img = true;
 	}
 	else
 	{
         	var r_number = Math.floor(Math.random()*PARTS + 1);
-        	if(!TD_ELEMENTS[r_number - 1].hasChildNodes())			//if TD is empty.
+        	if(!TD_ELEMENTS[r_number - 1].hasChildNodes() && r_number != 3)			//if TD is empty.
         	{
             		TD_ELEMENTS[r_number - 1].appendChild(ALL_IMAGES[index]);
             		attach_img = true;
