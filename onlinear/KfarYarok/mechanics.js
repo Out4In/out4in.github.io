@@ -145,8 +145,8 @@ function ClickedImg(img)
 function done()
 {
     //localStorage.setItem("for_7", "OK");          //have to do this in out4in.xyz domain !!!
-    alert("כל הכבוד סיימתם את המשימה ! \nהקוד face134 הוסף אוטומטית למאגר (סטטוסים הקודים - בדף הבית).");
-    document.location.href = "http://out4in.xyz/EscapeZone_Long/Station_7/index.html?finish=yes";
+    alert("\nגם אני הייתי חלק מהצוות שתכנן את גניבת הפדיון.\nואני רוצה לתת לכם טיפ קטן.\nכשתסיימו את כל 6 המשימות ויהיו בידכם 6 המספרים של הקוד לכספת שם החבאנו את הכסף חלקו אותו לשני חלקים שווים אחד לכל מנעול שעל הכספת.
+")
 }
 
 /*function EnterAnswer()
