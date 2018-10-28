@@ -82,7 +82,7 @@ function AddImageAsDetected(image_name)
 	else
 	{
         	var r_number = Math.floor(Math.random()*PARTS + 1);
-        	if(!TD_ELEMENTS[r_number - 1].hasChildNodes() && r_number != 3)			//if TD is empty.
+        	if(!TD_ELEMENTS[r_number - 1].hasChildNodes() && r_number - 1 != 3)			//if TD is empty.
         	{
             		TD_ELEMENTS[r_number - 1].appendChild(ALL_IMAGES[index]);
             		attach_img = true;
