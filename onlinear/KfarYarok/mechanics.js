@@ -72,20 +72,20 @@ function AddImageAsDetected(image_name)
     var attach_img = false;
     while(!attach_img)
     {
-	/*if(index == 0 || index == PARTS - 1)
+	if(index == 4 || index == 9)
 	{
 		TD_ELEMENTS[index].appendChild(ALL_IMAGES[index]);
 		attach_img = true;
 	}*/
-	//else
-	//{
+	else
+	{
         	var r_number = Math.floor(Math.random()*PARTS + 1);
         	if(!TD_ELEMENTS[r_number - 1].hasChildNodes())			//if TD is empty.
         	{
             		TD_ELEMENTS[r_number - 1].appendChild(ALL_IMAGES[index]);
             		attach_img = true;
         	}
-	//}
+	}
     }   
     
 }
