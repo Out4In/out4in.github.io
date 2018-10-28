@@ -18,12 +18,12 @@ for(var i = 1; i <= PARTS; i++)
     tmp_img.src = "images/" + window.location.search.split('?')[1] + "/img" + i +".png";
     tmp_img.id = "img" + i;
     //tmp_img.width = "100%";
-    if(i > 1 && i < PARTS) {
+    //if(i > 1 && i < PARTS) {
     	tmp_img.addEventListener("click",function()
 		{
         	ClickedImg(this);
     	});
-    }
+    //}
     ALL_IMAGES.push(tmp_img);
     
     var td = document.getElementById("img" + i);
