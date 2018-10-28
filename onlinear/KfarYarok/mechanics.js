@@ -72,11 +72,11 @@ function AddImageAsDetected(image_name)
     var attach_img = false;
     while(!attach_img)
     {
-	if(index == 4 || index == 9)
+	if(index == 4)
 	{
 		TD_ELEMENTS[index].appendChild(ALL_IMAGES[index]);
 		attach_img = true;
-	}*/
+	}
 	else
 	{
         	var r_number = Math.floor(Math.random()*PARTS + 1);
