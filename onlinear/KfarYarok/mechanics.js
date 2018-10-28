@@ -15,7 +15,7 @@ for(var i = 1; i <= PARTS; i++)
 {
     var tmp_img = document.createElement("img");
     alert(window.location.search.split('?')[1]);
-    tmp_img.src = "images/" + window.location.search.split('?')[1] "/img" + i +".png";
+    tmp_img.src = "images/" + window.location.search.split('?')[1] + "/img" + i +".png";
     tmp_img.id = "img" + i;
     //tmp_img.width = "100%";
     //tmp_img.height = "300px";
