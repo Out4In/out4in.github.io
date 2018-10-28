@@ -37,23 +37,13 @@ function AddImageAsDetected(image_name)
     if(parseInt(image_name.split("img")[1]) <= PARTS)
     {
         if(s == image_name)
-        {
-            alert("מצאת תמונה: " + image_name);
+	{
             curr_img++;
         }
         else if(curr_img <= PARTS)
         {
-            alert("זו היא " + image_name + ", עלייך למצוא " + s);
             return;
         }
-        else
-        {
-            alert("סרקת כבר את כל הברקודים. אנא המשך לפתירת הפאזל.");
-        }
-    }
-    else
-    {
-        alert("ברקוד זה אינו בטווח. אנא התעלם ממנו.")
     }
     
     var index = 0;
@@ -92,8 +82,8 @@ function AddImageAsDetected(image_name)
         	var r_number = Math.floor(Math.random()*PARTS + 1);
         	if(!TD_ELEMENTS[r_number - 1].hasChildNodes())			//if TD is empty.
         	{
-            	TD_ELEMENTS[r_number - 1].appendChild(ALL_IMAGES[index]);
-            	attach_img = true;
+            		TD_ELEMENTS[r_number - 1].appendChild(ALL_IMAGES[index]);
+            		attach_img = true;
         	}
 	//}
     }   
