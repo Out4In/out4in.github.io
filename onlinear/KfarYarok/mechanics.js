@@ -18,7 +18,7 @@ for(var i = 1; i <= PARTS; i++)
     tmp_img.src = "images/" + window.location.search.split('?')[1] + "/img" + i +".png";
     tmp_img.id = "img" + i;
     //tmp_img.width = "100%";
-    if(i != 3 && i != 8) {
+    if(i != 1 && i != 12) {
     	tmp_img.addEventListener("click",function()
 		{
         	ClickedImg(this);
