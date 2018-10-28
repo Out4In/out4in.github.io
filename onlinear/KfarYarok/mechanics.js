@@ -14,7 +14,7 @@ var modal_text = modal.querySelector('p');
 for(var i = 1; i <= PARTS; i++)
 {
     var tmp_img = document.createElement("img");
-    tmp_img.src = "images/Emily/img" + i  +".png";
+    tmp_img.src = "images/" + location.search.split('?')[1] "/img" + i +".png";
     tmp_img.id = "img" + i;
     //tmp_img.width = "100%";
     tmp_img.height = "300px";
